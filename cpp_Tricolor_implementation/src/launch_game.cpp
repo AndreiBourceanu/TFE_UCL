@@ -1,3 +1,5 @@
+// Launch a Tricolor game between 2 players
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -86,7 +88,6 @@ Position get_hex_coordinates_by_pixel(sf::RenderWindow &window, vector<vector<He
 
     return position;
 }
-
 
 void draw_hex_tiles(sf::RenderWindow &window, vector<vector<HexTile>> &board, float radius, sf::Sprite &whitePiece, sf::Sprite &blackPiece, pieces_touched &human_pieces_touched, Game &game, vector<Action> &actions){
 
@@ -228,7 +229,7 @@ int main(int argc, char* argv[]) {
 
     sf::Texture piecesTexture;
     if (!piecesTexture.loadFromFile("assets/checkers_pieces.png")) {
-        return -1; // error
+        return -1;
     }
 
     sf::Vector2i pieceSize(768, 1024); // size of a single piece

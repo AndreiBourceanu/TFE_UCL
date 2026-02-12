@@ -269,28 +269,3 @@ Board::Board(int size){
 Board::Board(){
     Board(5);
 }
-
-/*
-int main(){
-    Board b1(5);
-    
-    for(int i = 0; i < b1.board.size(); i++){
-        for(int j = 0; j < b1.board[i].size(); j++){
-            cout<<b1.board[i][j].color<<' '<<b1.board[i][j].controls_p1<<' '<<b1.board[i][j].p1_pieces<<' '<<b1.board[i][j].p2_pieces<<' '<<endl;
-        }
-    }
-    
-   int i = 4, j = 8;
-   for(int k = 0; k < 6; k++){
-        if(b1.board[i][j].neighbours[k] != NULL){
-        HexTile* h = b1.board[i][j].neighbours[k];
-        cout<<h->color<<' '<<h->player<<' '<<h->pieces[0]<<' '<<h->pieces[1]<<' '<<endl;
-        }
-   }
-   vector<Action> p1_actions = b1.actions(0);
-   for(Action ac : p1_actions){
-    cout<<ac.from.x<<' '<<ac.from.y<<' '<<ac.direction<<' '<<ac.pieces_moved<<' '<<ac.step<<endl;
-   }
-   return 0;
-}
-*/

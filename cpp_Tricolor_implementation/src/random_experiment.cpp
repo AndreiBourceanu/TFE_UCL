@@ -1,3 +1,5 @@
+// Launch Tricolor game simulations between 2 random players and exract useful data
+
 #include <iostream>
 #include <chrono>
 #include "game/Game.h"
