@@ -1,3 +1,5 @@
+![Tricolor demo](game_gif/Tricolor_gif.gif)
+
 # This directory contains my C++ implementation of Tricolor
 
 ## Setup
