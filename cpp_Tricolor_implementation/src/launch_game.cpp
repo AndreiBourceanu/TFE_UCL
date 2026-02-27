@@ -4,11 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <math.h>
+#include <filesystem>
 #include "game/Game.h"
 #include "agent/AgentRandom.h"
 #include "agent/AgentHuman.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
 unordered_map<char, sf::Color> my_color_to_sf_color;
 
@@ -207,8 +209,14 @@ int main(int argc, char* argv[]) {
 
     // text fonts
 
+    // Determine the folder where the executable lives
+    fs::path exeDir = fs::absolute(argv[0]).parent_path();
+
+    // Construct path to the font inside the assets folder
+    fs::path fontPath = exeDir / "assets" / "DejaVuSans.ttf";
+
     sf::Font font;
-    if (!font.loadFromFile("assets/DejaVuSans.ttf"))
+    if (!font.loadFromFile(fontPath.string()))
         return -1;
     
     sf::Text text;
@@ -227,8 +235,11 @@ int main(int argc, char* argv[]) {
     my_color_to_sf_color['W'] = sf::Color::White;
     my_color_to_sf_color['R'] = sf::Color::Red;
 
+    // Construct path to the png inside the assets folder
+    fs::path pngPath = exeDir / "assets" / "checkers_pieces.png";
+
     sf::Texture piecesTexture;
-    if (!piecesTexture.loadFromFile("assets/checkers_pieces.png")) {
+    if (!piecesTexture.loadFromFile(pngPath.string())) {
         return -1;
     }
 
