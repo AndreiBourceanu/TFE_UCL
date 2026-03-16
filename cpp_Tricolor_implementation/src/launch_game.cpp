@@ -192,7 +192,6 @@ unique_ptr<Agent> create_agent(const string& name) {
 
 
 int main(int argc, char* argv[]) {
-
     if (argc < 3) {
         std::cout << "Usage: ./launch_game <player1> <player2>\n";
         std::cout << "Example: ./launch_game human random\n";

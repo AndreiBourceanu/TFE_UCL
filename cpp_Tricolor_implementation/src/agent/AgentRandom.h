@@ -6,5 +6,7 @@ public:
 AgentRandom();
 
 Action choose_action(Board& board, vector<Action>& actions) override;
+
+ActionOpti choose_action(BoardOpti& board, vector<ActionOpti>& actions) override;
 private:
 };

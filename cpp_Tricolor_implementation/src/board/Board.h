@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 using namespace std;
 
 struct Position{
@@ -77,3 +78,65 @@ vector<Action> actions(int player);
 void execute_action(int player, Action action);
 private:
 };
+
+
+// Optimized implementation using bit representation
+
+struct ActionOpti{
+    int from;
+    int to;
+    int pieces_moved;
+    bool is_imprisonment_or_capture;
+
+    ActionOpti(int from, int to, int pieces_moved, bool is_imprisonment_or_capture);
+
+    ActionOpti();
+};
+
+struct BoardOpti{
+    // 61 tiles in the original board (length 5 of a hex side)
+    // The tiles are counted from left to right and up to down
+    // There are 18 white pieces and 18 black pieces, so there will be at most 36 on one tile
+    // I need to know the nr of white and black pieces, as well as who controls it.
+    // I use 16 bits integer for the following info:
+    // . . . . . . | . . . . . | . . . . .
+    //    owner    |   black   |   white
+    // (from right to left):
+    // first 5 bits = nr of white pieces
+    // next 5 bits = nr of black pieces
+    // rest of bits = owner (0 = white, 1 = black, 2 = nobody)
+    uint16_t tiles[61];
+
+    BoardOpti();
+
+    int get_player(int tile);
+
+    int get_white_pieces(int tile);
+
+    int get_black_pieces(int tile);
+
+    int get_pieces(int player, int tile);
+
+    void add_white_pieces(int tile, int nr_pieces);
+    
+    void add_black_pieces(int tile, int nr_pieces);
+
+    void add_pieces(int tile, int nr_pieces, int player);
+
+    void set_owner(int tile, int player);
+
+    // player 0 = white, player 1 = black
+    vector<ActionOpti> get_actions(int player);
+
+    void execute_action(int player, ActionOpti action);
+};
+
+
+// Hard-coded colors (white = 1, black = 2, red = 3, like the power bonus)
+extern const int colors_opti[61];
+
+// Hard-coded neighbours for each tile (each tile has 6 neighbours)
+// if the neighbour in that direction doesn't exist, then it's -1
+// left, right, upleft, upright, downleft, downright
+// e.g. neighbours_opti[3][4] represents the neighbour at downleft of 4th square 
+extern const int neighbours_opti[61][6];

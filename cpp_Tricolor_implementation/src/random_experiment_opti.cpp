@@ -18,7 +18,7 @@ int main()
         players[0] = make_unique<AgentRandom>();
         players[1] = make_unique<AgentRandom>();
 
-        Game game(5, move(players), 50);
+        GameOpti game(move(players), 50);
         game.start();
         wins[game.winner]++;
         total_turns += game.turn;

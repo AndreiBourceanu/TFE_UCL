@@ -12,5 +12,7 @@ virtual ~Agent() = default;
 
 virtual Action choose_action(Board& board, vector<Action>& actions) = 0;
 
+virtual ActionOpti choose_action(BoardOpti& board, vector<ActionOpti>& actions) = 0;
+
 private:
 };
