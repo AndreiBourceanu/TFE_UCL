@@ -15,7 +15,8 @@ Action AgentRandom::choose_action(Board& board, vector<Action>& actions){
     return actions[x];
 }
 
-ActionOpti AgentRandom::choose_action(BoardOpti& board, vector<ActionOpti>& actions){
+ActionOpti AgentRandom::choose_action(BoardOpti& board, int player){
+    vector<ActionOpti> actions = board.get_actions(player);
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<int> dist(0, actions.size() - 1);

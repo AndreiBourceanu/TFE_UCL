@@ -7,6 +7,7 @@
 #include "game/Game.h"
 #include "agent/AgentRandom.h"
 #include "agent/AgentHuman.h"
+#include "agent/AgentAlphaBeta.h"
 
 using namespace std;
 
@@ -182,6 +183,8 @@ unique_ptr<Agent> create_agent(const string& name) {
         return std::make_unique<AgentHuman>();
     else if (name == "random")
         return std::make_unique<AgentRandom>();
+    else if (name == "alphabeta")
+        return std::make_unique<AgentAlphaBeta>();
     else {
         std::cerr << "Unknown agent type: " << name << std::endl;
         exit(1);
@@ -330,7 +333,7 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        // if the current player, is a bot, don't interact with the window
+        // if the current player is a bot, don't interact with the window
         if(game.players[game.player_turn]->is_bot){
             // time update
             sf::Time dt = clock.restart();

@@ -104,8 +104,13 @@ struct BoardOpti{
     // (from right to left):
     // first 5 bits = nr of white pieces
     // next 5 bits = nr of black pieces
-    // rest of bits = owner (0 = white, 1 = black, 2 = nobody)
+    // rest of bits = owner (0 = white, 1 = black, 2 = neutral)
     uint16_t tiles[61];
+
+    // 0 -> white, 1 -> black
+    bool player_turn;
+
+    uint64_t hash;
 
     BoardOpti();
 
@@ -128,15 +133,24 @@ struct BoardOpti{
     // player 0 = white, player 1 = black
     vector<ActionOpti> get_actions(int player);
 
-    void execute_action(int player, ActionOpti action);
+    void execute_action(int player, ActionOpti& action);
+
+    BoardOpti result_state_after_action(int player, ActionOpti& action);
 };
+
+// updates the hash value of a board with the action
+void update_zobrist_hash(BoardOpti& board, const ActionOpti& action);
 
 
 // Hard-coded colors (white = 1, black = 2, red = 3, like the power bonus)
 extern const int colors_opti[61];
 
-// Hard-coded neighbours for each tile (each tile has 6 neighbours)
+// Hard-coded neighbours for each tile (each tile has 6 neighbors)
 // if the neighbour in that direction doesn't exist, then it's -1
 // left, right, upleft, upright, downleft, downright
 // e.g. neighbours_opti[3][4] represents the neighbour at downleft of 4th square 
 extern const int neighbours_opti[61][6];
+
+extern const vector<vector<int>> position_to_tile;
+
+extern const vector<Position> tile_to_position;

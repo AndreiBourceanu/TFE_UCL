@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "Zobrist.h"
 #include <iostream>
 
 using namespace std;
@@ -296,22 +297,60 @@ const int neighbours_opti[61][6] = {
         {-1, 57, 50, 51, -1, -1}, {56, 58, 51, 52, -1, -1}, {57, 59, 52, 53, -1, -1}, {58, 60, 53, 54, -1, -1}, {59, -1, 54, 55, -1, -1}
 };
 
+const vector<vector<int>> position_to_tile = [] {
+    vector<vector<int>> v(9);
+    v[0].resize(5);
+    v[1].resize(6);
+    v[2].resize(7);
+    v[3].resize(8);
+    v[4].resize(9);
+    v[5].resize(8);
+    v[6].resize(7);
+    v[7].resize(6);
+    v[8].resize(5);
+    int tile = 0;
+    for(int i = 0; i < v.size(); i++){
+        for(int j = 0; j < v[i].size(); j++){
+            v[i][j] = tile++;
+        }
+    }
+    return v;
+}();
+
+const vector<Position> tile_to_position = [] {
+    vector<Position> v(61);
+    int tile = 0;
+    for(int i = 0; i < position_to_tile.size(); i++){
+        for(int j = 0; j < position_to_tile[i].size(); j++){
+            v[tile++] = Position{i, j};
+        }
+    }
+    return v;
+}();
+
 BoardOpti::BoardOpti(){
     // initialize board with standard game board
+    // black tiles
     for(uint16_t tile = 0; tile < 18; tile++){
         tiles[tile] = 0b10000100000;
+        //tiles[tile] = 0;
     }
+    //empty tiles
     for(uint16_t tile = 18; tile < 43; tile++){
-        tiles[tile] = 0b100000000000;
+        tiles[tile] = 0;
     }
+    // white tiles
     for(uint16_t tile = 43; tile < 61; tile++){
         tiles[tile] = 0b1;
+        //tiles[tile] = 0;
     }
-}
-
-int BoardOpti::get_player(int tile){
-    // shift 10 bits to get player's turn
-    return tiles[tile] >> 10;
+    //tiles[0] = 0b10000100000;
+    //tiles[43] = 0b10;
+    // first to move is white
+    player_turn = 0;
+    // initialize zobrist values for hashing states
+    init_zobrist();
+    hash = compute_hash(*this);
 }
 
 int BoardOpti::get_white_pieces(int tile){
@@ -322,6 +361,15 @@ int BoardOpti::get_white_pieces(int tile){
 int BoardOpti::get_black_pieces(int tile){
     // get the 5 bits after the first 5 bits
     return (tiles[tile] >> 5) & 0b11111;
+}
+
+int BoardOpti::get_player(int tile){
+    // if the tile has 0 pieces, then it's neutral
+    if(get_white_pieces(tile) == 0 && get_black_pieces(tile) == 0){
+        return 2;
+    }
+    // shift 10 bits to get player's turn
+    return tiles[tile] >> 10;
 }
 
 int BoardOpti::get_pieces(int player, int tile){
@@ -346,6 +394,9 @@ void BoardOpti::add_pieces(int tile, int nr_pieces, int player){
 }
 
 void BoardOpti::set_owner(int tile, int player){
+    // if setting to neutral, just ignore
+    if(player == 2) return;
+    
     tiles[tile] = (player << 10) | (get_black_pieces(tile) << 5) | get_white_pieces(tile);
 }
 
@@ -405,7 +456,15 @@ vector<ActionOpti> BoardOpti::get_actions(int player){
     return actions;
 }
 
-void BoardOpti::execute_action(int player, ActionOpti action){
+void update_zobrist_hash(BoardOpti& board, const ActionOpti& action){
+    board.hash ^= zobrist_table[action.from][zobrist_index(board.tiles[action.from])];
+    board.hash ^= zobrist_table[action.to][zobrist_index(board.tiles[action.to])];
+}
+
+void BoardOpti::execute_action(int player, ActionOpti& action){
+    // first update hash
+    update_zobrist_hash(*this, action);
+
     int opponent = (player+1)%2;
     int friend_pieces_moved = min(get_pieces(player, action.from), action.pieces_moved);
     int opponent_pieces_moved = action.pieces_moved - friend_pieces_moved;
@@ -436,4 +495,57 @@ void BoardOpti::execute_action(int player, ActionOpti action){
             set_owner(action.from, opponent);
         }
     }
+
+    // change player's turn
+    player_turn = !player_turn;
+
+    // update hash again at the end, including the player
+    update_zobrist_hash(*this, action);
+    hash ^= player_turn;
+}
+
+BoardOpti BoardOpti::result_state_after_action(int player, ActionOpti& action){
+    BoardOpti board_copy = *this;
+    // first update hash
+    update_zobrist_hash(board_copy, action);
+
+    int opponent = (player+1)%2;
+    int friend_pieces_moved = min(board_copy.get_pieces(player, action.from), action.pieces_moved);
+    int opponent_pieces_moved = action.pieces_moved - friend_pieces_moved;
+    int friend_power = min(friend_pieces_moved, 3) * colors_opti[action.from];
+    int opponent_power = min(board_copy.get_pieces(opponent, action.to), 3) * colors_opti[action.to];
+
+    // check if it's a capture
+    if(board_copy.get_player(action.to) == opponent && friend_power > opponent_power * 2){
+        // if yes, set opponent pieces to 0 by adding the negative of his nr of pieces
+        board_copy.add_pieces(action.to, -board_copy.get_pieces(opponent, action.to), opponent);
+    }
+
+    // always remove `moved` pieces from `from`
+    board_copy.add_pieces(action.from, -friend_pieces_moved, player);
+    board_copy.add_pieces(action.from, -opponent_pieces_moved, opponent);
+    // always add the `moved` pieces to `to`
+    board_copy.add_pieces(action.to, friend_pieces_moved, player);
+    board_copy.add_pieces(action.to, opponent_pieces_moved, opponent);
+
+    // change the owner of the `to` tile to `from` player
+    board_copy.set_owner(action.to, player);
+    // set `from` tile to neutral if no pieces remaining
+    if(board_copy.get_pieces(player, action.from) == 0){
+        if(board_copy.get_pieces(opponent, action.from) == 0){
+            board_copy.set_owner(action.from, 2);
+        }
+        else{
+            board_copy.set_owner(action.from, opponent);
+        }
+    }
+
+    // change player's turn
+    board_copy.player_turn = !board_copy.player_turn;
+
+    // update hash again at the end, including the player
+    update_zobrist_hash(board_copy, action);
+    board_copy.hash ^= board_copy.player_turn;
+
+    return board_copy;
 }
