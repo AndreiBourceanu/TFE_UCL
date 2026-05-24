@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: acks/acks.aux
+A level-1 auxiliary file: historical_background/historical_background.aux
+A level-1 auxiliary file: game_rules/game_rules.aux
+A level-1 auxiliary file: implementation_of_the_game_model/implementation_of_the_game_model.aux
+A level-1 auxiliary file: game_metrics/game_metrics.aux
+A level-1 auxiliary file: advanced_ai_agents/advanced_ai_agents.aux
+A level-1 auxiliary file: analyzing_agents_performance/analyzing_agents_performance.aux
+A level-1 auxiliary file: all_game_metrics/all_game_metrics.aux
+The style file: unsrt.bst
+Database file #1: dissertation.bib
+You've used 10 entries,
+            1791 wiz_defined-function locations,
+            477 strings with 5525 characters,
+and the built_in function-call counts, 952 in all, are:
+= -- 53
+> -- 20
+< -- 0
++ -- 13
+- -- 3
+* -- 5
+:= -- 95
+add.period$ -- 14
+call.type$ -- 10
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 49
+empty$ -- 171
+format.name$ -- 3
+if$ -- 239
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 0
+newline$ -- 37
+num.names$ -- 2
+pop$ -- 79
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 52
+stack$ -- 0
+substring$ -- 0
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 2
+width$ -- 12
+write$ -- 61

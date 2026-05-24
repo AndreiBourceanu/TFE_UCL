@@ -1,0 +1,118 @@
+\chapter{Performance Analysis of the Agents}
+\label{perf_analysis_of_agents}
+
+In this chapter we analyze the performance of each agent and determine which one is the best. For this, we simulated 100 games between each pair of distinct agents \footnote{We only simulated 100 games because each advanced agent takes 1 second to make a move. Given the high average game depth \ref{sec:duration}, more than 100 games would take a lot of time to run.}. Each agent played 50 games as white and 50 games as black for fairness reasons.
+
+At the end of this chapter we will also analyze the same game metrics as in chapter \ref{game_metrics}, but this time using the advanced agents instead of the random agents.
+
+\section{Random}
+
+As expected, the Random Agent loses all the games against the Alpha-Beta Agent and the MCTS Agent (Figure \ref{fig:random_vs_agents}). This already suggests that the advanced AI agent are correctly implemented.
+
+\begin{figure}[h]
+\centering
+
+\subfloat[Random vs Alpha-Beta]{%
+    \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf}
+}
+\hfill
+\subfloat[Random vs MCTS]{%
+    \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf}
+}
+
+\caption{Plots displaying the win percentage of the Random Agent vs the Alpha-Beta Agent and the MCTS Agent.}
+\label{fig:random_vs_agents}
+\end{figure}
+
+\section{Alpha-Beta vs MCTS}
+
+Looking at the plot (Figure \ref{fig:alpha_beta_vs_mcts}), we can see that the Alpha-Beta won $93\%$ of the games, whereas MCTS only won $2\%$ of the games. This result clearly indicates that the Alpha-Beta agent is much better than the MCTS agent.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf}
+    \caption{Plot displaying the win percentage of the Alpha-Beta Agent vs the MCTS Agent.}
+    \label{fig:alpha_beta_vs_mcts}
+\end{figure}
+
+\section{Game Metrics using AI Agents}
+
+In this section, the metrics introduced in Chapter~\ref{game_metrics} are recomputed for games played between an Alpha-Beta agent and an MCTS agent. The objective is to compare these results with those obtained from simulations between two Random agents and to discuss the observed differences. Only the metrics that exhibit different behavior between the two experimental setups are considered.
+
+Additional metrics are in the Appendix~\ref{all_game_metrics}.
+
+\subsection{Duration}
+\label{sec:duration_ab_mcts}
+
+The Figure~\ref{fig:total_turns_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf}
+    \caption{Plot with the number of turns in a game}
+    \label{fig:total_turns_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game lasts 75 turns. The average game depth between two Random Agents is 173 turns. This shows that the Alpha-Beta Agent manages to beat the MCTS Agent very fast, which reduces the games durations quite drastically.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Branching Factor}
+\label{sec:total_branches_ab_mcts}
+
+The Figure~\ref{fig:total_branches_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf}
+    \caption{Plot with average branching factor in a game}
+    \label{fig:total_branches_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game has a branching factor of 75. The average branching factor between two Random Agents is 47. This large difference can be justified by the fact the the Alpha-Beta Agent spends its first 15-20 turns by stacking more and more pieces on red tiles. Once it's done, it manages to beat the MCTS Agent fast. Therefore, very few turns are spent with a little number of pieces \footnote{and therefore a small branching factor} on the board during the game.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Decisiveness}
+\label{sec:decisiveness_ab_mcts}
+
+The Figure~\ref{fig:decisiveness_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf}
+    \caption{Plot with the game decisiveness}
+    \label{fig:decisiveness_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item Waiting for result (I made a mistake in the metric)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Stability}
+\label{sec:total_lead_change_actions_ab_mcts}
+
+The Figure~\ref{fig:total_lead_change_actions_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf}
+    \caption{Plot with the percentage of lead changing turns during a game}
+    \label{fig:total_lead_change_actions_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average number of lead changing turns is $\approx 4\%$. The average number of lead changing turns between two Random Agents is $\approx 16\%$. This difference is justified by the fact that the Alpha-Beta Agent is much better than the MCTS Agent. Alpha-Beta tends to always have a better position and therefore the lead change frequency is very low.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,486 @@
+\chapter{Game Metrics}
+\label{game_metrics}
+
+This chapter presents some general metrics of Tricolor useful for better understanding the combinatorial complexity of the game. Some metrics are also a set of \textit{Aesthetic Measurements}, which have the goal of measuring how \textit{interesting} Tricolor is as a game. These concepts are defined in ~\cite{evolutionary_game_design} and ~\cite{automatic_generation_and_evaluation_of_recombination_games}.
+
+The origin and source of inspiration of these metrics can be found in the \textit{Appendix} \ref{all_game_metrics}.
+
+In order to reproduce the results presented in this chapter, \textbf{1 million games} have been simulated between 2 \textbf{Random Agents}. This is a convenient approach because the moves made by the agents aren't biased by specific strategies or algorithms and the games are simulated fast.
+
+In order to provide a visual representation of the computed metrics, for most of them, a \textit{violin} plot is displayed (e.g. ~\ref{fig:total_turns}). It's a type of plot that shows the distribution of the y-values using surfaces colored in blue instead of individual dots. They are used when there are many data points that need to be represented on the graph for aesthetic reasons.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Duration}
+\label{sec:duration}
+
+\subsection{Metric}
+
+This metric measures the duration of a game in turns. A turn is equivalent to a move made by any of the 2 players. This metric is relevant for the performance of AI agents like \textit{Alpha-Beta} and \textit{MCTS} ~\cite{alpha_beta}. The Figure~\ref{fig:total_turns} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/total_turns.pdf}
+    \caption{Plot with the number of turns in a game}
+    \label{fig:total_turns}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game lasts 173 turns. Comparing to chess, where a game lasts on average 80 turns ~\cite{shannon_chess} \footnote{In Shannon's paper about chess, a turn consists in two consecutive moves, one made by each player. However, in my measurements, a turn consists in only one move made by any player. Therefore, the number of turns as presented in Shannon's paper about chess was modified so that is satisfies my definition for the rest of this paper.}, Tricolor's games depth is much bigger. This aspect has a huge impact on the performance of AI Agents, especially MCTS, which needs to perform a high amount of random game simulations in order to find the best move.
+    \item The large standard deviation ($\approx$ 64 turns) indicates that game duration varies significantly depending on the Agents’ behavior, suggesting that games do not follow a consistent flow.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Branching Factor}
+\label{sec:bf}
+
+\subsection{Metric}
+
+This metric measures how many possible actions any player can choose from, on average, during their turn. This metric is relevant for the performance of AI agents like \textit{Alpha-Beta} and \textit{MCTS} ~\cite{alpha_beta}. The Figure~\ref{fig:total_branches} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/total_branches.pdf}
+    \caption{Plot with average branching factor in a game}
+    \label{fig:total_branches}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game has a branching factor of 47. Comparing to chess, where the average branching factor is 35 ~\cite{shannon_chess}, Tricolor's branching factor is slightly higher. This aspect has a huge impact on the performance of AI Agents, especially for Alpha-Beta, as its time complexity heavily depends on the branching factor. The branching factor of the initial position of the game is 88 for both players (as it can be seen in Figure~\ref{fig:board_setup}). As the game progresses, more and more pawns are being captured and imprisoned, which reduces the number of possible actions for both players during their turns. This explains why the average branching factor is 47.
+    \item The standard deviation of $\approx10$ can be explained by the standard deviation obtained previously for the games duration metric. The shorter a game is, the smaller the average branching factor is, because pieces are captured and imprisoned very early in the game. The opposite is true for longer games.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Game Complexity}
+
+\begin{comment}
+
+\subsection{Decision Moves} % pas utile
+
+\subsubsection{Metric}
+
+
+This metric measures what percentage of the moves made by any player during a game aren't forced. A move isn't forced if the player can choose between at least 2 actions during his turn. The Figure~\ref{fig:total_more_than_one_move} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_more_than_one_move.pdf}
+    \caption{Plot with the percentage (\%) of turns where more than one move was possible during a game}
+    \label{fig:total_more_than_one_move}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, $90\%$ of the moves made by any player during a game aren't forced. This result is expected because of one strict rule of Tricolor which says that when a player can imprison or capture an opponent stack, he has to do it.
+    \item Even though this $90\%$ figure can seem quite constraining for a game (meaning the players are forced to make a move quite often), it doesn't automatically mean there are no strategies required to master it.
+\end{itemize}
+
+\end{comment}
+
+\subsection{Game Tree Complexity}
+
+\subsubsection{Metric}
+
+This metric measures how many different games can be played starting from the initial position until the game ends. Two games are different if they differ by at least one action at any point. This metric is relevant for the performance of AI agents like \textit{Alpha-Beta} and \textit{MCTS} ~\cite{alpha_beta}.
+
+Computing the exact value of this metric for Tricolor is very complex. However, a good approximation is given by the following formula ~\cite{alpha_beta}:
+\[ GTC \approx b^d \],
+where:
+\begin{itemize}
+    \item $GTC$ is the game tree complexity
+    \item $b$ is the average game branching factor
+    \item $d$ is the average game depth
+\end{itemize}
+
+Using the previously computed empirical values for the two game metrics in the formula, we obtain:
+\[ GTC \approx b^d = 47^{173} \approx 47^{1.2 \times 144} = ({47^{1.2}})^{144} \approx 100^{144}\]
+
+This value is astronomical. As an example, the $GTC$ of chess is $\approx 10^{120} = 100^{60}$ ~\cite{shannon_chess}, so Tricolor's $GTC$ is much larger.
+
+\subsection{State Tree Complexity}
+
+\subsubsection{Metric}
+
+This metric measures how many different positions are achievable in Tricolor. In other words, it counts all the possible ways pieces can be placed on the board, including who owns each tile and which player's turn it is. This metric is relevant for the performance of AI agents like \textit{Alpha-Beta} and \textit{MCTS} ~\cite{alpha_beta}.
+
+In order to approximate the $STC$ (Sate Tree Complexity), an upper bound is computed as it's too difficult to determine the $STC$ using a simple mathematical formula. For this, the 4 following assumptions are made so that the upper bound is as small as possible:
+\begin{enumerate}
+    \item Each player can have at most 18 pieces and at least 0 pieces on the board \footnote{A player can have 0 pieces if the last move consisted in a capture by the opponent.}.
+    \item Each piece, no matter its color, can be placed on any of the 61 tiles.
+    \item For each tile containing at least one piece of each color, 2 separate states must be considered \footnote{One for each player owning the tile}. However, counting only such tiles is too complex. In order to provide an upper bound, it is assumed each position has 18 pairs of white and black pieces on 18 different tiles. This results in $2^{18}$ different states to multiply with each previous state. 
+    \item Finally, a state also encodes the player's turn. Therefore, the final number of previous states must be multiplied by 2.
+\end{enumerate}
+
+The trivial formula of combinations with repetitions \footnote{Also called \textit{stars and bars method}.} is used for the number of ways pieces can be placed on the 61 tiles. The following formula is obtained:
+
+ \[ \text{UB}(\text{STC}) =  \underbrace{\sum_{w=0}^{w=18}\sum_{b=0}^{b=18}\binom{60+w}{w}\binom{60+b}{b}}_{\text{1st and 2nd assumptions}} \cdot  \underbrace{2^{18}}_{\text{3rd assumption}} \cdot \underbrace{2}_{\text{4th assumption}} = \]
+
+ \[ = \sum_{w=0}^{w=18}\binom{60+w}{w} \cdot \sum_{b=0}^{b=18}\binom{60+b}{b} \cdot 2^{19} = \binom{60+18+1}{18} \cdot \binom{60+18+1}{18} \cdot 2^{19} = \]
+
+ \[ = \binom{79}{18}^2 \cdot 2^{19} \approx (2 \cdot 10^{15})^2 \cdot 2^{19} = 10^{30} \cdot 2^{21} \approx 10^{30} \cdot 2^{3.3 \cdot 6.4} = 10^{30} \cdot (2^{3.3})^{6.4} \approx 10^{36} \] \begin{equation}
+     \label{eq:STC}
+ \end{equation}
+
+
+Therefore, an upper bound of the $STC$ is $10^{36}$. It is notably high, but not larger than the $STC$ of chess, which is $ \approx 10^{47}$ ~\cite{shannon_chess}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\section{State Repetition} % utile
+
+\subsection{Metric}
+
+This metric measures how many times the same states were repeated in a game. In other words, a position is repeated whenever the Tricolor board has the same number of pieces on the same tiles with the same players controlling them and it's the same player's turn. The Figure~\ref{fig:total_repeated_states} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_repeated_states.pdf}
+    \caption{Plot with the number of total repeated states in a game}
+    \label{fig:total_repeated_states}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game has 0.15 repeated states. This means that a repeated position occurs about once every 6 or 7 games, which is very rare knowing a game lasts on average 173 turns.
+    \item Tricolor's mechanics are such that it's easy to repeat a position by "undoing" a move. However, the fact that the actions of the random agents lead to a new position almost every turn is explained by 2 factors: 
+    \begin{enumerate}
+        \item the game has a high state-space, meaning there are many achievable positions (as proved in equation~\ref{eq:STC})
+        \item the branching factor is high (as shown in Figure~\ref{fig:total_branches})
+    \end{enumerate}
+\end{itemize}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\section{Decision Factor} % pas utile
+
+\subsection{Metric}
+
+This metric is very similar to the branching factor metric (see Section~\ref{sec:bf}) The only difference is when computing the average, only the turns where the players have at least 2 possible actions are considered. The Figure~\ref{fig:total_decision_factors} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_decision_factors.pdf}
+    \caption{Plot with the average decision factor during a game}
+    \label{fig:total_decision_factors}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game has a decision factor of $ \approx 52$. This is slightly bigger than the branching factor ($\approx 47$). Moreover, the standard variation is almost the same as the one of the branching factor. This is normal and it's because turns where only one move is possible are ignored.
+\end{itemize}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\section{Board Sites Occupied} % pas utile
+
+\subsection{Metric}
+
+This metric measures how many board tiles were occupied by any player at least once during the game. Initially, both players occupy 18 tiles each, so 36 tiles in total. The board has a total of 61 tiles, so, for each game, the value of this metric can be between 36 and 61. The Figure~\ref{fig:total_occupied_tiles} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_occupied_tiles.pdf}
+    \caption{Plot with the number of occupied tiles in a game}
+    \label{fig:total_occupied_tiles}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The distribution has a spike shape because the number of occupied tiles is an integer. Therefore, on the graph, the spikes represent integers and the space between them is filled with some blue for a more aesthetic visual representation.
+    \item The average number of occupied tiles is $\approx 54$ out of the 61, with a small standard deviation of $\approx 4$. This suggests that, for most of the games, the majority of the board tiles are used. A high board coverage is a good game feature, because it means the game is spatially active and multiple regions can matter strategically.
+\end{itemize}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\section{Move Distance} % pas utile
+
+\subsection{Metric}
+
+This metric measures the average distance traveled by pieces when they move around the board during a game. In Tricolor, a stack of pieces can move at a distance of 1, 2 or 3 tiles, depending on the number of pieces on the stack (see Game Rules~\ref{sec:rules_movement}). The Figure~\ref{fig:total_distance} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_distance.pdf}
+    \caption{Plot with the average distance traveled by pieces in a game}
+    \label{fig:total_distance}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average distance traveled by stacks is $1.26$ tiles with a very small standard deviation of $0.08$. This indicates that actions consisting in moving only one piece are the most frequent. This is expected, considering that on the initial board each player occupies 18 tiles with one piece per tile.
+    \item Moreover, a small average traveled distance suggests that pieces tend to be spread in smaller stacks around the board rather than condensed on a few tiles in taller stacks. This is certainly due to the high number of tiles (= 61) of the board.
+\end{itemize}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\section{Piece Number} % pas utile
+
+\subsection{Metric}
+
+This metric measures the average number of pieces on the board during a game. Players start with 18 pieces each, so there are 36 pieces in total initially on the board. The Figure~\ref{fig:total_number_of_pieces} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_number_of_pieces.pdf}
+    \caption{Plot with the average number of pieces on the board during a game}
+    \label{fig:total_number_of_pieces}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average number of pieces on the board during a game is $ \approx 24$ with a standard deviation of $\approx 4$. In the previous metrics, we found out that pieces tend to be spread all around the board when considering random players. This implies that \textbf{capture} moves only remove a small amount of pieces when executed. Therefore, we can expect the number of pieces during a game to have a smooth evolution rather than an abrupt one. If the initial number of pieces on the board is 36 and the average number of pieces is 24, then we can conclude that games usually end with 12 pieces on the board (as $\frac{12 + 36}{2} = 24$).
+\end{itemize}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Game Outcome} % utile
+
+\subsection{Metric}
+
+This metric measures the percentage of games won by Player 1 (White), Player 2 (Black) and draws. The initial board setup is symmetrical, meaning no player has a positional advantage. It's useful to analyze from a \textit{game aesthetics} ~\cite{evolutionary_game_design} perspective whether making the first move brings or not an advantage in Tricolor. The Figure~\ref{fig:winrates} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/winrates.pdf}
+    \caption{Plot with the win percentage of each player and draws}
+    \label{fig:winrates}
+\end{figure}
+
+\subsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item Player 1 (White) has a win percentage of $46.6\%$ and Player 2 (Black) has a win percentage of $46.3\%$, which creates a difference of $0.3\%$. Given this very small difference in win percentage, we can confidently conclude that there is no obvious starting advantage for any of the players in Tricolor.
+    \item The draw rate is $\approx 7\%$, which is notably low. It indicates that even with random moves, one of the players manages to capture or imprison all of the opponent's pieces.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{State Evaluation}
+\label{sec:state_evaluation}
+
+All the metrics presented in the following section have the purpose of analyzing Tricolor from a \textit{game aesthetics} perspective ~\cite{evolutionary_game_design} and ~\cite{automatic_generation_and_evaluation_of_recombination_games}.
+
+For the following metrics, a position evaluation of the game states is needed. The goal of the evaluation is to assess whether a certain position looks equal for both players, or if one of the players has an advantage and is more likely to win from there.
+
+For this, each position is assessed with a score taking values in the range $[-1, 1]$, where a score of 0 represents an equal position, a score $> 0$ represents an advantage for Player 1 (White) and a score $< 0$ an advantage for Player 2 (Black). Computing the score follows this formula:
+\[ \frac{w_s - b_s}{w_s + b_s}, \in [-1,1]\]
+The total power of the black player is subtracted from the total power of the white player and then is divided by the sum of the two (in order to normalize the score to the range $[-1, 1]$). We have:
+\[ w_s = \sum_{i=0}^{i=60}c_i*w_i\]
+, where $c_i$ is the number associated to the color of tile $i$ (see rules ~\ref{game_rules}) and $w_i$ is the number of controlled white pieces on tile $i$ \footnote{Imprisoned pieces are not counted.}. Similarly, $b_s$ is defined by considering the black pieces instead of the white pieces. In other words, the total power of a player is defined as the sum of the powers of all his owned stacks. The power of an owned stack is the product between the number of friendly pieces in the stack and the value associated to the color of the tile the stack sits on (see rules~\ref{sec:rules}).
+
+This position evaluation formula is relevant because:
+\begin{itemize}
+    \item having more active pieces on the board results in higher chances of winning.
+    \item controlling tiles with stronger colors results in more attack power and defense.
+\end{itemize}
+
+\subsection{Narrowness} % utile
+
+\subsubsection{Metric}
+
+This metric measures the average narrowness of all the turns of a game. The narrowness of a turn represents the number of \textit{considerable} actions a player can choose from during that turn. An action is \textit{considerable} if it improves or maintains the current score of the position for the player to move. The Figure~\ref{fig:total_narrowness} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/total_narrowness.pdf}
+    \caption{Plot with the average narrowness during a game}
+    \label{fig:total_narrowness}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average narrowness is $\approx 25.13$ moves with a standard deviation of $\approx 5$. Considering that the average branching factor is $\approx 47$, it means that in average about half the moves a player can choose from are worth looking at, which is a lot. This proves again that Tricolor is a complex combinatorial game.
+    \item When using a strong AI Agent with a good heuristic for Tricolor (see later \ref{advanced_ai_agents}), the position evaluation is much more complex than the one used in this chapter. The purpose of this metric is mainly to show how many actions a player can consider \textit{playable} rather than truly good moves. 
+\end{itemize}
+
+\subsection{Decisiveness} % utile
+
+\subsubsection{Metric}
+
+This metric measures the proportion of the game completed before the eventual winner establishes a decisive advantage that is maintained until the end of the game. This metric is only computed when a game has a winning player, so draws a discarded. The Figure~\ref{fig:decisiveness} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/decisiveness.pdf}
+    \caption{Plot with the game decisiveness}
+    \label{fig:decisiveness}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average decisiveness is $98.82$ with a standard deviation of $6.91$. This result suggests that most games don't have an obvious winner until the end.
+    \item For Random Agents players, such a high decisiveness implies that Tricolor has an \textit{uncertain} nature ~\cite{evolutionary_game_design}. A game has an \textit{uncertain} nature if the outcome of each game remains uncertain until the end, as long as both players maintain a vested interest in it, which is a good \textit{game aesthetic}.
+\end{itemize}
+
+\begin{comment}
+
+\subsection{Lead Change} % pas utile
+
+\subsubsection{Metric}
+
+This metric measures the average number of possible actions during a turn that change the leader of the game. The leader of the game is the player who has a positional advantage with reference to the state evaluation used. The Figure~\ref{fig:total_lead_change_moves} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{game_metrics/images/total_lead_change_moves.pdf}
+    \caption{Plot with the average number of lead changing moves during a game}
+    \label{fig:total_lead_change_moves}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average number of lead changing moves is $\approx 9$ with a standard deviation of $3.71$. This number is pretty high and reinforces the idea of Tricolor not having a \textbf{snowball} nature. If so many moves can change the lead, then creating a real advantage as a Random Agent player seems unlikely.
+\end{itemize}
+
+\end{comment}
+
+\subsection{Stability} % utile
+
+\subsubsection{Metric}
+
+This metric measures the percentage of moves in a game that changed the leader. Its purpose is to assess how stable games are. The Figure~\ref{fig:total_lead_change_actions} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/total_lead_change_actions.pdf}
+    \caption{Plot with the percentage of lead changing turns during a game}
+    \label{fig:total_lead_change_actions}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average number of lead changing turns is $\approx 16\%$ with a standard deviation of $6.79$. As expected from the previous metrics, the stability of Tricolor games is low. This means that the leader tends to change frequently. It also has to do with Tricolor having an \textbf{uncertain} nature, as seen in the previous metric.
+\end{itemize}
+
+\subsection{Drama} % utile
+
+\subsubsection{Metric}
+
+This metric measures the average change in position evaluation scores throughout a game. The purpose is to see how drastic are the changes in consecutive positions during a game. The Figure~\ref{fig:total_drama} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{game_metrics/images/total_drama.pdf}
+    \caption{Plot with the average drama in a game}
+    \label{fig:total_drama}
+\end{figure}
+
+\subsubsection{Data Interpretation}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average drama is $0.07$ with a standard deviation of $0.02$. The score of a position evaluation is in the range $[-1, 1]$, so an average change of $0.07$ is small.
+    \item Even though the average game \textit{drama} is small, a player in a disastrous losing position can manage to eventually win the game. This can happen when the losing player has many imprisoned pieces in an opponent stack but later regains their control. Therefore, Tricolor games have certain positions with high \textit{drama}, which is a good game feature ~\cite{evolutionary_game_design} and ~\cite{automatic_generation_and_evaluation_of_recombination_games}.
+\end{itemize}
+
+\subsection{Game Evaluations Examples}
+
+In this section we review and analyze two different games between Random Agents. We expect to find features that confirm the metrics found in the \textit{State Evaluation} \ref{sec:state_evaluation} section.
+
+Each graph shows the score of each position of the game for every turn. The yellow line represents equal positions (score $\approx0$).
+
+\subsubsection{Game 1}
+
+In Game 1 (see Figure~\ref{fig:game_evaluation_1}), Player 1 (White) won.
+
+Comments:
+\begin{itemize}
+    \item In the first 60 turns, the drama is very low. However, even though Black gets a very good position at turn 69, White manages to regain the advantage and win the game.
+    \item At around turn 76, White takes the lead and maintains it until winning the game.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{game_metrics/images/game_evaluation_1.pdf}
+    \caption{Plot with game 1 evaluation}
+    \label{fig:game_evaluation_1}
+\end{figure}
+
+\subsubsection{Game 2}
+
+In Game 2 (see Figure~\ref{fig:game_evaluation_2}), Player 2 (Black) won.
+
+Comments:
+\begin{itemize}
+    \item Throughout the game, many lead changing moves happen. This is because the yellow line intersects many times the graph of the score function.
+    \item The drama starts increasing significantly at turn 140.
+    \item At around turn 170, Black takes the lead and maintains it until winning the game, which happens very late in the game.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{game_metrics/images/game_evaluation_2.pdf}
+    \caption{Plot with game 2 evaluation}
+    \label{fig:game_evaluation_2}
+\end{figure}
+
+\begin{comment}
+
+\subsubsection{Game 3}
+
+In Game 3 (see Figure~\ref{fig:game_evaluation_3}), it's a draw.
+
+Comments:
+\begin{itemize}
+    \item Throughout the game many lead changing moves happen, especially because the game lasts many turns (around 310).
+    \item The drama starts increasing and decreasing multiple times throughout the game. Looking at the graph, we can see the biggest spikes at turns 80, 180, 225 and 235.
+    \item Both players had a significant advantage at multiple turns (around 100 for White and around 185 for Black), but none of them managed to make decisive moves and win the game. Therefore, the 50-moves rule was applied (see Rules~\ref{sec:rule_modification}) and the game ended in a draw.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{game_metrics/images/game_evaluation_3.pdf}
+    \caption{Plot with game 3 evaluation}
+    \label{fig:game_evaluation_3}
+\end{figure}
+
+\end{comment}

@@ -1,0 +1,51 @@
+\begin{thebibliography}{10}
+
+\bibitem{rougetet_kraitchik}
+Rougetet, Lisa and Hirth, Tiago, Maurice Kraïtchik (1882--1957) and his
+  contributions to recreational mathematics. Available at SSRN:
+  \url{https://ssrn.com/abstract=6074494} or
+  \url{http://dx.doi.org/10.2139/ssrn.6074494}.
+
+\bibitem{rougetet_sphinx}
+Tiago Hirth and Lisa Rougetet.
+\newblock Mathematical games from the sphinx 1931--1939.
+\newblock Unpublished paper. Supported by COST Action CA22145 -- GameTable |
+  Computational Techniques for Tabletop Games Heritage.
+  https://gametable.network/.
+
+\bibitem{ludii_and_polygames}
+Soemers, Dennis JNJ, Vegard Mella, Cameron Browne, and Olivier Teytaud. "Deep
+  learning for general game playing with Ludii and Polygames." ICGA Journal 43,
+  no. 3 (2022): 146-161.
+
+\bibitem{alpha_beta}
+Russell, Stuart J. Artificial intelligence a modern approach. Pearson
+  Education, Inc., 2010.
+
+\bibitem{sfml}
+Laurent Gomila.
+\newblock Simple and fast multimedia library (sfml).
+\newblock \url{https://www.sfml-dev.org}, 2025.
+
+\bibitem{evolutionary_game_design}
+Browne, Cameron, and Frederic Maire. "Evolutionary game design." IEEE
+  Transactions on Computational Intelligence and AI in Games 2, no. 1 (2010):
+  1-16.
+
+\bibitem{automatic_generation_and_evaluation_of_recombination_games}
+Browne, Cameron Bolitho. "Automatic generation and evaluation of recombination
+  games." PhD diss., Queensland University of Technology, 2008.
+
+\bibitem{shannon_chess}
+Shannon, Claude E. "XXII. Programming a computer for playing chess." The
+  London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science
+  41, no. 314 (1950): 256-275.
+
+\bibitem{sqrt_2_constant}
+Auer, Peter, Nicolo Cesa-Bianchi, and Paul Fischer. "Finite-time analysis of
+  the multiarmed bandit problem." Machine learning 47, no. 2 (2002): 235-256.
+
+\bibitem{ludii_concepts}
+Ludii Portal, Concepts \url{https://ludii.games/searchConcepts.php}.
+
+\end{thebibliography}
