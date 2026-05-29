@@ -1,5 +1,68 @@
-\chapter{Game Analysis for Advanced AI Agents}
+\chapter{AI Agents}
 \label{advanced_ai_agents}
+
+This chapter presents the artificial intelligence agents developed for Tricolor. The focus is placed on search-based approaches capable of making strategic decisions from the current game state. The Random Agent introduced in Chapter~\ref{implementation_of_the_game_model} is used only as a baseline in later experiments and is therefore not described again here.
+
+Two main agents are implemented and analyzed in this thesis: an Alpha-Beta Agent and a Monte Carlo Tree Search Agent. Both operate under the same decision-time constraint and use the game engine described in Chapter~\ref{implementation_of_the_game_model} to generate legal moves and simulate resulting positions. An additional Expert Iteration approach is also considered as ongoing work.
+
+\section{Alpha-Beta Agent}
+
+The Alpha-Beta Agent is based on the minimax search principle with Alpha-Beta pruning~\cite{russell2010aima}. Since Tricolor is a deterministic two-player game with perfect information, it can be represented naturally as an adversarial search problem. From a given position, the agent explores possible continuations by alternating between maximizing and minimizing nodes, corresponding to the two players.
+
+Alpha-Beta pruning improves minimax search by avoiding the exploration of branches that cannot influence the final decision. This is particularly important in Tricolor because the game has a high branching factor, as shown in Chapter~\ref{game_metrics}. Without pruning, even shallow searches become computationally expensive.
+
+Since complete search is infeasible, the agent uses depth-limited search. When the maximum depth is reached and the position is not terminal, the heuristic evaluation function described in Chapter~\ref{heuristic_design} is used to estimate the quality of the position. This evaluation combines material control, positional power, and stack-related considerations.
+
+The implementation also uses iterative deepening~\cite{russell2010aima}. Instead of fixing a single depth in advance, the agent searches first at depth 1, then depth 2, and so on, until the available time for the move is exhausted. This ensures that the agent always has a valid move available, while allowing deeper searches in positions where the branching factor is lower.
+
+A time limit of one second per move is used in the experiments. This constraint makes the comparison between agents fair and reflects the practical need for agents to make decisions within a limited amount of time.
+
+Move ordering is also used to improve pruning efficiency~\cite{russell2010aima}. Before exploring the children of a position, actions are sorted according to their heuristic evaluation. Promising moves are searched first, increasing the chance that Alpha-Beta pruning can discard weaker branches earlier. This optimization is especially useful in a game such as Tricolor, where many legal actions may be available at each turn.
+
+Overall, the Alpha-Beta Agent represents a heuristic-search approach. Its performance depends strongly on the quality of the evaluation function and on the ability of move ordering to guide the search toward relevant branches.
+
+\section{Monte Carlo Tree Search Agent}
+
+The Monte Carlo Tree Search Agent uses simulations to estimate the value of available moves~\cite{russell2010aima}. Unlike Alpha-Beta search, MCTS does not require a handcrafted evaluation function at leaf nodes. Instead, it repeatedly explores the game tree by running simulated games and using their outcomes to guide future exploration.
+
+The implementation follows the standard four-step MCTS procedure.
+
+First, during the selection phase, the algorithm starts from the root node and recursively selects child nodes according to the UCT formula:
+
+\[ \frac{w_i}{n_i} + c \cdot \sqrt{\frac{\ln{N}}{n_i}} \]
+where
+\begin{itemize}
+    \item $w_i$ is the number of wins obtained through child $i$
+    \item $n_i$ is the number of visits of child $i$
+    \item $N$ is the number of visits of the parent node
+    \item $c$ is the exploration constant. In this implementation, $c=\sqrt{2}$, a standard value commonly used in UCT-based search~\cite{swiechowski2023mcts}.
+\end{itemize}
+
+Second, during the expansion phase, one previously unexplored child of the selected node is added to the tree.
+
+Third, during the simulation phase, a game is played from the expanded node until a terminal state is reached. In the current implementation, simulations are performed using random play.
+
+Finally, during the backpropagation phase, the result of the simulated game is propagated back through the nodes visited during selection. Visit counts and win counts are updated accordingly.
+
+As with the Alpha-Beta Agent, the MCTS Agent is given a time limit of one second per move. This ensures that both agents operate under comparable computational constraints.
+
+Tricolor presents several challenges for MCTS. The average game duration is relatively long, which makes random simulations expensive. In addition, the branching factor is high, meaning that the algorithm must distribute its simulations among many possible actions. Finally, random playouts may provide noisy estimates in a game where stack control and forced tactical sequences can create delayed consequences. These factors can reduce the effectiveness of MCTS when used without domain-specific enhancements.
+
+\section{Justification of Agent Design Choices}
+
+The Alpha-Beta and MCTS agents were selected because they represent two classical and complementary approaches to game-playing AI.
+
+The Alpha-Beta Agent relies on explicit heuristic evaluation. It is expected to perform well when the evaluation function captures important strategic properties of the game and when pruning can reduce the effective branching factor. This makes it particularly suitable for testing the heuristic ideas developed in~\ref{heuristic_design}.
+
+The MCTS Agent follows a simulation-based approach. It is attractive because it can operate without a handcrafted evaluation function, but its performance depends strongly on the number and quality of simulations. In Tricolor, long games, high branching factors, and delayed consequences caused by stack interactions make pure random rollouts potentially unreliable.
+
+The Expert Iteration~\cite{soemers2023stateaction} approach remains a promising extension because it could combine search and learning. However, such methods require additional implementation, training data generation, model design, and evaluation. They are therefore treated as ongoing work rather than as the main focus of this thesis.
+
+The next chapter evaluates the implemented agents experimentally and compares their performance in simulated games.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
 
 So far, the only autonomous agent we have seen and used for computing the metrics of Tricolor is the Random Agent. In this chapter, we will analyze some mathematical properties of Tricolor in order to have an overall picture of the AI agents' architecture best suited for the game. Then, we will introduce three advanced agents with the goal of analyzing their performance and decide which one is the best.
 
@@ -102,3 +165,5 @@ The \textbf{Monte Carlo Tree Search Agent} (\textbf{MCTS}) uses the well-known M
 \section{Expert Iteration}
 
 In progress
+
+\end{comment}

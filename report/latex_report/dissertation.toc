@@ -1,78 +1,67 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Acknowledgments}{v}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}Historical Background and Motivation}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Tricolor and its Inventor}{1}{section.1.1}%
+\contentsline {chapter}{Summary}{v}{chapter*.2}%
+\contentsline {chapter}{Acknowledgments}{vii}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Context and Problem Statement}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Motivation}{2}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Game Mechanics}{2}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Similar previous Games}{3}{section.1.4}%
-\contentsline {section}{\numberline {1.5}What was studied so far}{3}{section.1.5}%
-\contentsline {chapter}{\numberline {2}Game Rules}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Number of players}{7}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Board and Pieces setup}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Gameplay and Rules}{8}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}How movement works}{9}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}How the destination tile influences pieces movement}{10}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Game ending and winner of the game}{12}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Additional rule}{12}{subsection.2.4.1}%
-\contentsline {chapter}{\numberline {3}Implementation of Tricolor}{15}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Game Logic}{15}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Board State}{15}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Actions}{17}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Game}{18}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Basic Agents and User Interface}{18}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Random Agent}{18}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Human Agent and User Interface}{18}{subsection.3.2.2}%
-\contentsline {chapter}{\numberline {4}Game Metrics}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Duration}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Metric}{21}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Data Interpretation}{21}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Branching Factor}{22}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Metric}{22}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Data Interpretation}{22}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Game Complexity}{23}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Game Tree Complexity}{23}{subsection.4.3.1}%
-\contentsline {subsubsection}{Metric}{23}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}State Tree Complexity}{24}{subsection.4.3.2}%
-\contentsline {subsubsection}{Metric}{24}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Game Outcome}{25}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Metric}{25}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Data Interpretation}{25}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}State Evaluation}{26}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Narrowness}{26}{subsection.4.5.1}%
-\contentsline {subsubsection}{Metric}{26}{subsection.4.5.1}%
-\contentsline {subsubsection}{Data Interpretation}{26}{figure.caption.27}%
-\contentsline {subsection}{\numberline {4.5.2}Decisiveness}{27}{subsection.4.5.2}%
-\contentsline {subsubsection}{Metric}{27}{subsection.4.5.2}%
-\contentsline {subsubsection}{Data Interpretation}{27}{figure.caption.28}%
-\contentsline {subsection}{\numberline {4.5.3}Stability}{27}{subsection.4.5.3}%
-\contentsline {subsubsection}{Metric}{28}{subsection.4.5.3}%
-\contentsline {subsubsection}{Data Interpretation}{28}{figure.caption.29}%
-\contentsline {subsection}{\numberline {4.5.4}Drama}{28}{subsection.4.5.4}%
-\contentsline {subsubsection}{Metric}{28}{subsection.4.5.4}%
-\contentsline {subsubsection}{Data Interpretation}{28}{figure.caption.30}%
-\contentsline {subsection}{\numberline {4.5.5}Game Evaluations Examples}{29}{subsection.4.5.5}%
-\contentsline {subsubsection}{Game 1}{29}{subsection.4.5.5}%
-\contentsline {subsubsection}{Game 2}{29}{figure.caption.31}%
-\contentsline {chapter}{\numberline {5}Game Analysis for Advanced AI Agents}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Game Complexity}{33}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Heuristics}{33}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}First insight}{33}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Second insight}{34}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Third insight}{34}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Combining the heuristics}{36}{subsection.5.2.4}%
-\contentsline {section}{\numberline {5.3}Alpha-Beta Agent}{37}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Monte Carlo Tree Search Agent}{37}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Expert Iteration}{38}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Performance Analysis of the Agents}{39}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Random}{39}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Alpha-Beta vs MCTS}{40}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Game Metrics using AI Agents}{40}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Duration}{41}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Branching Factor}{41}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Decisiveness}{41}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Stability}{42}{subsection.6.3.4}%
-\contentsline {chapter}{\numberline {A}Game metrics plots}{45}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Random Agent vs Random Agent simulations}{46}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Alpha-Beta Agent vs MCTS Agent simulations}{49}{section.A.2}%
-\contentsline {chapter}{Bibliography}{53}{appendix*.46}%
+\contentsline {section}{\numberline {1.3}Research Questions}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Contributions}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Methodology Overview}{4}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Thesis Organization}{4}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Historical Background and Related Work}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Maurice Kraitchik and the Origins of Tricolor}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Historical Description of the Game}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Hexagonal Board Games and Related Games}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Artificial Intelligence in Combinatorial Games}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Computational Analysis of Historical Games}{11}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Summary}{12}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Formal Rules of Tricolor}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Board, Pieces and Initial Setup}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Legal Moves}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Power, Capture, and Imprisonment}{16}{section.3.3}%
+\contentsline {section}{\numberline {3.4}End of the Game}{17}{section.3.4}%
+\contentsline {chapter}{\numberline {4}System Design and Implementation}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Design Objectives and Architecture}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Board State and Action Representation}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Move Generation and Game Simulation}{21}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Agents and User Interface}{22}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Complexity and Game Metrics Analysis}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Experimental Protocol}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Computational Complexity Metrics}{24}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Game Duration}{24}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Branching Factor}{25}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Game Tree Complexity}{25}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}State Space Complexity}{27}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Game Outcome and Balance}{28}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Gameplay and Aesthetic Metrics}{29}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Position Evaluation}{29}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Narrowness}{30}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Decisiveness}{31}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Stability}{31}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Drama}{32}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}Example Game Evaluations}{33}{subsection.5.4.6}%
+\contentsline {section}{\numberline {5.5}Additional Metrics}{34}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Discussion}{35}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Strategic Analysis and Heuristic Design}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Need for Heuristics}{37}{section.6.1}%
+\contentsline {section}{\numberline {6.2}First insight}{37}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Second insight}{38}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Third insight}{38}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Combined Heuristic and Limitations}{40}{section.6.5}%
+\contentsline {chapter}{\numberline {7}AI Agents}{41}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Alpha-Beta Agent}{41}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Monte Carlo Tree Search Agent}{42}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Justification of Agent Design Choices}{43}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Experimental Evaluation}{45}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Experimental Protocol}{45}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Baseline Results Against the Random Agent}{46}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Alpha-Beta versus Monte Carlo Tree Search}{46}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Game Metrics using AI Agents}{47}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Discussion}{51}{section.8.5}%
+\contentsline {chapter}{\numberline {9}Conclusion and Perspectives for the Study of Tricolor}{53}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Final Remarks}{53}{section.9.1}%
+\contentsline {chapter}{\numberline {A}Game metrics plots}{55}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Random Agent vs Random Agent simulations}{56}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Alpha-Beta Agent vs MCTS Agent simulations}{59}{section.A.2}%
+\contentsline {chapter}{Bibliography}{63}{appendix*.38}%
 \contentsfinish 

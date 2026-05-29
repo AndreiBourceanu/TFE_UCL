@@ -1,49 +1,191 @@
 \begin{thebibliography}{10}
 
-\bibitem{rougetet_kraitchik}
-Rougetet, Lisa and Hirth, Tiago, Maurice Kraïtchik (1882--1957) and his
-  contributions to recreational mathematics. Available at SSRN:
-  \url{https://ssrn.com/abstract=6074494} or
-  \url{http://dx.doi.org/10.2139/ssrn.6074494}.
+\bibitem{shannon1950chess2}
+Claude~E. Shannon.
+\newblock Programming a computer for playing chess.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 41(314):256--275, 1950.
 
-\bibitem{rougetet_sphinx}
+\bibitem{browne2010evolutionary}
+Cameron Browne and Frederic Maire.
+\newblock Evolutionary game design.
+\newblock {\em IEEE Transactions on Computational Intelligence and AI in
+  Games}, 2(1):1--16, 2010.
+
+\bibitem{piette2020ludii}
+Éric Piette, Dennis~J.N.J. Soemers, Matthew Stephenson, Chiara~F. Sironi,
+  Mark~H.M. Winands, and Cameron Browne.
+\newblock Ludii - the ludemic general game system.
+\newblock In {\em 2020 European Conference on Artificial Intelligence}, volume
+  325 of {\em Frontiers in Artificial Intelligence and Applications}, pages
+  411--418. IOS Press, 2020.
+
+\bibitem{piette2024gametable_kickoff}
+Eric Piette, Walter Crist, Dennis J. N.~J. Soemers, Lisa Rougetet, Summer
+  Courts, Tim Penn, and Achille Morenville.
+\newblock Gametable cost action: kickoff report.
+\newblock {\em ICGA Journal}, 46:11--27, 2024.
+\newblock \href {https://doi.org/10.3233/ICG-240245}
+  {\path{doi:10.3233/ICG-240245}}.
+
+\bibitem{crist2026ludus_coriovalli}
+Walter Crist, Eric Piette, Karen Jeneson, Dennis J. N.~J. Soemers, Matthew
+  Stephenson, Luk van Goor, and Cameron Browne.
+\newblock Ludus coriovalli: using artificial intelligence-driven simulations to
+  identify rules for an ancient board game.
+\newblock {\em Antiquity}, 2026.
+\newblock \href {https://doi.org/10.15184/aqy.2025.10264}
+  {\path{doi:10.15184/aqy.2025.10264}}.
+
+\bibitem{rougetet2025kraitchik}
+Lisa Rougetet and Tiago Hirth.
+\newblock Maurice kra{\"i}tchik (1882--1957) and his contributions to
+  recreational mathematics.
+\newblock {\em SSRN Electronic Journal}, 2025.
+\newblock \href {https://doi.org/10.2139/ssrn.6074494}
+  {\path{doi:10.2139/ssrn.6074494}}.
+
+\bibitem{kraitchik1930tricolor}
+Maurice Kraitchik.
+\newblock Tricolor.
+\newblock Belgian patent No. 372711, 1930.
+\newblock Royaume de Belgique.
+
+\bibitem{kraitchik1930mathematique}
+Maurice Kraitchik.
+\newblock {\em La mathématique des jeux, ou Récréations mathématiques},
+  volume~3.
+\newblock Imprimerie Stevens frères, 1930.
+
+\bibitem{russell2010aima}
+Stuart Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock Pearson Education, 3 edition, 2010.
+
+\bibitem{browne2012mcts}
+Cameron Browne, Edward Powley, Daniel Whitehouse, Simon Lucas, Peter~I.
+  Cowling, Philipp Rohlfshagen, Stephen Tavener, Diego Perez, Spyridon
+  Samothrakis, and Simon Colton.
+\newblock A survey of monte carlo tree search methods.
+\newblock {\em IEEE Transactions on Computational Intelligence and AI in
+  Games}, 4(1):1--43, 2012.
+
+\bibitem{browne2022dlpworkshop}
+Cameron Browne, Eric Piette, Walter Crist, Matthew Stephenson, and Dennis J.
+  N.~J. Soemers.
+\newblock Report on the 2nd digital ludeme project workshop.
+\newblock {\em ICGA Journal}, 2022.
+\newblock URL: \url{https://journals.sagepub.com/doi/10.3233/ICG-220211}, \href
+  {https://doi.org/10.3233/ICG-220211} {\path{doi:10.3233/ICG-220211}}.
+
+\bibitem{hayward2006hex}
+Ryan~B. Hayward and Jack~Van Rijswijck.
+\newblock Hex and combinatorics.
+\newblock {\em Discrete Mathematics}, 306(19--20):2515--2528, 2006.
+
+\bibitem{hirthrougetet_sphinx}
 Tiago Hirth and Lisa Rougetet.
 \newblock Mathematical games from the sphinx 1931--1939.
 \newblock Unpublished paper. Supported by COST Action CA22145 -- GameTable |
   Computational Techniques for Tabletop Games Heritage.
-  https://gametable.network/.
+\newblock URL: \url{https://gametable.network/}.
 
-\bibitem{ludii_and_polygames}
-Soemers, Dennis JNJ, Vegard Mella, Cameron Browne, and Olivier Teytaud. "Deep
-  learning for general game playing with Ludii and Polygames." ICGA Journal 43,
-  no. 3 (2022): 146-161.
+\bibitem{silver2016go}
+David Silver, Aja Huang, Chris~J. Maddison, Arthur Guez, Laurent Sifre, George
+  Van~Den Driessche, Julian Schrittwieser, et~al.
+\newblock Mastering the game of go with deep neural networks and tree search.
+\newblock {\em Nature}, 529(7587):484--489, 2016.
 
-\bibitem{alpha_beta}
-Russell, Stuart J. Artificial intelligence a modern approach. Pearson
-  Education, Inc., 2010.
+\bibitem{silver2018alphazero}
+David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew
+  Lai, Arthur Guez, Marc Lanctot, et~al.
+\newblock A general reinforcement learning algorithm that masters chess, shogi,
+  and go through self-play.
+\newblock {\em Science}, 362(6419):1140--1144, 2018.
 
-\bibitem{sfml}
-Laurent Gomila.
-\newblock Simple and fast multimedia library (sfml).
-\newblock \url{https://www.sfml-dev.org}, 2025.
+\bibitem{piette2020ludii_24th}
+Éric Piette, Dennis J. N.~J. Soemers, Matthew Stephenson, Chiara~F. Sironi,
+  Mark H.~M. Winands, and Cameron Browne.
+\newblock Ludii --- the ludemic general game system.
+\newblock In {\em Proceedings of the 24th European Conference on Artificial
+  Intelligence (ECAI 2020)}, volume 325 of {\em Frontiers in Artificial
+  Intelligence and Applications}, pages 411--418. IOS Press, 2020.
+\newblock \href {https://doi.org/10.3233/FAIA200120}
+  {\path{doi:10.3233/FAIA200120}}.
 
-\bibitem{evolutionary_game_design}
-Browne, Cameron, and Frederic Maire. "Evolutionary game design." IEEE
-  Transactions on Computational Intelligence and AI in Games 2, no. 1 (2010):
-  1-16.
+\bibitem{crist2024ludii}
+Walter Crist, Matthew Stephenson, Éric Piette, and Cameron Browne.
+\newblock The ludii games database: A resource for computational and cultural
+  research on traditional board games.
+\newblock {\em DHQ: Digital Humanities Quarterly}, 18(4), 2024.
 
-\bibitem{automatic_generation_and_evaluation_of_recombination_games}
-Browne, Cameron Bolitho. "Automatic generation and evaluation of recombination
-  games." PhD diss., Queensland University of Technology, 2008.
+\bibitem{piette2021frenchmilitary}
+Éric Piette, Lisa Rougetet, Walter Crist, Matthew Stephenson, Dennis J. N.~J.
+  Soemers, and Cameron Browne.
+\newblock A ludii analysis of the french military game.
+\newblock {\em Board Game Studies}, 2021.
 
-\bibitem{shannon_chess}
-Shannon, Claude E. "XXII. Programming a computer for playing chess." The
-  London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science
-  41, no. 314 (1950): 256-275.
+\bibitem{crist2024latrunculorum}
+Walter Crist, Éric Piette, Dennis J. N.~J. Soemers, Matthew Stephenson, and
+  Cameron Browne.
+\newblock Computational approaches for recognising and reconstructing ancient
+  games: The case of ludus latrunculorum.
+\newblock In Véronique Dasen and Marco Vespa, editors, {\em The Archaeology of
+  Play: Material Approaches to Games and Gaming in the Ancient World}. Oxbow,
+  Oxford, 2024.
 
-\bibitem{sqrt_2_constant}
-Auer, Peter, Nicolo Cesa-Bianchi, and Paul Fischer. "Finite-time analysis of
-  the multiarmed bandit problem." Machine learning 47, no. 2 (2002): 235-256.
+\bibitem{cristpiette2025mesopotamian}
+Walter Crist and Éric Piette.
+\newblock Changing the game: Measuring mesopotamian games with ai-simulated
+  play.
+\newblock In {\em Proceedings of the European Association of Archaeologists
+  Annual Meeting}, 2025.
+
+\bibitem{crist2026ludus}
+Walter Crist, Éric Piette, Karen Jeneson, Dennis J. N.~J. Soemers, Matthew
+  Stephenson, Luk van Goor, and Cameron Browne.
+\newblock Ludus coriovalli: using artificial intelligence-driven simulations to
+  identify rules for an ancient board game.
+\newblock {\em Antiquity}, 2026.
+\newblock \href {https://doi.org/10.15184/aqy.2025.10264}
+  {\path{doi:10.15184/aqy.2025.10264}}.
+
+\bibitem{moullou2024gametable}
+Dorina Moullou, Walter Crist, Timothy Penn, and Éric Piette.
+\newblock Gametable network: Unveiling the past, embracing the future through
+  ai-driven archaeological research.
+\newblock In {\em Proceedings of the 30th Annual Meeting of the European
+  Association of Archaeologists}, 2024.
+
+\bibitem{soemers2025gametable_london}
+Dennis J. N.~J. Soemers, Jakub Kowalski, Walter Crist, Summer Courts, Tim Penn,
+  and Eric Piette.
+\newblock Bridging ai and cultural heritage: Outcomes from the gametable wg1
+  london meeting.
+\newblock {\em ICGA Journal}, 47(1):41--47, 2025.
+\newblock \href {https://doi.org/10.1177/13896911251329543}
+  {\path{doi:10.1177/13896911251329543}}.
+
+\bibitem{browne2008recombination}
+Cameron~Bolitho Browne.
+\newblock {\em Automatic Generation and Evaluation of Recombination Games}.
+\newblock PhD thesis, Queensland University of Technology, 2008.
+
+\bibitem{stephenson2021heuristic}
+Matthew Stephenson, Dennis J. N.~J. Soemers, Eric Piette, and Cameron Browne.
+\newblock General game heuristic prediction based on ludeme descriptions.
+\newblock In {\em IEEE Conference on Games (CoG)}, 2021.
+\newblock URL: \url{https://ieeexplore.ieee.org/document/9619052}.
+
+\bibitem{swiechowski2023mcts}
+Maciej Świechowski, Konrad Godlewski, Bartosz Sawicki, and Jacek Mańdziuk.
+\newblock Monte carlo tree search: A review of recent modifications and
+  applications.
+\newblock {\em Artificial Intelligence Review}, 56(3):2497--2562, 2023.
+
+\bibitem{soemers2023stateaction}
+Dennis J. N.~J. Soemers.
+\newblock Learning state-action features for general game playing, 2023.
 
 \bibitem{ludii_concepts}
 Ludii Portal, Concepts \url{https://ludii.games/searchConcepts.php}.

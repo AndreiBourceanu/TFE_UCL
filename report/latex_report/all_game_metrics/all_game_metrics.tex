@@ -1,65 +1,65 @@
 \chapter{Game metrics plots}
 \label{all_game_metrics}
 
-This chapter of the appendix contains all the metrics plots computed for Tricolor, in addition to the ones presented in the chapter \textit{Game Metrics}[\ref{game_metrics}].
+This chapter contains all the metrics computed for Tricolor, in addition to the ones presented in Chapter~\ref{game_metrics} and Chapter~\ref{perf_analysis_of_agents}.
 
-These are the following metrics, as well as their definition and origin of inspiration:
+These are the following metrics, as well as their definitions and sources of inspiration:
 \begin{itemize}
-    \item \textbf{Duration} -- measures the duration of a game in turns. A turn is equivalent to a move made by any of the 2 players.
+    \item \textit{Duration} -- measures the duration of a game in turns. A turn is equivalent to a move made by any of the 2 players.
     
-    Origin: inspired from ~\cite{evolutionary_game_design} and ~\cite{shannon_chess}.
+    Source: inspired from~\cite{browne2010evolutionary} and~\cite{shannon1950chess2}.
     
-    \item \textbf{Branching Factor} -- measures how many possible actions any player can choose from, on average, during their turn.
+    \item \textit{Branching Factor} -- measures how many possible actions any player can choose from, on average, during their turn.
     
-    Origin: inspired from ~\cite{shannon_chess}.
+    Source: inspired from~\cite{shannon1950chess2}.
     
-    \item \textbf{Decision Moves} -- measures what percentage of the moves made by any player during a game aren’t forced. A move isn’t forced if the player can choose between at least 2 actions during their turn.
+    \item \textit{Decision Moves} -- measures what percentage of the moves made by any player during a game aren’t forced. A move isn’t forced if the player can choose between at least 2 actions during their turn.
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{State Repetition} -- measures how many times the same states are repeated during a game. A state is repeated whenever the Tricolor board reaches a position equivalent to a previous one during the same game. Two positions are equivalent if they contain the same pieces on the same tiles, controlled by the same players, and with the same player to move.
+    \item \textit{State Repetition} -- measures how many times the same states are repeated during a game. A state is repeated whenever the Tricolor board reaches a position equivalent to a previous one during the same game. Two positions are equivalent if they contain the same pieces on the same tiles, controlled by the same players, and with the same player to move.
     
-    Origin: inspired from the ~\cite{ludii_concepts}.
+    Source: inspired from the~\cite{ludii_concepts}.
     
-    \item \textbf{Decision Factor} -- measures how many possible actions any player can choose from, on average, during their turn, ignoring turns where only one move is possible.
+    \item \textit{Decision Factor} -- measures how many possible actions any player can choose from, on average, during their turn, ignoring turns where only one move is possible.
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{Board Sites Occupied} -- measures how many board tiles were occupied by any player at least once during the game. Initially, both players occupy 18 tiles each, so 36 tiles in total. The board has a total of 61 tiles, so, for each game, the value of this metric is between 36 and 61.
+    \item \textit{Board Sites Occupied} -- measures how many board tiles were occupied by any player at least once during the game. Initially, both players occupy 18 tiles each, so 36 tiles in total. The board has a total of 61 tiles, so, for each game, the value of this metric is between 36 and 61.
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{Move Distance} -- measures the average distance traveled by pieces when they move around the board during a game. In Tricolor, a stack of pieces can move at a distance of 1, 2 or 3 tiles, depending on the number of pieces on the stack (see Game Rules \ref{game_rules}).
+    \item \textit{Move Distance} -- measures the average distance traveled by pieces when they move around the board during a game. In Tricolor, a stack of pieces can move at a distance of 1, 2 or 3 tiles, depending on the number of pieces on the stack (see Game Rules \ref{game_rules}).
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{Piece Number} -- measures the average number of pieces on the board during a game. Players start with 18 pieces each, so there are 36 pieces in total initially on the board.
+    \item \textit{Piece Number} -- measures the average number of pieces on the board during a game. Players start with 18 pieces each, so there are 36 pieces in total initially on the board.
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{Game Outcome} -- measures the percentage of games won by Player 1 (White), Player 2 (Black) and draws.
+    \item \textit{Game Outcome} -- measures the percentage of games won by Player 1 (White), Player 2 (Black) and draws.
     
-    Origin: inspired from ~\cite{evolutionary_game_design}.
+    Source: inspired from~\cite{browne2010evolutionary}.
     
-    \item \textbf{Narrowness} -- measures the average narrowness of all the turns of a game. The narrowness of a turn represents the number of considerable actions a player can choose from during that turn. An action is considerable if it improves or maintains the current score of the position for the player to move.
+    \item \textit{Narrowness} -- measures the average narrowness of all the turns of a game. The narrowness of a turn represents the number of considerable actions a player can choose from during that turn. An action is considerable if it improves or maintains the current score of the position for the player to move.
     
-    Origin: inspired from ~\cite{automatic_generation_and_evaluation_of_recombination_games} and ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{browne2008recombination} and~\cite{ludii_concepts}.
     
-    \item \textbf{Decisiveness} -- measures the proportion of the game completed before the eventual winner establishes a decisive advantage that is maintained until the end of the game. This metric is only computed when a game has a winning player, so draws a discarded.
+    \item \textit{Decisiveness} -- measures the proportion of the game completed before the eventual winner establishes a decisive advantage that is maintained until the end of the game. This metric is only computed when a game has a winning player, so draws a discarded.
     
-    Origin: inspired from ~\cite{automatic_generation_and_evaluation_of_recombination_games}.
+    Source: inspired from~\cite{browne2008recombination}.
     
-    \item \textbf{Lead Change} -- measures the average number of possible actions during a turn that change the leader of the game. The leader of the game is the player who has a positional advantage.
+    \item \textit{Lead Change} -- measures the average number of possible actions during a turn that change the leader of the game. The leader of the game is the player who has a positional advantage.
     
-    Origin: inspired from ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{ludii_concepts}.
     
-    \item \textbf{Stability} -- measures the percentage of moves in a game that changed the leader. Its purpose is to assess how stable games are.
+    \item \textit{Stability} -- measures the percentage of moves in a game that changed the leader. Its purpose is to assess how stable games are.
     
-    Origin: inspired from ~\cite{evolutionary_game_design} (called \textit{Uncertainty} in the paper) and ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{browne2010evolutionary} (called \textit{Uncertainty} in the paper) and~\cite{ludii_concepts}.
     
-    \item \textbf{Drama} -- measures the average change in position evaluation scores throughout a game. Its purpose is to see how big the jumps are on average between consecutive turns during a game in terms of position evaluation. 
+    \item \textit{Drama} -- measures the average change in position evaluation scores throughout a game. Its purpose is to see how big the jumps are on average between consecutive turns during a game in terms of position evaluation. 
     
-    Origin: inspired from ~\cite{evolutionary_game_design},  ~\cite{automatic_generation_and_evaluation_of_recombination_games} and ~\cite{ludii_concepts}.
+    Source: inspired from~\cite{browne2010evolutionary}, ~\cite{browne2008recombination} and~\cite{ludii_concepts}.
 \end{itemize}
 
 \section{Random Agent vs Random Agent simulations}
