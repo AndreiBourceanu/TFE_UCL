@@ -1,0 +1,288 @@
+\chapter{Game metrics}
+\label{all_game_metrics}
+
+This appendix presents the complete set of metrics computed for Tricolor, including those not discussed in Chapter~\ref{game_metrics} and Chapter~\ref{perf_analysis_of_agents}.
+
+For each metric, a definition is provided together with its source of inspiration, where applicable.
+
+\begin{itemize}
+    \item \textit{Duration} -- measures the duration of a game in turns. Here, a turn is equivalent to a move made by any of the 2 players.
+    
+    Sources:~\cite{browne2010evolutionary} and~\cite{shannon1950chess2}.
+    
+    \item \textit{Branching Factor} -- measures how many possible actions any player can choose from, on average, during their turn.
+    
+    Source:~\cite{shannon1950chess2}.
+    
+    \item \textit{Decision Moves} -- measures what percentage of the moves made by any player during a game aren’t forced. A move isn’t forced if the player can choose between at least two actions during their turn.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{State Repetition} -- measures how many times the same states are repeated during a game.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Decision Factor} -- measures how many possible actions any player can choose from, on average, during their turn, ignoring turns where only one move is possible.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Board Sites Occupied} -- measures how many board tiles were occupied by any player at least once during the game.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Move Distance} -- measures the average distance traveled by stacks during a game.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Piece Number} -- measures the average number of pieces on the board during a game.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Game Outcome} -- measures the percentage of games won by Player 1 (White), Player 2 (Black) and draws.
+    
+    Source:~\cite{browne2010evolutionary}.
+    
+    \item \textit{Narrowness} -- measures the average narrowness of all the turns of a game. The narrowness of a turn represents the number of considerable actions a player can choose from during that turn. An action is considerable if it improves or maintains the current score of the position for the player to move.
+    
+    Sources:~\cite{browne2008recombination} and~\cite{ludii_concepts}.
+    
+    \item \textit{Decisiveness} -- measures the proportion of the game completed before the eventual winner establishes a decisive advantage that is maintained until the end of the game. This metric is only computed when a game has a winning player; draws a discarded.
+    
+    Source:~\cite{browne2008recombination}.
+    
+    \item \textit{Lead Change} -- measures the average number of possible actions during a turn that change the leader of the game. The leader of the game is the player who has a positional advantage.
+    
+    Source:~\cite{ludii_concepts}.
+    
+    \item \textit{Stability} -- measures the percentage of moves that changed the leader during a game.
+    
+    Sources:~\cite{browne2010evolutionary} (referred to as \textit{Uncertainty} in the paper) and~\cite{ludii_concepts}.
+    
+    \item \textit{Drama} -- measures the average change in position evaluation scores throughout a game.
+    
+    Sources:~\cite{browne2010evolutionary}, ~\cite{browne2008recombination} and~\cite{ludii_concepts}.
+\end{itemize}
+
+\section{Random Agent vs Random Agent simulations}
+
+\newpage %%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+\centering
+
+% Row 1
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_turns.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_branches.pdf}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Row 2
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_more_than_one_move.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_repeated_states.pdf}
+\end{minipage}
+
+% Row 3
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_decision_factors.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_occupied_tiles.pdf}
+\end{minipage}
+
+% Row 4
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_distance.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_number_of_pieces.pdf}
+\end{minipage}
+
+\caption{}
+\label{fig:allplots1}
+\end{figure}
+
+\newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+\centering
+
+% Row 1
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/winrates.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_narrowness.pdf}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Row 2
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/decisiveness.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_lead_change_moves.pdf}
+\end{minipage}
+
+% Row 3
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_lead_change_actions.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/total_drama.pdf}
+\end{minipage}
+
+% Row 4
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/game_evaluation_1.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{game_metrics/images/game_evaluation_2.pdf}
+\end{minipage}
+
+\caption{}
+\label{fig:allplots}
+\end{figure}
+
+\section{Alpha-Beta Agent vs MCTS Agent simulations}
+
+\newpage %%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+\centering
+
+% Row 1
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Row 2
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf}
+\end{minipage}
+
+% Row 3
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf}
+\end{minipage}
+
+% Row 4
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf}
+\end{minipage}
+
+\caption{}
+\label{fig:allplots1}
+\end{figure}
+
+\newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+\centering
+
+% Row 1
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Row 2
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf}
+\end{minipage}
+
+% Row 3
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf}
+\end{minipage}
+
+% Row 4
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf}
+\end{minipage}
+
+\caption{}
+\label{fig:allplots}
+\end{figure}

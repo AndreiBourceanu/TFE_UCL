@@ -1,0 +1,99 @@
+\documentclass{dissertation}
+%\documentclass[print]{dissertation}
+%\documentclass[print,draft]{dissertation}
+
+\hyphenation{TestRoots WatchDog proj-ect proj-ects Ec-lipse two-fold clie-nts Mo-cki-to wide-spread}
+\newcommand{\sparkline}[1]{$\vcenter{\hbox{\includegraphics[scale=0.04]{#1}}}$}
+
+\makeglossaries
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\renewcommand{\UrlFont}{\footnotesize\ttfamily}
+\usepackage{doi}
+\renewcommand{\doi}[1]{{\footnotesize\url{https://doi.org/#1}}}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{softred}{RGB}{180,60,60}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=black,
+    urlcolor=blue
+}
+%\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{comment}
+
+\newcommand*{\origrightarrow}{}
+\let\oldarrow\textrightarrow
+\renewcommand*{\textrightarrow}{\fontfamily{cmr}\selectfont\origrightarrow}
+\loadglsentries[main]{glossary}
+
+\input{abbreviations}
+
+\begin{document}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+\frontmatter
+
+%%\include{title/title}
+\includepdf[pages=-]{front_back/_frontbanner_EPL-master-thesis.pdf}
+
+%% The (optional) dedication can be used to thank someone or display a
+%% significant quotation.
+%\dedication{\epigraph{I [...] like to give the maximum in everything I do. The maximum I have. The
+%    maximum I can give. I am not perfect. But if I do something, I do it [as best I can].
+%    %And many people are not made like this. There are only few. But I like these few.
+%  }{Reinhold Messner}}
+
+\tableofcontents
+
+\include{summary/summary}
+\include{acks/acks}
+
+%% Use Arabic numerals for the page numbers of the chapters.
+\mainmatter
+
+%% Turn on thumb indices.
+\thumbtrue
+
+\include{introduction/introduction}
+\include{historical_background/historical_background}
+\include{game_rules/game_rules}
+\include{implementation_of_the_game_model/implementation_of_the_game_model}
+\include{game_metrics/game_metrics}
+\include{strategic_analysis_and_heuristic_design/strategic_analysis_and_heuristic_design}
+\include{advanced_ai_agents/advanced_ai_agents}
+\include{analyzing_agents_performance/analyzing_agents_performance}
+\include{conclusion/conclusion}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+\include{all_game_metrics/all_game_metrics}
+
+%% Turn off thumb indices for unnumbered chapters.
+\thumbfalse
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+\setheader{Bibliography}
+
+\bibliographystyle{unsrturl}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{dissertation}
+
+%% \chapter*{Glossary}
+
+%\glsaddall
+%\printglossary[type=\acronymtype,title={Glossary}]
+%\addcontentsline{toc}{chapter}{Glossary}
+%\setheader{Glossary}
+
+\includepdf[pages=-]{front_back/_backbanner_EPL-master-thesis.pdf}
+
+\end{document}
+

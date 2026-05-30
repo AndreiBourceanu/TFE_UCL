@@ -1,0 +1,110 @@
+\chapter{Introduction}
+\label{introduction}
+
+\section{Context and Problem Statement}
+
+Board games have long been studied not only as recreational artifacts, but also as objects of mathematical, historical, and computational interest~\cite{shannon1950chess2}~\cite{browne2010evolutionary}. In recent years, advances in artificial intelligence and general game playing have enabled the large-scale computational analysis of traditional and historical games~\cite{piette2020ludii}. Research initiatives such as the GameTable COST Action investigate how AI-driven methods can contribute to the preservation, reconstruction, and understanding of tabletop game heritage~\cite{piette2024gametable_kickoff}. In particular, recent work on the Roman board game Ludus Coriovalli demonstrated how AI-based simulations can help identify plausible rule systems and strategic properties for historically documented games~\cite{crist2026ludus_coriovalli}.
+
+Tricolor is a combinatorial board game invented in 1930 by the Belgian mathematician Maurice Kraitchik~\cite{rougetet2025kraitchik}. The game is characterized by a hexagonal board, stack-based mechanics, and movement and capture rules influenced by the color of the board tiles. Tricolor occupies a particular place in the history of board games, as it is considered one of the earliest known games to use a hexagonal tiling~\cite{kraitchik1930tricolor}. Despite its historical originality and unusual mechanics, the game has received very limited modern scientific attention. Existing sources mainly consist of the original patent and a small number of historical descriptions and example games~\cite{kraitchik1930tricolor}~\cite{kraitchik1930mathematique}.
+From a computational perspective, Tricolor presents several characteristics commonly associated with difficult combinatorial games. The game combines a potentially large branching factor, long game durations, forced tactical interactions, and stack-based piece mechanics that significantly increase the complexity of state representation and strategic planning. These properties make Tricolor an interesting case study for classical game-playing algorithms such as Alpha-Beta pruning and Monte Carlo Tree Search~\cite{russell2010aima}~\cite{browne2012mcts}.
+
+Beyond the sole objective of developing competitive AI agents, this work also investigates how computational methods can contribute to the study of historical mathematical games. By formalizing the rules of Tricolor, implementing an efficient simulation framework, and performing large-scale experiments, this thesis aims to provide a foundation for future studies in artificial intelligence, combinatorial game theory, digital humanities, and computational game heritage research~\cite{piette2020ludii}~\cite{piette2024gametable_kickoff}~\cite{browne2022dlpworkshop}.
+
+This thesis therefore studies Tricolor from both a computational and strategic perspective, with the objective of characterizing its complexity, identifying meaningful heuristics, and evaluating the effectiveness of different AI approaches for playing and analyzing the game.
+
+\section{Motivation}
+
+The effectiveness of artificial intelligence techniques for board games strongly depends on the structural properties of the game being studied. While some games can be explored efficiently through deep search, others generate search spaces so large that exhaustive analysis rapidly becomes impractical~\cite{russell2010aima}~\cite{browne2012mcts}. Understanding the computational characteristics of a game is therefore an important step when designing efficient AI agents.
+
+Tricolor presents several features that make it particularly challenging from a computational perspective. Unlike classical board games where each piece occupies a single independent position, Tricolor allows pieces from both players to be stacked together on the same tile. Consequently, the state of the game depends not only on the location of pieces, but also on stack composition, ownership, and stack size. This considerably increases the complexity of state representation and move evaluation.
+
+Another important aspect of the game is the presence of forced tactical interactions. Whenever a capture or imprisonment move is available, the player is required to perform such a move. This constraint strongly shapes gameplay and strategic planning, since players may be forced to weaken otherwise stable defensive structures. As a result, local tactical situations can produce long-term strategic consequences that are difficult to evaluate.
+The geometry and coloring of the board also contribute significantly to the complexity of the game. Since the color of a tile directly modifies the attack and defense power of stacks, positional control becomes a central component of gameplay. Players must therefore balance several competing objectives simultaneously, including mobility, stack growth, tactical threats, and territorial control.
+
+These mechanics collectively generate a large search space characterized by high branching factors and long game durations. Under such conditions, exhaustive search rapidly becomes infeasible, making Tricolor an interesting benchmark for evaluating the strengths and limitations of classical game-playing algorithms such as Alpha-Beta pruning and Monte Carlo Tree Search~\cite{russell2010aima}~\cite{browne2012mcts}.
+
+Beyond the development of competitive AI agents, another motivation of this work is to provide a computational framework that can support the systematic study of Tricolor. By formalizing the rules of the game and implementing efficient simulation and analysis tools, this thesis aims to facilitate large-scale experimentation that would be impractical to perform manually. Such a framework can support future investigations of the game from strategic, mathematical, historical, and artificial intelligence perspectives.
+
+\section{Research Questions}
+
+This thesis investigates several research questions related to the computational analysis and AI-based study of Tricolor.
+
+The first question concerns the formalization and implementation of the game:
+
+\begin{itemize}
+    \item How can Tricolor be modeled computationally in a way that enables efficient simulation and large-scale experimentation?
+\end{itemize}
+
+A second question concerns the structural complexity of the game:
+
+\begin{itemize}
+    \item What are the main computational characteristics of Tricolor, such as its average game duration, branching factor, game tree complexity, and state space complexity?
+\end{itemize}
+
+Another objective of this work is to investigate the strategic properties emerging from the rules of the game:
+
+\begin{itemize}
+    \item What types of strategic patterns and heuristics can be identified through simulation and analysis?
+\end{itemize}
+
+This thesis also studies the effectiveness of classical game-playing algorithms in the context of Tricolor:
+
+\begin{itemize}
+    \item How do Alpha-Beta pruning and Monte Carlo Tree Search perform on a game characterized by stack-based interactions, forced tactical moves, and large search spaces?
+\end{itemize}
+
+Finally, this work explores the broader role of computational methods in the study of historical games:
+
+\begin{itemize}
+    \item To what extent can simulation frameworks and AI-driven analysis support future mathematical, strategic, and historical investigations of Tricolor?
+\end{itemize}
+
+\section{Contributions}
+
+This thesis makes several contributions to the computational study of Tricolor.
+
+First, the rules of the game are formally analyzed and adapted into a computational framework suitable for simulation and AI-based experimentation. In particular, an additional draw condition is introduced in order to guarantee game termination during large-scale simulations.
+
+Second, an efficient implementation of the game is developed in C++. The proposed framework includes compact representations for board states and actions, efficient move generation mechanisms, and a graphical interface allowing games to be visualized and played by human users or AI agents.
+
+Third, this work provides an empirical study of several computational and gameplay characteristics of Tricolor. Using large-scale simulations, multiple metrics are analyzed, including game duration, branching factor, game tree complexity, state space complexity, decisiveness, stability, and drama.
+
+Fourth, this thesis investigates strategic properties emerging from the mechanics of the game. In particular, several heuristics related to stack management, positional control, and tactical interactions are identified and analyzed.
+
+Fifth, two classical game-playing approaches are implemented and evaluated on Tricolor: Alpha-Beta pruning and Monte Carlo Tree Search. Their performance is experimentally compared through large sets of simulated games.
+
+Finally, beyond the sole objective of designing AI agents, this work introduces a computational framework intended to support future investigations of Tricolor from mathematical, strategic, and historical perspectives. The implemented tools and analyses aim to facilitate interdisciplinary research on this historically significant game.
+
+\section{Methodology Overview}
+
+This thesis follows a methodology combining formal modeling, software implementation, experimental analysis, and AI-based evaluation.
+
+The work begins with a formal analysis of the rules of Tricolor in order to obtain a computational representation of the game suitable for simulations and automated experimentation. Particular attention is given to the representation of stack-based interactions, move legality, and game termination conditions.
+
+Based on this formalization, a dedicated game engine is developed in C++. The implementation is designed to support efficient move generation, rapid state manipulation, and large-scale simulations required for experimental analysis and AI search algorithms.
+
+The game is then studied empirically through automated self-play simulations. Large numbers of generated games are analyzed in order to estimate structural and gameplay-related characteristics of Tricolor. These experiments provide quantitative information about the complexity and dynamics of the game.
+
+In parallel, gameplay observations and experimental analyses are used to identify recurring strategic patterns and important positional features. These observations are subsequently incorporated into heuristic evaluation mechanisms for AI agents.
+
+Finally, the thesis evaluates different classical game-playing approaches on Tricolor. Experimental comparisons between agents are performed in order to analyze the behavior, strengths, and limitations of the considered algorithms in the context of the game.
+
+\section{Thesis Organization}
+
+The remainder of this thesis is organized as follows.
+
+Chapter~\ref{historical_background} presents the historical background of Tricolor and discusses related work on historical games, combinatorial game analysis, and artificial intelligence techniques applied to board games.
+
+Chapter~\ref{game_rules} introduces the formal rules of Tricolor and describes the computational representation of the game used throughout this work.
+
+Chapter~\ref{implementation_of_the_game_model} presents the implementation of the game engine, including the representation of board states and actions, move generation mechanisms, and the graphical interface developed for simulations and gameplay visualization.
+
+Chapter~\ref{game_metrics} studies the computational and gameplay characteristics of Tricolor through large-scale simulations. Several metrics related to complexity, game dynamics, and gameplay properties are analyzed experimentally.
+
+Chapter~\ref{heuristic_design} investigates strategic aspects of the game and introduces heuristic observations derived from gameplay analysis and experimentation.
+
+Chapter~\ref{advanced_ai_agents} presents the artificial intelligence approaches implemented in this work, including Alpha-Beta pruning and Monte Carlo Tree Search.
+
+Chapter~\ref{perf_analysis_of_agents} evaluates the performance of the implemented agents through experimental comparisons and discusses their respective strengths and limitations in the context of Tricolor.
+
+Finally, Chapter~\ref{conclusion} concludes the thesis and discusses future perspectives for the computational, mathematical, and historical study of Tricolor.

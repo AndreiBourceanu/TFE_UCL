@@ -1,0 +1,275 @@
+\chapter{Experimental Evaluation}
+\label{perf_analysis_of_agents}
+
+This chapter evaluates the performance of the artificial intelligence agents introduced in Chapter~\ref{advanced_ai_agents}. The objective is to compare their playing strength, analyze their behavior, and relate the experimental results to the structural properties of Tricolor identified in Chapter~\ref{game_metrics}.
+
+The source code of the implementation is publicly available on GitHub: \url{https://github.com/AndreiBourceanu/TFE_UCL/tree/main/cpp_Tricolor_implementation}. All experiments reported in this chapter were run on an Intel Core i5-8250U CPU with 8 GB of memory, using the Ubuntu 22.04.5 LTS operating system and compiled with g++ (GCC) 11.4.0. Unless otherwise stated, each advanced agent was given a decision time of one second per move. This information is provided for reproducibility, since the performance of search-based agents depends directly on the amount of computation available during move selection.
+
+\section{Experimental Protocol}
+
+The experiments compare the agents implemented in this thesis under controlled conditions. The Random Agent is used as a baseline, while the Alpha-Beta Agent and the Monte Carlo Tree Search Agent are evaluated as the main AI approaches.
+
+Each advanced agent is given a fixed decision time of one second per move. This constraint ensures that the comparison between agents is fair and that neither agent benefits from additional computation time. The same game engine, move generator, and terminal-state detection mechanisms are used for all experiments.
+
+For each pair of distinct agents, 100 games are simulated. To reduce possible color bias, each agent plays 50 games as Player 1 and 50 games as Player 2. This is particularly important because Player 1 always moves first. Although the initial position is symmetric, alternating colors makes the comparison more robust.
+
+The main performance metric is the final outcome of each game: win, loss, or draw. In addition, several game metrics are recomputed for games involving advanced agents, including game duration, branching factor, decisiveness, stability, and drama. These values are compared with the random-play baseline studied in Chapter~\ref{game_metrics}.
+
+The number of games is smaller than in the random simulations of Chapter~\ref{game_metrics} because advanced agents are much more expensive to run. Since each move may take up to one second and Tricolor games can last many turns, simulating thousands or millions of games between advanced agents would require a substantial amount of computation time.
+
+\section{Baseline Results Against the Random Agent}
+
+As a first validation step, the Alpha-Beta Agent and the Monte Carlo Tree Search Agent are evaluated against the Random Agent. The results are shown in~\ref{fig:random_vs_agents}.
+
+\begin{figure}[h]
+    \centering
+    
+    \subfloat[Random vs Alpha-Beta]{%
+        \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf}
+    }
+    \hfill
+    \subfloat[Random vs MCTS]{%
+        \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf}
+    }
+    
+    \caption{Plots displaying the win percentage of the Random Agent vs the Alpha-Beta Agent and the MCTS Agent.}
+    \label{fig:random_vs_agents}
+    \end{figure}
+
+Both advanced agents win all games against the Random Agent. The Alpha-Beta Agent obtains a win rate of 100\%, and the MCTS Agent also obtains a win rate of 100\%.
+
+These results are expected, but they are still useful. They confirm that both agents are able to exploit the rules of Tricolor more effectively than random play. They also indicate that the implementation of the advanced agents is functional: even without comparing them to each other, both clearly outperform the baseline.
+
+However, these results should not be interpreted as evidence that both agents play strongly in an absolute sense. Defeating a Random Agent only shows that the agents can make better-than-random decisions. A more informative comparison is obtained by evaluating the two advanced agents directly against each other.
+
+\section{Alpha-Beta versus Monte Carlo Tree Search}
+
+The main experiment compares the Alpha-Beta Agent with the Monte Carlo Tree Search Agent. The results are shown in~\ref{fig:alpha_beta_vs_mcts}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf}
+    \caption{Plot displaying the win percentage of the Alpha-Beta Agent vs the MCTS Agent.}
+    \label{fig:alpha_beta_vs_mcts}
+\end{figure}
+
+The Alpha-Beta Agent wins 96\% of the games, while the MCTS Agent wins only 1\%. The remaining 3\% of games end in draws. This result indicates a clear advantage for the Alpha-Beta Agent under the experimental conditions used in this thesis.
+
+Several factors can explain this result.
+
+First, the Alpha-Beta Agent benefits from the heuristic evaluation function introduced in Chapter~\ref{heuristic_design}. This heuristic incorporates domain-specific knowledge about material control, positional power, and stack concentration. As a result, the agent can evaluate non-terminal positions without needing to simulate complete games.
+
+Second, the game properties identified in Chapter~\ref{game_metrics} are unfavorable to a basic MCTS implementation. Tricolor has a high branching factor and long game durations. This means that, within a one-second time limit, MCTS must distribute a limited number of simulations across many possible actions, and each simulation may be relatively expensive.
+
+Third, the simulations used by the MCTS Agent are based on random play. In a game such as Tricolor, random rollouts may provide noisy evaluations because important strategic consequences can appear only after long tactical sequences. Stack control, imprisonment, and forced moves may produce delayed effects that are difficult to estimate reliably through purely random simulations.
+
+By contrast, Alpha-Beta search focuses on a more structured exploration of the game tree and uses the heuristic to evaluate positions reached at limited depth. In this experimental setting, this combination appears better suited to Tricolor than basic MCTS with random rollouts.
+
+\section{Game Metrics using AI Agents}
+
+In addition to win rates, several metrics introduced in Chapter~\ref{game_metrics} were recomputed for games played between the Alpha-Beta Agent and the MCTS Agent. The objective is not to redefine these metrics, but to compare the dynamics of games played by advanced agents with those observed in random play.
+
+Games between Alpha-Beta and MCTS are significantly shorter than games between two Random Agents. The average duration decreases from approximately 177 turns in random games to 77 turns in Alpha-Beta versus MCTS games~\ref{fig:total_turns_ab_mcts}. This difference suggests that the Alpha-Beta Agent is able to exploit weaknesses in the MCTS Agent quickly, leading to faster decisive outcomes.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf}
+    \caption{Plot with the number of turns in a game}
+    \label{fig:total_turns_ab_mcts}
+\end{figure}
+
+The average branching factor follows the opposite trend. It increases from approximately 47 in random games to 77 in Alpha-Beta versus MCTS games~\ref{fig:total_branches_ab_mcts}. This can be explained by the fact that these games are shorter and spend less time in reduced-material late-game positions. In particular, the Alpha-Beta Agent tends to preserve and organize material more effectively during the early stages of the game, so more pieces remain active for a larger proportion of the game.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf}
+    \caption{Plot with average branching factor in a game}
+    \label{fig:total_branches_ab_mcts}
+\end{figure}
+
+The decisiveness value is considerably lower, decreasing from approximately 70\% in random games to 31\% in Alpha-Beta versus MCTS games~\ref{fig:decisiveness_ab_mcts}. This indicates that, according to the evaluation function, the eventual winner typically establishes a stable advantage relatively early in the game. Since Alpha-Beta wins the vast majority of games, this result suggests that the agent is often able to convert its superior decisions into a lasting positional advantage well before the endgame.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf}
+    \caption{Plot with the game decisiveness}
+    \label{fig:decisiveness_ab_mcts}
+\end{figure}
+
+The stability metric also changes clearly. The percentage of lead-changing turns decreases from approximately 16\% in random games to 5\% in Alpha-Beta versus MCTS games~\ref{fig:total_lead_change_actions_ab_mcts}. This indicates that games between advanced agents are much more stable according to the evaluation function. Once Alpha-Beta obtains an advantage, it tends to maintain it more consistently than a Random Agent would.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf}
+    \caption{Plot with the percentage of lead changing turns during a game}
+    \label{fig:total_lead_change_actions_ab_mcts}
+\end{figure}
+
+Drama also decreases slightly, from approximately 0.07 in random games to 0.05 in Alpha-Beta versus MCTS games~\ref{fig:total_drama_ab_mcts}. This suggests that evaluation changes are more gradual when advanced agents are involved. Random play often creates sudden tactical mistakes, while search-based play tends to avoid some of these abrupt reversals.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf}
+    \caption{Plot with the average drama in a game}
+    \label{fig:total_drama_ab_mcts}
+\end{figure}
+
+The two example games between the Alpha-Beta Agent and the MCTS Agent (Figures~\ref{fig:game_evaluation_1} and~\ref{fig:game_evaluation_2}) illustrate the dominance of the Alpha-Beta Agent, which consistently maintains a visible positional advantage according to the evaluation function. As a result, lead changes almost never happen during the games. Moreover, the games end relatively quickly, after approximately 60 turns.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf}
+    \caption{Plot with game 1 evaluation}
+    \label{fig:game_evaluation_1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf}
+    \caption{Plot with game 2 evaluation}
+    \label{fig:game_evaluation_2}
+\end{figure}
+
+Overall, these metrics show that the dynamics of Tricolor change substantially when moving from random play to search-based play. Games become shorter, more stable, and slightly less dramatic, while the average branching factor increases because the game spends less time in depleted late-game positions. In addition, the decisiveness metric suggests that Alpha-Beta asserts its dominance much earlier in the game, often establishing a stable advantage well before the final stages.
+
+\section{Discussion}
+
+The experiments presented in this chapter show a clear difference between the two advanced agents. Both Alpha-Beta and Monte Carlo Tree Search are able to defeat the Random Agent consistently, but their direct comparison shows that the Alpha-Beta Agent is substantially stronger under the experimental conditions used in this thesis. This result is not only a comparison between two algorithms; it also provides insight into the computational nature of Tricolor.
+
+The strong performance of the Alpha-Beta Agent suggests that the handcrafted heuristic introduced in Chapter~\ref{heuristic_design} captures several important properties of the game. Material control, positional power, and stack concentration appear to provide useful information for evaluating non-terminal positions. Since Alpha-Beta cannot search to the end of the game, especially in early positions with many legal moves, its success depends heavily on the quality of this evaluation. The results therefore support the relevance of the strategic observations used to design the heuristic.
+
+The weakness of the basic MCTS Agent can be explained by several properties of Tricolor. First, the game has a high branching factor, meaning that the agent must distribute its simulations across many possible actions. With a one-second time limit, many moves may receive only a limited number of visits. This makes it difficult for MCTS to distinguish reliably between promising and weak moves.
+
+Second, Tricolor games can be long, especially when compared with the number of simulations that can be performed within a short decision time. Random rollouts may therefore be expensive and noisy. A simulation may take many turns before reaching a terminal result, and the final outcome may depend on random decisions made much later in the game. This weakens the relationship between the quality of the initial move and the result of the rollout.
+
+Third, Tricolor contains delayed tactical consequences. A move that appears locally harmless may later force a player to split a strong stack, lose control of imprisoned pieces, or enter an unfavorable capture sequence. These consequences are difficult to evaluate through purely random playouts. In such situations, MCTS without a domain-specific rollout policy may fail to identify moves with strong long-term strategic implications.
+
+The comparison between the agents also illustrates the importance of domain knowledge. Alpha-Beta is guided by a heuristic explicitly designed for Tricolor, while the MCTS Agent relies mostly on random simulations. The result therefore does not necessarily imply that MCTS is intrinsically unsuitable for Tricolor. Rather, it shows that a basic MCTS implementation is not sufficient to handle the game effectively under the tested conditions. Improved versions of MCTS could include heuristic rollouts, progressive bias, transposition tables, or learned value estimates.
+
+The game-dynamics metrics reinforce this interpretation. Games between Alpha-Beta and MCTS are shorter, more stable, and less dramatic than games between Random Agents. The decisiveness metric suggests that once Alpha-Beta obtains an advantage, it is usually able to maintain and convert it efficiently. The increase in average branching factor in these games should not be interpreted as making the games harder for the agents throughout; rather, it reflects the fact that games end earlier and therefore spend less time in positions where many pieces have already been captured or imprisoned.
+
+The experimental protocol also has limitations. Only 100 games were played for each advanced-agent comparison, mainly because both agents require significantly more computation time than the Random Agent. Although the observed difference between Alpha-Beta and MCTS is large enough to support a clear conclusion, additional games would provide more precise statistical estimates. The experiments also use a fixed one-second time limit per move. Different time budgets could affect the results, especially for MCTS, which may benefit more directly from additional simulations.
+
+Another limitation is that the agents were not extensively tuned. The Alpha-Beta Agent uses a manually designed heuristic, and the MCTS Agent uses a standard UCT configuration with random rollouts. Alternative parameter choices, different exploration constant.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+In this chapter we analyze the performance of each agent and determine which one is the best. For this, we simulated 100 games between each pair of distinct agents \footnote{We only simulated 100 games because each advanced agent takes 1 second to make a move. Given the high average game depth \ref{sec:duration}, more than 100 games would take a lot of time to run.}. Each agent played 50 games as white and 50 games as black for fairness reasons.
+
+At the end of this chapter we will also analyze the same game metrics as in chapter \ref{game_metrics}, but this time using the advanced agents instead of the random agents.
+
+\section{Random}
+
+As expected, the Random Agent loses all the games against the Alpha-Beta Agent and the MCTS Agent (Figure \ref{fig:random_vs_agents}). This already suggests that the advanced AI agent are correctly implemented.
+
+\begin{figure}[h]
+\centering
+
+\subfloat[Random vs Alpha-Beta]{%
+    \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf}
+}
+\hfill
+\subfloat[Random vs MCTS]{%
+    \includegraphics[width=0.45\textwidth]{analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf}
+}
+
+\caption{Plots displaying the win percentage of the Random Agent vs the Alpha-Beta Agent and the MCTS Agent.}
+\label{fig:random_vs_agents}
+\end{figure}
+
+\section{Alpha-Beta vs MCTS}
+
+Looking at the plot (Figure \ref{fig:alpha_beta_vs_mcts}), we can see that the Alpha-Beta won $93\%$ of the games, whereas MCTS only won $2\%$ of the games. This result clearly indicates that the Alpha-Beta agent is much better than the MCTS agent.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf}
+    \caption{Plot displaying the win percentage of the Alpha-Beta Agent vs the MCTS Agent.}
+    \label{fig:alpha_beta_vs_mcts}
+\end{figure}
+
+\section{Game Metrics using AI Agents}
+
+In this section, the metrics introduced in Chapter~\ref{game_metrics} are recomputed for games played between an Alpha-Beta agent and an MCTS agent. The objective is to compare these results with those obtained from simulations between two Random agents and to discuss the observed differences. Only the metrics that exhibit different behavior between the two experimental setups are considered.
+
+Additional metrics are in the Appendix~\ref{all_game_metrics}.
+
+\subsection{Duration}
+\label{sec:duration_ab_mcts}
+
+The Figure~\ref{fig:total_turns_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf}
+    \caption{Plot with the number of turns in a game}
+    \label{fig:total_turns_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game lasts 75 turns. The average game depth between two Random Agents is 173 turns. This shows that the Alpha-Beta Agent manages to beat the MCTS Agent very fast, which reduces the games durations quite drastically.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Branching Factor}
+\label{sec:total_branches_ab_mcts}
+
+The Figure~\ref{fig:total_branches_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf}
+    \caption{Plot with average branching factor in a game}
+    \label{fig:total_branches_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item On average, a game has a branching factor of 75. The average branching factor between two Random Agents is 47. This large difference can be justified by the fact the the Alpha-Beta Agent spends its first 15-20 turns by stacking more and more pieces on red tiles. Once it's done, it manages to beat the MCTS Agent fast. Therefore, very few turns are spent with a little number of pieces \footnote{and therefore a small branching factor} on the board during the game.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Decisiveness}
+\label{sec:decisiveness_ab_mcts}
+
+The Figure~\ref{fig:decisiveness_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf}
+    \caption{Plot with the game decisiveness}
+    \label{fig:decisiveness_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item Waiting for result (I made a mistake in the metric)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Stability}
+\label{sec:total_lead_change_actions_ab_mcts}
+
+The Figure~\ref{fig:total_lead_change_actions_ab_mcts} shows the distribution of this metric measured in all the simulated games.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf}
+    \caption{Plot with the percentage of lead changing turns during a game}
+    \label{fig:total_lead_change_actions_ab_mcts}
+\end{figure}
+
+Looking at the plot, we can make the following observations:
+\begin{itemize}
+    \item The average number of lead changing turns is $\approx 4\%$. The average number of lead changing turns between two Random Agents is $\approx 16\%$. This difference is justified by the fact that the Alpha-Beta Agent is much better than the MCTS Agent. Alpha-Beta tends to always have a better position and therefore the lead change frequency is very low.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{comment}
