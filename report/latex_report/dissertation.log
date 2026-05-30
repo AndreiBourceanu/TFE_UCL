@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.14)  29 MAY 2026 03:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.14)  30 MAY 2026 02:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1449,7 +1449,9 @@ Package hyperref Info: Option `colorlinks' set `false' on input line 593.
 Package glossaries Info: Writing glossary file dissertation.acn on input line 8.
  (/usr/share/texlive/texmf-dist/tex/latex/doi/doi.sty
 Package: doi 2018/09/09 handle doi numbers
-) (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 24.
+ (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write6
  Excluding comment 'comment') (./glossary.tex) (./abbreviations.tex (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -1469,52 +1471,52 @@ LaTeX Warning: Label `fig:allplots@cref' multiply defined.
 ))
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 26.
-LaTeX Font Info:    Trying to load font information for OML+txmi on input line 26.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 36.
+LaTeX Font Info:    Trying to load font information for OML+txmi on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 36.
+LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for OMX+txex on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 36.
+LaTeX Font Info:    Trying to load font information for OMX+txex on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for U+txexa on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 36.
+LaTeX Font Info:    Trying to load font information for U+txexa on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 36.
+LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/libertinust1math/ls1libertinust1math.fd
 File: ls1libertinust1math.fd 2016/03/23 Fontinst v1.933 font definitions for LS1/libertinust1math.
 )
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 36.
+LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/libertinust1math/ls2libertinust1mathsym.fd
 File: ls2libertinust1mathsym.fd 2015/04/17 v1.1.2-latex LibertinusT1Mathsym LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    ... okay on input line 36.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count412
@@ -1582,7 +1584,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring ON on input line 36.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1592,23 +1594,23 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count418
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 \c@mv@tabular=\count419
 \c@mv@boldtabular=\count420
-LaTeX Info: Redefining \microtypecontext on input line 26.
-Package microtype Info: Applying patch `item' on input line 26.
-Package microtype Info: Applying patch `toc' on input line 26.
-Package microtype Info: Applying patch `eqnum' on input line 26.
-Package microtype Info: Applying patch `footnote' on input line 26.
+LaTeX Info: Redefining \microtypecontext on input line 36.
+Package microtype Info: Applying patch `item' on input line 36.
+Package microtype Info: Applying patch `toc' on input line 36.
+Package microtype Info: Applying patch `eqnum' on input line 36.
+Package microtype Info: Applying patch `footnote' on input line 36.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 26.
+LaTeX Info: Redefining \showhyphens on input line 36.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1620,32 +1622,32 @@ Package microtype Info: Loading generic protrusion settings for font family
 <front_back/_frontbanner_EPL-master-thesis.pdf, id=7, 597.50829pt x 845.0471pt>
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf  used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf  used on input line 43.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf  used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf  used on input line 43.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 <front_back/_frontbanner_EPL-master-thesis.pdf, id=10, page=1, 597.50829pt x 845.0471pt>
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 43.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 43.
 (pdftex.def)             Requested size: 482.85764pt x 682.8984pt.
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 43.
 (pdftex.def)             Requested size: 482.85764pt x 682.8984pt.
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 43.
 (pdftex.def)             Requested size: 482.85764pt x 682.8984pt.
 File: front_back/_frontbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_frontbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 33.
+Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 used on input line 43.
 (pdftex.def)             Requested size: 482.85764pt x 682.8984pt.
  [1
 
@@ -1656,11 +1658,11 @@ Package pdftex.def Info: front_back/_frontbanner_EPL-master-thesis.pdf , page1 u
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 42.
+(Font)              scaled to size 10.0pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
-(Font)              scaled to size 10.0pt on input line 42.
+(Font)              scaled to size 10.0pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
-(Font)              scaled to size 24.88pt on input line 42.
+(Font)              scaled to size 24.88pt on input line 52.
  (./dissertation.toc
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 2.
@@ -1669,9 +1671,9 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 \openout7 = `dissertation.toc'.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.5pt on input line 44.
+(Font)              scaled to size 8.5pt on input line 54.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 8.5pt on input line 44.
+(Font)              scaled to size 8.5pt on input line 54.
  [4]
 \openout2 = `summary/summary.aux'.
 
@@ -1686,10 +1688,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 
 
 
-]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 5.
-) [7] [8
+]) [7] [8
 
 
 
@@ -1732,11 +1731,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 Chapter 2.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 8.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.0pt on input line 19.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.0pt on input line 19.
-<historical_background/images/certificate_brevet.png, id=330, 598.235pt x 976.64874pt>
+<historical_background/images/certificate_brevet.png, id=337, 598.235pt x 976.64874pt>
 File: historical_background/images/certificate_brevet.png Graphic file (type png)
 <use historical_background/images/certificate_brevet.png>
 Package pdftex.def Info: historical_background/images/certificate_brevet.png  used on input line 19.
@@ -1746,7 +1747,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<game_rules/images/board_setup.png, id=333, 690.58pt x 614.295pt>
+<game_rules/images/board_setup.png, id=340, 690.58pt x 614.295pt>
 File: game_rules/images/board_setup.png Graphic file (type png)
 <use game_rules/images/board_setup.png>
 Package pdftex.def Info: game_rules/images/board_setup.png  used on input line 28.
@@ -1755,7 +1756,7 @@ Package pdftex.def Info: game_rules/images/board_setup.png  used on input line 2
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7] [8 <./historical_background/images/certificate_brevet.png> <./game_rules/images/board_setup.png>]
-<historical_background/images/game_example.png, id=349, 1108.14pt x 473.77pt>
+<historical_background/images/game_example.png, id=357, 1108.14pt x 473.77pt>
 File: historical_background/images/game_example.png Graphic file (type png)
 <use historical_background/images/game_example.png>
 Package pdftex.def Info: historical_background/images/game_example.png  used on input line 43.
@@ -1774,7 +1775,7 @@ Package pdftex.def Info: game_rules/images/board_setup.png  used on input line 1
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<game_rules/images/stack_example.png, id=401, 89.33376pt x 98.3675pt>
+<game_rules/images/stack_example.png, id=409, 89.33376pt x 98.3675pt>
 File: game_rules/images/stack_example.png Graphic file (type png)
 <use game_rules/images/stack_example.png>
 Package pdftex.def Info: game_rules/images/stack_example.png  used on input line 23.
@@ -1788,7 +1789,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 ]
-<game_rules/images/move_directions.png, id=409, 305.14pt x 283.0575pt>
+<game_rules/images/move_directions.png, id=417, 305.14pt x 283.0575pt>
 File: game_rules/images/move_directions.png Graphic file (type png)
 <use game_rules/images/move_directions.png>
 Package pdftex.def Info: game_rules/images/move_directions.png  used on input line 36.
@@ -1876,12 +1877,12 @@ LaTeX Font Info:    Trying to load font information for U+wasy on input line 64.
  (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
-<game_rules/images/capture_rule.png, id=422, 907.39pt x 319.1925pt>
+<game_rules/images/capture_rule.png, id=430, 907.39pt x 319.1925pt>
 File: game_rules/images/capture_rule.png Graphic file (type png)
 <use game_rules/images/capture_rule.png>
 Package pdftex.def Info: game_rules/images/capture_rule.png  used on input line 74.
 (pdftex.def)             Requested size: 272.2191pt x 95.75848pt.
-<game_rules/images/imprison_rule.png, id=424, 907.39pt x 319.1925pt>
+<game_rules/images/imprison_rule.png, id=432, 907.39pt x 319.1925pt>
 File: game_rules/images/imprison_rule.png Graphic file (type png)
 <use game_rules/images/imprison_rule.png>
 Package pdftex.def Info: game_rules/images/imprison_rule.png  used on input line 83.
@@ -1891,7 +1892,7 @@ Package pdftex.def Info: game_rules/images/imprison_rule.png  used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16 <./game_rules/images/capture_rule.png>]
-<game_rules/images/black_win.png, id=435, 680.5425pt x 727.71875pt>
+<game_rules/images/black_win.png, id=443, 680.5425pt x 727.71875pt>
 File: game_rules/images/black_win.png Graphic file (type png)
 <use game_rules/images/black_win.png>
 Package pdftex.def Info: game_rules/images/black_win.png  used on input line 98.
@@ -1910,12 +1911,12 @@ Underfull \vbox (badness 1715) has occurred while \output is active []
 
 
 ]
-<implementation_of_the_game_model/images/numbered_tricolor_board.png, id=454, 1027.84pt x 1027.84pt>
+<implementation_of_the_game_model/images/numbered_tricolor_board.png, id=462, 1027.84pt x 1027.84pt>
 File: implementation_of_the_game_model/images/numbered_tricolor_board.png Graphic file (type png)
 <use implementation_of_the_game_model/images/numbered_tricolor_board.png>
 Package pdftex.def Info: implementation_of_the_game_model/images/numbered_tricolor_board.png  used on input line 24.
 (pdftex.def)             Requested size: 205.56436pt x 205.56436pt.
-<implementation_of_the_game_model/images/board_state_opti.png, id=456, 1353.055pt x 251.94125pt>
+<implementation_of_the_game_model/images/board_state_opti.png, id=464, 1353.055pt x 251.94125pt>
 File: implementation_of_the_game_model/images/board_state_opti.png Graphic file (type png)
 <use implementation_of_the_game_model/images/board_state_opti.png>
 Package pdftex.def Info: implementation_of_the_game_model/images/board_state_opti.png  used on input line 35.
@@ -1949,7 +1950,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 36.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
 (Font)              scaled to size 12.0pt on input line 36.
-<game_metrics/images/total_turns.pdf, id=485, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_turns.pdf, id=494, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_turns.pdf Graphic file (type pdf)
 <use game_metrics/images/total_turns.pdf>
 Package pdftex.def Info: game_metrics/images/total_turns.pdf  used on input line 44.
@@ -1959,7 +1960,7 @@ Package pdftex.def Info: game_metrics/images/total_turns.pdf  used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [24]
-<game_metrics/images/total_branches.pdf, id=493, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_branches.pdf, id=502, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_branches.pdf Graphic file (type pdf)
 <use game_metrics/images/total_branches.pdf>
 Package pdftex.def Info: game_metrics/images/total_branches.pdf  used on input line 63.
@@ -1969,7 +1970,7 @@ Package pdftex.def Info: game_metrics/images/total_branches.pdf  used on input l
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [25 <./game_metrics/images/total_turns.pdf>] [26 <./game_metrics/images/total_branches.pdf>] [27]
-<game_metrics/images/winrates.pdf, id=586, 462.52798pt x 346.89601pt>
+<game_metrics/images/winrates.pdf, id=594, 462.52798pt x 346.89601pt>
 File: game_metrics/images/winrates.pdf Graphic file (type pdf)
 <use game_metrics/images/winrates.pdf>
 Package pdftex.def Info: game_metrics/images/winrates.pdf  used on input line 152.
@@ -1980,7 +1981,7 @@ Overfull \hbox (2.61508pt too wide) in paragraph at lines 165--166
  []
 
 [29]
-<game_metrics/images/total_narrowness.pdf, id=638, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_narrowness.pdf, id=646, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_narrowness.pdf Graphic file (type pdf)
 <use game_metrics/images/total_narrowness.pdf>
 Package pdftex.def Info: game_metrics/images/total_narrowness.pdf  used on input line 201.
@@ -1989,12 +1990,12 @@ Package pdftex.def Info: game_metrics/images/total_narrowness.pdf  used on input
 Underfull \vbox (badness 3942) has occurred while \output is active []
 
  [30 <./game_metrics/images/total_narrowness.pdf>]
-<game_metrics/images/decisiveness.pdf, id=679, 462.52798pt x 346.89601pt>
+<game_metrics/images/decisiveness.pdf, id=687, 462.52798pt x 346.89601pt>
 File: game_metrics/images/decisiveness.pdf Graphic file (type pdf)
 <use game_metrics/images/decisiveness.pdf>
 Package pdftex.def Info: game_metrics/images/decisiveness.pdf  used on input line 220.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-<game_metrics/images/total_lead_change_actions.pdf, id=681, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_lead_change_actions.pdf, id=689, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_lead_change_actions.pdf Graphic file (type pdf)
 <use game_metrics/images/total_lead_change_actions.pdf>
 Package pdftex.def Info: game_metrics/images/total_lead_change_actions.pdf  used on input line 239.
@@ -2004,7 +2005,7 @@ Package pdftex.def Info: game_metrics/images/total_lead_change_actions.pdf  used
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <./game_metrics/images/decisiveness.pdf>]
-<game_metrics/images/total_drama.pdf, id=725, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_drama.pdf, id=733, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_drama.pdf Graphic file (type pdf)
 <use game_metrics/images/total_drama.pdf>
 Package pdftex.def Info: game_metrics/images/total_drama.pdf  used on input line 256.
@@ -2013,13 +2014,13 @@ Package pdftex.def Info: game_metrics/images/total_drama.pdf  used on input line
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<game_metrics/images/game_evaluation_1.pdf, id=728, 722.7pt x 289.08pt>
+<game_metrics/images/game_evaluation_1.pdf, id=736, 722.7pt x 289.08pt>
 File: game_metrics/images/game_evaluation_1.pdf Graphic file (type pdf)
 <use game_metrics/images/game_evaluation_1.pdf>
 Package pdftex.def Info: game_metrics/images/game_evaluation_1.pdf  used on input line 271.
 (pdftex.def)             Requested size: 361.3491pt x 144.53964pt.
 [32 <./game_metrics/images/total_lead_change_actions.pdf>]
-<game_metrics/images/game_evaluation_2.pdf, id=775, 722.7pt x 289.08pt>
+<game_metrics/images/game_evaluation_2.pdf, id=783, 722.7pt x 289.08pt>
 File: game_metrics/images/game_evaluation_2.pdf Graphic file (type pdf)
 <use game_metrics/images/game_evaluation_2.pdf>
 Package pdftex.def Info: game_metrics/images/game_evaluation_2.pdf  used on input line 278.
@@ -2074,7 +2075,7 @@ LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
 Underfull \vbox (badness 1565) has occurred while \output is active []
 
  [37]
-<advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png, id=906, 1224.575pt x 816.04875pt>
+<advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png, id=914, 1224.575pt x 816.04875pt>
 File: advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png Graphic file (type png)
 <use advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png>
 Package pdftex.def Info: advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png  used on input line 28.
@@ -2090,12 +2091,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
  []
 
 [38 <./advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png>]
-<advanced_ai_agents/images/diverse_figures/all_tiles_are_red_at_dist_3.png, id=918, 670.505pt x 603.25375pt>
+<advanced_ai_agents/images/diverse_figures/all_tiles_are_red_at_dist_3.png, id=926, 670.505pt x 603.25375pt>
 File: advanced_ai_agents/images/diverse_figures/all_tiles_are_red_at_dist_3.png Graphic file (type png)
 <use advanced_ai_agents/images/diverse_figures/all_tiles_are_red_at_dist_3.png>
 Package pdftex.def Info: advanced_ai_agents/images/diverse_figures/all_tiles_are_red_at_dist_3.png  used on input line 40.
 (pdftex.def)             Requested size: 201.15305pt x 180.97751pt.
-<advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png, id=920, 1381.16pt x 848.16875pt>
+<advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png, id=928, 1381.16pt x 848.16875pt>
 File: advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png Graphic file (type png)
 <use advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png>
 Package pdftex.def Info: advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png  used on input line 49.
@@ -2124,69 +2125,35 @@ Chapter 7.
 
 ]
 Chapter 8.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
 LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineMonoT-TLF on input line 6.
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/T1LinuxLibertineMonoT-TLF.fd
 File: T1LinuxLibertineMonoT-TLF.fd 2019/05/20 (autoinst) Font definitions for T1/LinuxLibertineMonoT-TLF.
 )
-LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <9> not available
+LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <8> not available
 (Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
+(Font)              scaled to size 8.0pt on input line 6.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineMonoT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/m/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/m/it' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/m/it' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS2/libertinust1mathsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS2/libertinust1mathsym/m/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS2/libertinust1mathex/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS2/libertinust1mathex/m/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1mathbb/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1mathbb/m/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
-(Font)              scaled to size 9.0pt on input line 6.
-LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
-(Font)              scaled to size 7.0pt on input line 6.
 
-Overfull \hbox (14.7557pt too wide) in paragraph at lines 6--7
-\T1/LinuxLibertineMonoT-TLF/regular/n/9 com / AndreiBourceanu / TFE _ UCL / tree / main / cpp _ Tricolor _ implementation$[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) ".
+Overfull \hbox (6.5348pt too wide) in paragraph at lines 6--7
+\T1/LinuxLibertineMonoT-TLF/regular/n/8 github . com / AndreiBourceanu / TFE _ UCL / tree / main / cpp _ Tricolor _ implementation$[][]\T1/LinuxLibertineT-TLF/m/n/10 (-20) .
  []
 
-<analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf, id=971, 462.52798pt x 346.89601pt>
+[45]
+<analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf, id=985, 462.52798pt x 346.89601pt>
 File: analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf Graphic file (type pdf)
 <use analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf>
 Package pdftex.def Info: analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf  used on input line 29.
 (pdftex.def)             Requested size: 163.22327pt x 122.41583pt.
-<analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf, id=972, 462.52798pt x 346.89601pt>
+<analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf, id=986, 462.52798pt x 346.89601pt>
 File: analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf Graphic file (type pdf)
 <use analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf>
 Package pdftex.def Info: analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf  used on input line 33.
 (pdftex.def)             Requested size: 163.22327pt x 122.41583pt.
-[45]
-<analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf, id=980, 462.52798pt x 346.89601pt>
+<analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf, id=988, 462.52798pt x 346.89601pt>
 File: analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf Graphic file (type pdf)
 <use analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf>
 Package pdftex.def Info: analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf  used on input line 51.
@@ -2196,7 +2163,7 @@ Package pdftex.def Info: analyzing_agents_performance/images/game_behaviour_alph
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [46 <./analyzing_agents_performance/images/game_behaviour_random_vs_alphabeta/winrates.pdf> <./analyzing_agents_performance/images/game_behaviour_random_vs_mcts/winrates.pdf>]
-<all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf, id=1069, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf, id=1077, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_turns.pdf  used on input line 76.
@@ -2205,15 +2172,17 @@ Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_turns.p
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf, id=1071, 462.52798pt x 346.89601pt>
+[47 <./analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf>]
+<all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf, id=1127, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf  used on input line 85.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf, id=1073, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf, id=1129, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf  used on input line 94.
@@ -2221,17 +2190,15 @@ Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/decisiveness.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[47 <./analyzing_agents_performance/images/game_behaviour_alphabeta_vs_mcts/winrates.pdf>]
-<all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf, id=1124, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf, id=1131, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_actions.pdf  used on input line 103.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf, id=1126, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf, id=1133, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf  used on input line 112.
@@ -2246,10 +2213,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  (./conclusion/conclusion.tex
 Chapter 9.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 1.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
-(Font)              scaled to size 9.0pt on input line 1.
 ) [53
 
 
@@ -2265,10 +2228,6 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
 
 ]
 Appendix A.
-LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 8.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 8.
 [55] [56]
 File: game_metrics/images/total_turns.pdf Graphic file (type pdf)
 <use game_metrics/images/total_turns.pdf>
@@ -2278,32 +2237,32 @@ File: game_metrics/images/total_branches.pdf Graphic file (type pdf)
 <use game_metrics/images/total_branches.pdf>
 Package pdftex.def Info: game_metrics/images/total_branches.pdf  used on input line 80.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_more_than_one_move.pdf, id=1391, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_more_than_one_move.pdf, id=1399, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_more_than_one_move.pdf Graphic file (type pdf)
 <use game_metrics/images/total_more_than_one_move.pdf>
 Package pdftex.def Info: game_metrics/images/total_more_than_one_move.pdf  used on input line 88.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_repeated_states.pdf, id=1392, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_repeated_states.pdf, id=1400, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_repeated_states.pdf Graphic file (type pdf)
 <use game_metrics/images/total_repeated_states.pdf>
 Package pdftex.def Info: game_metrics/images/total_repeated_states.pdf  used on input line 93.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_decision_factors.pdf, id=1393, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_decision_factors.pdf, id=1401, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_decision_factors.pdf Graphic file (type pdf)
 <use game_metrics/images/total_decision_factors.pdf>
 Package pdftex.def Info: game_metrics/images/total_decision_factors.pdf  used on input line 99.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_occupied_tiles.pdf, id=1394, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_occupied_tiles.pdf, id=1402, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_occupied_tiles.pdf Graphic file (type pdf)
 <use game_metrics/images/total_occupied_tiles.pdf>
 Package pdftex.def Info: game_metrics/images/total_occupied_tiles.pdf  used on input line 104.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_distance.pdf, id=1395, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_distance.pdf, id=1403, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_distance.pdf Graphic file (type pdf)
 <use game_metrics/images/total_distance.pdf>
 Package pdftex.def Info: game_metrics/images/total_distance.pdf  used on input line 110.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_number_of_pieces.pdf, id=1396, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_number_of_pieces.pdf, id=1404, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_number_of_pieces.pdf Graphic file (type pdf)
 <use game_metrics/images/total_number_of_pieces.pdf>
 Package pdftex.def Info: game_metrics/images/total_number_of_pieces.pdf  used on input line 115.
@@ -2324,7 +2283,7 @@ File: game_metrics/images/decisiveness.pdf Graphic file (type pdf)
 <use game_metrics/images/decisiveness.pdf>
 Package pdftex.def Info: game_metrics/images/decisiveness.pdf  used on input line 143.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<game_metrics/images/total_lead_change_moves.pdf, id=1397, 462.52798pt x 346.89601pt>
+<game_metrics/images/total_lead_change_moves.pdf, id=1405, 462.52798pt x 346.89601pt>
 File: game_metrics/images/total_lead_change_moves.pdf Graphic file (type pdf)
 <use game_metrics/images/total_lead_change_moves.pdf>
 Package pdftex.def Info: game_metrics/images/total_lead_change_moves.pdf  used on input line 148.
@@ -2356,32 +2315,32 @@ File: all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf Graphic file 
 <use all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_branches.pdf  used on input line 192.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf, id=1681, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf, id=1689, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_more_than_one_move.pdf  used on input line 200.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf, id=1682, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf, id=1690, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_repeated_states.pdf  used on input line 205.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf, id=1683, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf, id=1691, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_decision_factors.pdf  used on input line 211.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf, id=1684, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf, id=1692, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_occupied_tiles.pdf  used on input line 216.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf, id=1685, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf, id=1693, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_distance.pdf  used on input line 222.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf, id=1686, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf, id=1694, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_number_of_pieces.pdf  used on input line 227.
@@ -2390,12 +2349,12 @@ Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_number_
 
 LaTeX Warning: Float too large for page by 12.74313pt on input line 232.
 
-<all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf, id=1687, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf, id=1695, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/winrates.pdf  used on input line 242.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf, id=1688, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf, id=1696, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_narrowness.pdf  used on input line 247.
@@ -2404,7 +2363,7 @@ File: all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf Graphic file (t
 <use all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/decisiveness.pdf  used on input line 255.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf, id=1689, 462.52798pt x 346.89601pt>
+<all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf, id=1697, 462.52798pt x 346.89601pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_lead_change_moves.pdf  used on input line 260.
@@ -2417,12 +2376,12 @@ File: all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf Graphic file (ty
 <use all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/total_drama.pdf  used on input line 271.
 (pdftex.def)             Requested size: 174.10445pt x 130.57794pt.
-<all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf, id=1690, 722.7pt x 289.08pt>
+<all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf, id=1698, 722.7pt x 289.08pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_1.pdf  used on input line 277.
 (pdftex.def)             Requested size: 174.10445pt x 69.64085pt.
-<all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf, id=1691, 722.7pt x 289.08pt>
+<all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf, id=1699, 722.7pt x 289.08pt>
 File: all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf Graphic file (type pdf)
 <use all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf>
 Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/game_evaluation_2.pdf  used on input line 282.
@@ -2431,37 +2390,42 @@ Package pdftex.def Info: all_game_metrics/images/alphabeta_vs_mcts/game_evaluati
 
 
 
-] (./dissertation.bbl [63] [64])
-<front_back/_backbanner_EPL-master-thesis.pdf, id=2166, 597.23125pt x 833.1125pt>
+] (./dissertation.bbl
+LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <10> not available
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 29.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
+(Font)              scaled to size 10.0pt on input line 29.
+ [63] [64])
+<front_back/_backbanner_EPL-master-thesis.pdf, id=2172, 597.23125pt x 833.1125pt>
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf  used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf  used on input line 99.
 (pdftex.def)             Requested size: 597.22978pt x 833.11047pt.
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf  used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf  used on input line 99.
 (pdftex.def)             Requested size: 597.22978pt x 833.11047pt.
-<front_back/_backbanner_EPL-master-thesis.pdf, id=2169, page=1, 597.23125pt x 833.1125pt>
+<front_back/_backbanner_EPL-master-thesis.pdf, id=2175, page=1, 597.23125pt x 833.1125pt>
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 99.
 (pdftex.def)             Requested size: 597.22978pt x 833.11047pt.
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 99.
 (pdftex.def)             Requested size: 483.88223pt x 674.9954pt.
  [65]
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 99.
 (pdftex.def)             Requested size: 483.88223pt x 674.9954pt.
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 99.
 (pdftex.def)             Requested size: 483.88223pt x 674.9954pt.
 File: front_back/_backbanner_EPL-master-thesis.pdf Graphic file (type pdf)
 <use front_back/_backbanner_EPL-master-thesis.pdf, page 1>
-Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 89.
+Package pdftex.def Info: front_back/_backbanner_EPL-master-thesis.pdf , page1 used on input line 99.
 (pdftex.def)             Requested size: 483.88223pt x 674.9954pt.
  [66 <./front_back/_backbanner_EPL-master-thesis.pdf>]
 
@@ -2475,18 +2439,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 47806 strings out of 478287
- 911627 string characters out of 5849289
- 1181105 words of memory out of 5000000
- 64278 multiletter control sequences out of 15000+600000
- 667667 words of font info for 470 fonts, out of 8000000 for 9000
+ 47608 strings out of 478287
+ 906675 string characters out of 5849289
+ 1181132 words of memory out of 5000000
+ 64211 multiletter control sequences out of 15000+600000
+ 627220 words of font info for 354 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
- 106i,18n,105p,1382b,964s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_tlukpt.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on dissertation.pdf (74 pages, 3236120 bytes).
+ 106i,18n,105p,1382b,944s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_tlukpt.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on dissertation.pdf (74 pages, 3240623 bytes).
 PDF statistics:
- 2293 PDF objects out of 2487 (max. 8388607)
- 881 compressed objects within 9 object streams
+ 2300 PDF objects out of 2487 (max. 8388607)
+ 888 compressed objects within 9 object streams
  208 named destinations out of 1000 (max. 500000)
- 102181 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 84261 words of extra memory for PDF output out of 89155 (max. 10000000)
 

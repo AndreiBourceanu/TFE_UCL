@@ -33,14 +33,14 @@ In the implemented representation, each tile is stored as a 16-bit integer. The 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{implementation_of_the_game_model/images/board_state_opti.png}
-    \caption{16-bit integer visual representation masking the state of a board}
+    \caption{16-bit integer visual representation masking the state of the board}
     \label{fig:board_state_opti}
 \end{figure}
 
 The player to move is stored separately as a Boolean value. Consequently, the size of a board state is:
 
 %\begin{equation}
-   \[ 61 * 16 \text{ bits} + 8 \text{ bits} = 61 * 2 \text{ bytes} + 1 \text{ byte} = 123 \text{ bytes}\]
+   \[ 61 \cdot 16 \text{ bits} + 8 \text{ bits} = 61 \cdot 2 \text{ bytes} + 1 \text{ byte} = 123 \text{ bytes}\]
 %    \label{eq:board_state_size}
 %\end{equation}
 

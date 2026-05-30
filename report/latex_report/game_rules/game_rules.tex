@@ -16,7 +16,7 @@ In the two-player version considered in this thesis, each player starts with 18 
     \label{fig:board_setup}
 \end{figure}
 
-A central feature of Tricolor is that several pieces may occupy the same tile. Such a group of pieces is called a stack. A stack may contain pieces of one or both players. The player who controls a stack is determined by the color of the piece on top of it. If the top piece is white, the stack is controlled by Player 1; if the top piece is black, the stack is controlled by Player 2. Pieces located below an opponent’s top piece are considered imprisoned: they remain on the board, but they do not control the stack. An example of a stack is shown in~\ref{fig:stack_example}.
+A central feature of Tricolor is that several pieces may occupy the same tile. Such a group of pieces is called a \textit{stack}. A stack may contain pieces of one or both players. The player who controls a stack is determined by the color of the piece on top of it. If the top piece is white, the stack is controlled by Player 1; if the top piece is black, the stack is controlled by Player 2. Pieces located below an opponent’s top piece are considered \textit{imprisoned}: they remain on the board, but they do not control the stack. An example of a stack is shown in~\ref{fig:stack_example}.
 
 \begin{figure}[h]
     \centering
@@ -46,7 +46,7 @@ First, if the destination tile is empty, the selected pieces are simply moved to
 
 Second, if the destination tile is controlled by the same player, the moved pieces are added to the existing stack. The moving player keeps control of the resulting stack, since their pieces are placed above any opponent pieces already present in the destination stack.
 
-Third, if the destination tile is controlled by the opponent, the move is only legal if the moving stack is strong enough to defeat the defending stack. This interaction is governed by the notion of power, described in the next section.
+Third, if the destination tile is controlled by the opponent, the move is only legal if the moving stack is strong enough to defeat the defending stack. This interaction is governed by the notion of \textit{power}, described in the next section.
 
 \section{Power, Capture, and Imprisonment}
 \label{power_capture_imprisonment}
@@ -67,7 +67,7 @@ where $n$ is the number of friendly pieces in the stack and $c$ is the value of 
 
 When a player moves onto a tile controlled by the opponent, the power of the attacking group is compared with the power of the defending stack. Three situations may occur.
 
-If the attacking power is strictly greater than twice the defending power, the move is a capture. In this case, the opponent’s pieces located on the destination tile are removed from the game. The attacking pieces then occupy the destination tile. An example of such a capture is shown in~\ref{fig:capture_rule}.
+If the attacking power is strictly greater than twice the defending power, the move is a \textit{capture}. In this case, the opponent’s pieces located on the destination tile are removed from the game. The attacking pieces then occupy the destination tile. An example of such a capture is shown in~\ref{fig:capture_rule}.
 
 \begin{figure}[h]
     \centering
@@ -76,7 +76,7 @@ If the attacking power is strictly greater than twice the defending power, the m
     \label{fig:capture_rule}
 \end{figure}
 
-If the attacking power is strictly greater than the defending power, but not strictly greater than twice the defending power, the move is an imprisonment. In this case, the defending pieces are not removed from the board. Instead, the attacking pieces are placed on top of them, and the attacking player gains control of the stack. An example of imprisonment is shown in~\ref{fig:imprison_rule}.
+If the attacking power is strictly greater than the defending power, but not strictly greater than twice the defending power, the move is an \textit{imprisonment}. In this case, the defending pieces are not removed from the board. Instead, the attacking pieces are placed on top of them, and the attacking player gains control of the stack. An example of imprisonment is shown in~\ref{fig:imprison_rule}.
 
 \begin{figure}[h]
     \centering
@@ -87,7 +87,7 @@ If the attacking power is strictly greater than the defending power, but not str
 
 If the attacking power is less than or equal to the defending power, the move is illegal. The attacking player may not move onto that tile.
 
-Tricolor also includes an important forced-move rule. If a player has at least one legal move that captures or imprisons an opponent’s stack, then the player must choose one such move. If several capture or imprisonment moves are available, the player may choose freely among them. This rule has a strong influence on the strategy of the game, since players may be forced into tactical exchanges even when they would prefer to avoid them.
+Tricolor also includes an important \textit{forced-move} rule. If a player has at least one legal move that captures or imprisons an opponent’s stack, then the player must choose one such move. If several capture or imprisonment moves are available, the player may choose freely among them. This rule has a strong influence on the strategy of the game, since players may be forced into tactical exchanges even when they would prefer to avoid them.
 
 \section{End of the Game}
 
@@ -96,7 +96,7 @@ A game of Tricolor ends when the player whose turn it is has no legal move avail
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{game_rules/images/black_win.png}
-    \caption{Example of a finished game won by the player with the black pieces}
+    \caption{Example with the final position of a game won by the player with the black pieces}
     \label{fig:black_win}
 \end{figure}
 

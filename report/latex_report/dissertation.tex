@@ -10,8 +10,18 @@
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{url}
+\renewcommand{\UrlFont}{\footnotesize\ttfamily}
 \usepackage{doi}
+\renewcommand{\doi}[1]{{\footnotesize\url{https://doi.org/#1}}}
 \usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{softred}{RGB}{180,60,60}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=softred,
+    urlcolor=blue
+}
 %\usepackage{subcaption}
 \usepackage{caption}
 \usepackage{comment}
