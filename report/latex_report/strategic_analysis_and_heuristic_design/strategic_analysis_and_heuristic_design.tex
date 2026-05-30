@@ -9,31 +9,40 @@ Heuristic design is a central problem in game-playing AI. In general game playin
 
 A good heuristic for Tricolor should reflect the main structural features of the game: control of pieces, positional strength, stack management, and the tactical consequences of forced capture or imprisonment moves. The following sections describe the main strategic observations used to construct such an evaluation function.
 
-\section{First insight}
+\section{First Heuristic}
 
-The goal of the game Tricolor is to make the opponent run out of moves during their turn. In order to achieve this, you need to capture or imprison all of the opponent's pieces \footnote{In theory, a player can run out of legal moves even if he still controls one or more tiles. This happens when the losing player only has stacks fully surrounded by stronger opponent stacks he can't capture. However, such strategies can be neglected when designing heuristics as surrounding weaker opponent stacks doesn't bring a greater advantage than capturing or imprisoning them.}. Therefore, a first solid heuristic is to compare the number of controlled pieces on the board between the players.
+The objective of Tricolor is to leave the opponent without any legal moves during their turn. This is achieved by capturing or imprisoning all of the opponent’s pieces. A natural baseline heuristic for evaluating a game state is therefore to compare the number of controlled pieces on the board for each player, as this provides a coarse approximation of relative material advantage.
 
-\section{Second insight}
+\section{Second Heuristic}
 
-Capturing and imprisoning opponent pieces but also defending your own requires your stacks to be on stronger tiles \footnote{Red colored tiles triple the power, black doubles it and white has no effect.}. Therefore, a second heuristic is to compare the accumulated power of all the controlled stacks of pieces on the board between the players.
+For each player, capturing and imprisoning the opponent's pieces, as well as defending their own, is strongly influenced by the positioning of stacks on powerful tiles. Consequently, a second heuristic consists of comparing the total accumulated strength of all controlled stacks on the board between the two players.
 
-\section{Third insight}
+\section{Third Heuristic}
 
-Tricolor has a rule specifying that if a player can imprison or capture one or more enemy stacks during their turn, they are forced to play such a move. If we ignored this rule, players could always force any game to end in a draw by stacking at least 3 pieces on any red tile, which will never be captured. This is because the power of such a stack is $3 \times 3 = 9$ and it's impossible to form a stack with power $\geq 10$ in order to at least imprison it. However, because this rule exists, players can make their opponent "break" the power of their stacks placed on red tiles by forcing them to capture nearby pieces. This leads to a game strategy called "Single piece baiting".
+At first glance, tall stacks positioned on red tiles may appear impossible to capture or imprison due to their high power. However, the forced-move rule in Tricolor can compel players to dislocate such stacks to weaker tiles, thereby significantly increasing their vulnerability.
 
-To better understand it, let's consider the scenario in Figure \ref{fig:single_pawn_baiting}:
+This insight motivates a new strategy, referred to in this paper as \textit{single-piece baiting} attack.
+
+To better understand this strategy, we consider the example presented in Scenario~\ref{fig:single_pawn_baiting}:
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{advanced_ai_agents/images/diverse_figures/single_pawn_baiting.png}
-    \caption{Figure displaying how the "single piece baiting" strategy used by the white player defeats the powerful stack of the black player.}
+    \caption{Figure displaying how the \textit{single-piece baiting} strategy used by the white player defeats the powerful stack of the black player.}
     \label{fig:single_pawn_baiting}
 \end{figure}
 
-In the scenario presented in Figure \ref{fig:single_pawn_baiting}, the white player (which we will refer to as "White") has a stack of 5 pieces on the red central tile and the black player (which we will refer to as "Black") has a stack of 4 pieces on a red tile close to White. In the second image, White moves a white piece on a white tile, which forces the Black to capture it with at least 2 pieces (because the tile is at distance 2 of their stack). White then repeats the "single piece baiting" strategy until Black runs out of pieces. Finally, in the sixth image, White manages to imprison all of Black's pieces and wins the game \footnote{Notice that White still has one piece left on the initial central tile, which means this strategy also works when both players have stacks of the same size.}. The reason why this strategy works is because the "victim" player (in this case Black) is further away from the contested tile the attacker (in this case White) initially moved its piece to. Now, the question is, can a stack with less pieces win against a stack with more pieces using a "single piece baiting" attack ? The answer is \textbf{no}.\\
+This scenario illustrates how Player 1 forces Player 2 to dislocate their stack onto a white tile by moving a single piece at each turn. Since Player 2 is located further from the white tile, they are required to dislocate at least two pieces per turn. In the long run, this leads to Player 2 losing more pieces than Player 1, resulting in a win for Player 1.\footnote{After the final move, Player 1 still has one piece remaining on the initial tile, indicating that this strategy also applies when both players start with the same number of pieces on the initial tiles.}
+
+An important question that arises is whether a smaller stack can defeat a larger stack using a \textit{single-piece baiting} attack.
+
+In the following paragraph, it will be shown that the answer to this question is negative.\\
 
 \textbf{Proof}:\\
-First, we are only interested in positions where both stacks are on red tiles. This is because during a game, good players will try to move their pieces on the red tiles as fast as possible. Also, we are only interested in positions where the tile used as bait has the color white. This is because using a black or red tile as bait will give the defender the advantage of having a better defended stack, which will force the attacker to use even more pieces to continue the attack. By the geometry of the board, which has a hexagonal tiling, we can observe that for any tile, all the tiles at distance 3 have the same color (see Figure \ref{fig:all_tiles_are_red_at_dist_3} as an example). This means a stack on a red tile can't be attacked with a "single piece baiting" attack using a bait tile at distance 3 of the defender. In the best case, such an attack will happen when using a white bait tile at distance two (e.g. in Figure \ref{fig:single_pawn_baiting} where the white bait tile is at distance two of the black stack).
+
+First, it is important to specify that only scenarios in which both players have stacks on red tiles are relevant. This is because strong players typically aim to place their stacks onto red tiles as quickly as possible. Furthermore, we restrict our attention to positions in which the bait tile is white. Using a black or red tile as bait would advantage the defender by providing a more strongly supported stack, thereby forcing the attacker to commit additional pieces in order to sustain the attack.
+
+From the geometry of the board, it can be observed that for any given tile, all tiles at distance three share the same color, as shown in~\ref{fig:all_tiles_are_red_at_dist_3}. This implies that a stack on a red tile cannot be attacked using a \textit{single-piece baiting} strategy with a bait tile located at distance three from the defender. In the most favorable case for the attacker, the white bait tile is located at distance two from the defender, as illustrated in the previous example~\ref{fig:single_pawn_baiting}.
 
 \begin{figure}[h]
     \centering
@@ -42,16 +51,16 @@ First, we are only interested in positions where both stacks are on red tiles. T
     \label{fig:all_tiles_are_red_at_dist_3}
 \end{figure}
 
-Now that we established the scenarios we are interested in for the "single piece bait" attack, let's show that if the attacker has less pieces than the defender, the attack will never succeed. The following flowchart \ref{fig:schema_single_pawn_bait} proves it by enumerating all the possible moves the attacker has.
+Now that the relevant scenarios for the single-piece baiting strategy have been established, we show that if the attacker has fewer pieces than the defender, the attack can never succeed. The flowchart in~\ref{fig:schema_single_pawn_bait} supports this claim by enumerating all possible moves available to the attacker.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.2]{advanced_ai_agents/images/diverse_figures/schema_single_pawn_bait.png}
-    \caption{Flowchart of all possible move sequences during a "single pawn bait" attack.}
+    \includegraphics[scale=0.3]{strategic_analysis_and_heuristic_design/images/proof_schema_single_piece_baiting.png}
+    \caption{Flowchart illustrating all possible move sequences during a \textit{single-piece baiting} attack.}
     \label{fig:schema_single_pawn_bait}
 \end{figure}
 
-Finally, a third heuristic is to prioritize stacking pieces on a minimal number of tiles. This is because having a smaller number of big stacks is better than having a bigger number of small stacks. As we just proved earlier, a big stack on a red tile won't be the victim of "single piece bait" attack of a smaller stack, but the opposite is true.
+Finally, this leads to the design of a third heuristic, which consists of prioritizing the concentration of pieces onto a minimal number of tiles. This is based on the observation that a small number of large stacks is preferable to a larger number of small stacks. As shown previously, a large stack on a red tile cannot be the victim of a \textit{single-piece baiting} attack from a smaller stack, whereas the opposite situation does not hold.
 
 \section{Combined Heuristic and Limitations}
 

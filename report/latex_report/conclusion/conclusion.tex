@@ -1,10 +1,28 @@
 \chapter{Conclusion and Perspectives for the Study of Tricolor}
 \label{conclusion}
 
-\section{Final Remarks}
+\section{Conclusions}
 
-Tricolor is a historically unusual game whose strategic richness had not yet been explored with modern computational tools. This thesis has shown that the game is not only historically interesting, but also computationally complex and strategically nontrivial.
+This thesis presented the first systematic computational study of Tricolor, a board game invented by Maurice Kraitchik in 1930. Although the game occupies an interesting position in the history of abstract strategy games due to its early use of a hexagonal board and its original stack-based mechanics, it had previously received very little to no attention from the perspectives of artificial intelligence and computational game analysis.
 
-By formalizing the rules, implementing a simulation framework, analyzing game metrics, designing heuristics, and evaluating AI agents, this work provides a first computational foundation for the study of Tricolor. The results suggest that the game offers many opportunities for future research, from stronger AI agents to mathematical analysis and historical interpretation.
+The work began by formalizing the rules of Tricolor from historical sources and translating them into a precise computational model suitable for simulation and automated experimentation. Based on this formalization, an efficient game engine was implemented in C++, providing support for move generation, state manipulation, gameplay visualization, and AI-based search.
 
-More broadly, this thesis illustrates how artificial intelligence can be used not only to play games, but also to study them. In the case of Tricolor, computational methods make it possible to revive and investigate a historical mathematical game that would otherwise remain difficult to analyze systematically. This opens the way for future interdisciplinary work on Tricolor and on other historical games whose strategic properties remain largely unexplored.
+Large-scale simulations made it possible to characterize several structural properties of the game. The results showed that Tricolor combines relatively long games with a high branching factor, leading to an estimated game tree complexity comparable to that of many challenging combinatorial games. At the same time, the game exhibited balanced outcomes under random play and dynamic gameplay properties characterized by frequent lead changes and late-emerging decisive advantages.
+
+The study also identified several strategic principles that emerge naturally from the mechanics of the game. Material control, positional power, and stack concentration were shown to play an important role in successful play and were incorporated into a heuristic evaluation function. Experimental results demonstrated that an Alpha-Beta agent guided by these strategic observations significantly outperformed a Monte Carlo Tree Search agent based on random simulations. These findings suggest that domain-specific knowledge is particularly valuable in Tricolor, where tactical consequences may be delayed and difficult to estimate through uninformed rollouts.
+
+Overall, the results confirm that Tricolor is both strategically rich and computationally challenging. Beyond the performance of the implemented agents, the thesis establishes a foundation for future investigations of the game and provides tools that can support further research in artificial intelligence, combinatorial game theory, and historical game studies.
+
+\section{Future Research Directions}
+
+Several directions for future work emerge from this study.
+
+A first area concerns the development of stronger artificial intelligence agents. The Alpha-Beta agent implemented in this thesis relies on a manually designed heuristic, while the Monte Carlo Tree Search agent uses standard random rollouts. Future work could investigate more sophisticated search techniques, including transposition tables, improved move ordering, heuristic-guided simulations, or hybrid approaches combining search and learned evaluations. Learning-based methods are particularly promising. Self-play systems inspired by AlphaZero could potentially learn strategic patterns directly from generated games and discover positional concepts that are difficult to identify manually.
+
+A second direction concerns the mathematical analysis of Tricolor. The complexity estimates presented in this thesis are based on empirical observations and theoretical upper bounds. More precise investigations could focus on the exact structure of the state space, the prevalence of transpositions, the existence of forced-win positions, or the identification of strategically important endgames. Such analyses could contribute to a deeper theoretical understanding of the game and its relationship to other combinatorial board games.
+
+Future work could also extend the strategic study of Tricolor itself. The heuristics proposed in this thesis were derived from gameplay observations and limited experimentation. Stronger agents may reveal additional strategic principles, tactical motifs, or positional structures that remain undiscovered. Automated heuristic tuning and large-scale self-play experiments could help refine the current evaluation framework and provide a more complete description of expert-level play.
+
+Finally, Tricolor offers interesting opportunities from a historical and cultural perspective. As one of the earliest known hexagonal board games, it represents an original contribution to the history of game design. The computational framework developed in this thesis could support future work aimed at preserving, documenting, and comparing historical games. Integration into general game systems such as Ludii would facilitate broader accessibility and enable direct comparison with other historical and modern board games. More generally, Tricolor illustrates how artificial intelligence can contribute not only to playing games, but also to understanding them as mathematical, historical, and cultural artifacts.
+
+Taken together, these perspectives suggest that the present work should be viewed not as a definitive analysis of Tricolor, but as the starting point of a broader research program devoted to the study of this historically significant game.

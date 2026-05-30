@@ -37,7 +37,7 @@ However, the results should be interpreted carefully. Random play may produce po
 
 The first metric measures the duration of a game in number of turns. This is important for AI agents because game length directly affects the size of the search tree and the cost of simulations. A game that tends to last many turns is generally harder to analyze exhaustively than a short game with the same branching factor.
 
-The distribution of game durations obtained from the simulations is shown in~\ref{fig:total_turns}. The average duration is approximately 173 turns, with a standard deviation of 64 turns.
+The distribution of game durations obtained from the simulations is shown in~\ref{fig:total_turns}. The average duration is approximately 177 turns, with a standard deviation of 69 turns.
 
 \begin{figure}[h]
     \centering
@@ -56,7 +56,7 @@ This variability is important for AI. In Monte Carlo Tree Search, long games mak
 
 The branching factor measures the number of legal actions available to the player to move. It is one of the most important indicators of search complexity, since many tree-search algorithms have a cost that grows exponentially with the branching factor.
 
-The average branching factor observed during the simulations is shown in~\ref{fig:total_branches}. Across the simulated games, Tricolor has an average branching factor of approximately 47, with a standard deviation of 10.
+The average branching factor observed during the simulations is shown in~\ref{fig:total_branches}. Across the simulated games, Tricolor has an average branching factor of approximately 47, with a standard deviation of 9.
 
 \begin{figure}[h]
     \centering
@@ -81,19 +81,19 @@ where $b$ is the average branching factor and $d$ is the average game depth~\cit
 
 Using the empirical values obtained from random simulations,
 
-\[ b\approx47 \text{ and } d\approx173, \]
+\[ b\approx47 \text{ and } d\approx177, \]
 
 we obtain:
 
-\[ GTC \approx b^d = 47^{173} \approx 47^{1.2 \times 144} = ({47^{1.2}})^{144} \approx 100^{144}\]
+\[ GTC \approx b^d = 47^{177} \approx 47^{1.2 \times 148} = ({47^{1.2}})^{148} \approx 100^{148}\]
 
 Taking the base-10 logarithm gives approximately:
 
- \[ log_{10}(GTC) \approx 288. \]
+ \[ log_{10}(GTC) \approx 296. \]
 
 Thus, the game tree complexity of Tricolor is roughly:
 
- \[ GTC \approx 10^{288} \]
+ \[ GTC \approx 10^{296} \]
 
 This value should be interpreted as a rough estimate rather than an exact result. It depends on the average branching factor and average game length observed under random play, which may differ from values obtained under stronger play. Nevertheless, the estimate clearly indicates that Tricolor has an extremely large game tree.
 
@@ -145,7 +145,7 @@ This difference is important. A large game tree makes direct search difficult, w
 
 The final outcome of each simulated game was recorded as a win for Player 1, a win for Player 2, or a draw. Since the initial board setup is symmetric, one important question is whether the first player has a measurable advantage under random play.
 
-The results are shown in~\ref{fig:winrates}. Player 1 wins approximately 46.6% of the games, while Player 2 wins approximately 46.3%. Draws account for approximately 7.1% of the simulated games.
+The results are shown in~\ref{fig:winrates}. Player 1 wins approximately 49.4\% of the games, while Player 2 wins approximately 48.9\%. Draws account for approximately 1.8\% of the simulated games.
 
 \begin{figure}[h]
     \centering
@@ -154,9 +154,9 @@ The results are shown in~\ref{fig:winrates}. Player 1 wins approximately 46.6% o
     \label{fig:winrates}
 \end{figure}
 
-The difference between the win rates of the two players is only 0.3 percentage points. Given the size of the sample, this suggests that there is no substantial first-player advantage under random play. This is consistent with the symmetric nature of the initial position.
+The difference between the win rates of the two players is only 0.5 percentage points. Given the size of the sample, this suggests that there is no substantial first-player advantage under random play. This is consistent with the symmetric nature of the initial position.
 
-The draw rate is relatively low. This indicates that, even when both players move randomly, most games eventually lead to a decisive outcome. The low draw rate is partly explained by the capture and imprisonment mechanics: once a player begins to lose control over stacks, their mobility may decrease rapidly, eventually leaving them with no legal moves.
+The draw rate is very low. This indicates that, even when both players move randomly, most games eventually lead to a decisive outcome. The low draw rate is partly explained by the capture and imprisonment mechanics: once a player begins to lose control over stacks, their mobility may decrease rapidly, eventually leaving them with no legal moves.
 
 However, these results should not be generalized too quickly to expert play. A low draw rate under random play does not necessarily imply a low draw rate between strong agents. Strong players may be better at preserving material, avoiding forced weaknesses, or maintaining defensive structures. The comparison with stronger AI agents is therefore revisited later in the thesis.
 
@@ -194,7 +194,7 @@ This evaluation is intentionally simple. It is not meant to represent perfect st
 
 Narrowness measures how many actions are worth considering in a given position. In this thesis, an action is considered relevant if it improves or maintains the current evaluation score for the player to move.
 
-The average narrowness observed in the simulations is shown in~\ref{fig:total_narrowness}. The mean value is approximately 25.13, with a standard deviation of 5.39.
+The average narrowness observed in the simulations is shown in~\ref{fig:total_narrowness}. The mean value is approximately 25, with a standard deviation of 5.
 
 \begin{figure}[h]
     \centering
@@ -203,7 +203,7 @@ The average narrowness observed in the simulations is shown in~\ref{fig:total_na
     \label{fig:total_narrowness}
 \end{figure}
 
-Since the average branching factor is approximately 47.07, this means that roughly half of the available moves preserve or improve the evaluation according to the simple evaluation function. This suggests that Tricolor often presents players with a relatively large number of plausible choices.
+Since the average branching factor is approximately 47, this means that roughly half of the available moves preserve or improve the evaluation according to the simple evaluation function. This suggests that Tricolor often presents players with a relatively large number of plausible choices.
 
 From an AI perspective, this is important. If only a small number of moves were relevant in most positions, move ordering or pruning would be easier. Instead, Tricolor frequently offers many moves that appear reasonable according to material and positional criteria. This increases the difficulty of selecting strong actions.
 
@@ -213,7 +213,7 @@ The interpretation of narrowness depends strongly on the evaluation function. A 
 
 Decisiveness measures the proportion of the game completed before the eventual winner obtains an advantage that is maintained until the end. This metric is computed only for games with a winner; drawn games are excluded.
 
-The distribution of decisiveness values is shown in~\ref{fig:decisiveness}. The average decisiveness is approximately 98.82%, with a standard deviation of 6.91%.
+The distribution of decisiveness values is shown in~\ref{fig:decisiveness}. The average decisiveness is approximately 70\%, with a standard deviation of 22\%.
 
 \begin{figure}[h]
     \centering
@@ -222,7 +222,7 @@ The distribution of decisiveness values is shown in~\ref{fig:decisiveness}. The 
     \label{fig:decisiveness}
 \end{figure}
 
-This very high value means that, under random play, the eventual winner often does not establish a stable advantage until very late in the game. In many games, the evaluation may fluctuate for a long time before one player finally obtains a decisive lead.
+This relatively high value means that, on average, under random play, the eventual winner often does not establish a stable advantage until late in the game. In many games, the evaluation may fluctuate for a long time before one player finally obtains a decisive lead.
 
 This result suggests that Tricolor has a high degree of uncertainty under random play. The outcome often remains unclear until the final phase of the game. This is consistent with the presence of imprisonment mechanics: pieces that appear lost may later be recovered if control of a stack changes.
 
@@ -232,7 +232,7 @@ From a gameplay perspective, this can be seen as an interesting property. Games 
 
 Stability measures how often the lead changes during a game. In this thesis, a lead change occurs when the sign of the evaluation score changes from positive to negative or from negative to positive.
 
-The percentage of lead-changing turns is shown in~\ref{fig:total_lead_change_actions}. The average value is approximately 16.05%, with a standard deviation of 6.79%.
+The percentage of lead-changing turns is shown in~\ref{fig:total_lead_change_actions}. The average value is approximately 16\%, with a standard deviation of 7\%.
 
 \begin{figure}[h]
     \centering
@@ -280,24 +280,24 @@ To illustrate the evolution of position evaluations during play, two example gam
     \label{fig:game_evaluation_2}
 \end{figure}
 
-In the first example, Player 1 eventually wins. During the first part of the game, the evaluation remains relatively close to equality. Later, Player 2 obtains a favorable position, but Player 1 manages to recover and eventually maintain the advantage until victory. This example illustrates how Tricolor positions can remain unstable for many turns before a decisive advantage appears.
+In the first example, Player 2 eventually wins. The evaluation curve crosses the equality line several times, indicating multiple lead changes. Later, Player 1 obtains a favorable position, but Player 2 manages to recover and eventually maintain the advantage until victory. This example illustrates how Tricolor positions can remain unstable for many turns before a decisive advantage appears.
 
-In the second example, Player 2 wins. The evaluation curve crosses the equality line several times, indicating multiple lead changes. The final advantage is established only late in the game. This example is consistent with the high decisiveness values measured across the full simulation set.
+In the second example, Player 1 wins. During the first part of the game, the evaluation remains relatively close to equality. The final advantage is established only late in the game. This example is consistent with the high decisiveness values measured across the full simulation set.
 
 These examples show that the aggregate metrics are not merely abstract quantities. They correspond to concrete gameplay patterns: fluctuating evaluations, late stabilization of advantage, and occasional dramatic shifts caused by tactical interactions.
 
 \section{Additional Metrics}
 
-Several additional metrics were also computed and are reported in Appendix A~\ref{all_game_metrics}. These include:
+Several additional metrics were also computed and are reported in Appendix~\ref{all_game_metrics}. These include:
 
 \begin{itemize}
-    \item Decision Moves, measuring the percentage of turns in which more than one legal move is available
-    \item State Repetition, measuring how often positions repeat during a game
-    \item Decision Factor, measuring the average number of legal actions when forced single-move turns are excluded
-    \item Board Sites Occupied, measuring how many tiles are occupied at least once during a game
-    \item Move Distance, measuring the average distance travelled by moved pieces
-    \item Piece Number, measuring the average number of pieces remaining on the board during a game
-    \item Lead Change Moves, measuring how many available actions would change the current leader
+    \item Decision Moves, measuring the percentage of turns in which more than one legal move is available;
+    \item State Repetition, measuring how often positions repeat during a game;
+    \item Decision Factor, measuring the average number of legal actions when forced single-move turns are excluded;
+    \item Board Sites Occupied, measuring how many tiles are occupied at least once during a game;
+    \item Move Distance, measuring the average distance travelled by moved pieces;
+    \item Piece Number, measuring the average number of pieces remaining on the board during a game;
+    \item Lead Change Moves, measuring how many available actions would change the current leader.
 \end{itemize}
 
 These metrics provide additional information about the structure and dynamics of Tricolor. For example, the high percentage of decision moves indicates that most turns offer meaningful choice, while the low number of repeated states suggests that games rarely cycle extensively under random play. The board occupation and movement-distance metrics also show that games tend to use a substantial portion of the board, rather than remaining confined to the initial setup area.
@@ -350,8 +350,8 @@ This metric measures the duration of a game in turns. A turn is equivalent to a 
 
 Looking at the plot, we can make the following observations:
 \begin{itemize}
-    \item On average, a game lasts 173 turns. Comparing to chess, where a game lasts on average 80 turns ~\cite{shannon_chess} \footnote{In Shannon's paper about chess, a turn consists in two consecutive moves, one made by each player. However, in my measurements, a turn consists in only one move made by any player. Therefore, the number of turns as presented in Shannon's paper about chess was modified so that is satisfies my definition for the rest of this paper.}, Tricolor's games depth is much bigger. This aspect has a huge impact on the performance of AI Agents, especially MCTS, which needs to perform a high amount of random game simulations in order to find the best move.
-    \item The large standard deviation ($\approx$ 64 turns) indicates that game duration varies significantly depending on the Agents’ behavior, suggesting that games do not follow a consistent flow.
+    \item On average, a game lasts 177 turns. Comparing to chess, where a game lasts on average 80 turns ~\cite{shannon_chess} \footnote{In Shannon's paper about chess, a turn consists in two consecutive moves, one made by each player. However, in my measurements, a turn consists in only one move made by any player. Therefore, the number of turns as presented in Shannon's paper about chess was modified so that is satisfies my definition for the rest of this paper.}, Tricolor's games depth is much bigger. This aspect has a huge impact on the performance of AI Agents, especially MCTS, which needs to perform a high amount of random game simulations in order to find the best move.
+    \item The large standard deviation ($\approx$ 69 turns) indicates that game duration varies significantly depending on the Agents’ behavior, suggesting that games do not follow a consistent flow.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -428,7 +428,7 @@ where:
 \end{itemize}
 
 Using the previously computed empirical values for the two game metrics in the formula, we obtain:
-\[ GTC \approx b^d = 47^{173} \approx 47^{1.2 \times 144} = ({47^{1.2}})^{144} \approx 100^{144}\]
+\[ GTC \approx b^d = 47^{177} \approx 47^{1.2 \times 144} = ({47^{1.2}})^{144} \approx 100^{144}\]
 
 This value is astronomical. As an example, the $GTC$ of chess is $\approx 10^{120} = 100^{60}$ ~\cite{shannon_chess}, so Tricolor's $GTC$ is much larger.
 
@@ -482,7 +482,7 @@ This metric measures how many times the same states were repeated in a game. In 
 
 Looking at the plot, we can make the following observations:
 \begin{itemize}
-    \item On average, a game has 0.15 repeated states. This means that a repeated position occurs about once every 6 or 7 games, which is very rare knowing a game lasts on average 173 turns.
+    \item On average, a game has 0.15 repeated states. This means that a repeated position occurs about once every 6 or 7 games, which is very rare knowing a game lasts on average 177 turns.
     \item Tricolor's mechanics are such that it's easy to repeat a position by "undoing" a move. However, the fact that the actions of the random agents lead to a new position almost every turn is explained by 2 factors: 
     \begin{enumerate}
         \item the game has a high state-space, meaning there are many achievable positions (as proved in equation~\ref{eq:STC})
@@ -619,7 +619,7 @@ This metric measures the percentage of games won by Player 1 (White), Player 2 (
 
 Looking at the plot, we can make the following observations:
 \begin{itemize}
-    \item Player 1 (White) has a win percentage of $46.6\%$ and Player 2 (Black) has a win percentage of $46.3\%$, which creates a difference of $0.3\%$. Given this very small difference in win percentage, we can confidently conclude that there is no obvious starting advantage for any of the players in Tricolor.
+    \item Player 1 (White) has a win percentage of $47.6\%$ and Player 2 (Black) has a win percentage of $47.3\%$, which creates a difference of $0.3\%$. Given this very small difference in win percentage, we can confidently conclude that there is no obvious starting advantage for any of the players in Tricolor.
     \item The draw rate is $\approx 7\%$, which is notably low. It indicates that even with random moves, one of the players manages to capture or imprison all of the opponent's pieces.
 \end{itemize}
 

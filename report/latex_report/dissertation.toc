@@ -44,9 +44,9 @@
 \contentsline {section}{\numberline {5.6}Discussion}{35}{section.5.6}%
 \contentsline {chapter}{\numberline {6}Strategic Analysis and Heuristic Design}{37}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Need for Heuristics}{37}{section.6.1}%
-\contentsline {section}{\numberline {6.2}First insight}{37}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Second insight}{38}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Third insight}{38}{section.6.4}%
+\contentsline {section}{\numberline {6.2}First Heuristic}{37}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Second Heuristic}{37}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Third Heuristic}{38}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Combined Heuristic and Limitations}{40}{section.6.5}%
 \contentsline {chapter}{\numberline {7}AI Agents}{41}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Alpha-Beta Agent}{41}{section.7.1}%
@@ -57,11 +57,12 @@
 \contentsline {section}{\numberline {8.2}Baseline Results Against the Random Agent}{46}{section.8.2}%
 \contentsline {section}{\numberline {8.3}Alpha-Beta versus Monte Carlo Tree Search}{46}{section.8.3}%
 \contentsline {section}{\numberline {8.4}Game Metrics using AI Agents}{47}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Discussion}{51}{section.8.5}%
-\contentsline {chapter}{\numberline {9}Conclusion and Perspectives for the Study of Tricolor}{53}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Final Remarks}{53}{section.9.1}%
-\contentsline {chapter}{\numberline {A}Game metrics plots}{55}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Random Agent vs Random Agent simulations}{56}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Alpha-Beta Agent vs MCTS Agent simulations}{59}{section.A.2}%
-\contentsline {chapter}{Bibliography}{63}{appendix*.38}%
+\contentsline {section}{\numberline {8.5}Discussion}{53}{section.8.5}%
+\contentsline {chapter}{\numberline {9}Conclusion and Perspectives for the Study of Tricolor}{55}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Conclusions}{55}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Future Research Directions}{56}{section.9.2}%
+\contentsline {chapter}{\numberline {A}Game metrics}{57}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Random Agent vs Random Agent simulations}{58}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Alpha-Beta Agent vs MCTS Agent simulations}{61}{section.A.2}%
+\contentsline {chapter}{Bibliography}{65}{appendix*.40}%
 \contentsfinish 
