@@ -53,6 +53,12 @@ then, to run it:
 <pre>
 ./tricolor_game_opti "agent1" "agent2"
 </pre>
+
+All of the available agents are
+<pre>
+"human", "random", "alphabeta", "mcts"
+</pre>
+
 like for example
 <pre>
 ./tricolor_game human random
