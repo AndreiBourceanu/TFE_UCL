@@ -31,6 +31,18 @@ then, to run it:
 ./game_behaviour_metrics "agent1" "agent2" "games_to_simulate"
 </pre>
 
+In order to reproduce the simulations and plots obtained in the paper, launch first the script `launch_game_metrics.sh` (which takes around 12 hours):
+
+<pre>
+./launch_game_metrics.sh
+</pre>
+
+and then create all plots by executing the script `plots/game_behaviour_scripts/launch_all_scripts.sh`:
+
+<pre>
+plots/game_behaviour_scripts/launch_all_scripts.sh
+</pre>
+
 ### Playing the game
 
 The following command builds the executable that runs a game of Tricolor between 2 players:
