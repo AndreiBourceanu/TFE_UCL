@@ -1,14 +1,25 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import sys
+import os
 
-df = pd.read_csv("../../csv_files/game_behaviour/total_distance.csv")
+args = sys.argv[1:]
+
+path1 = "../../csv_files/game_behaviour_" + args[0] + "_vs_" + args[1] + "/total_distance.csv"
+df = pd.read_csv(path1)
+
+if args[0] != args[1]:
+    path2 = "../../csv_files/game_behaviour_" + args[1] + "_vs_" + args[0] + "/total_distance.csv"
+    df2 = pd.read_csv(path2)
+    
+    df = pd.concat([df, df2], ignore_index=True)
 
 x = df["total_distance"]
 
 plt.violinplot(x)
 
-plt.title("Average distance traveled by pieces during a game")
+plt.title("Average distance traveled by pieces during a game" + "\n" + args[0] + " vs " + args[1])
 plt.ylabel("Average distance traveled by pieces")
 mean = np.mean(x)
 std = np.std(x)
@@ -17,4 +28,5 @@ plt.text(1.1, mean, f"Mean: {mean:.2f}\nSD: {std:.2f}", va='center')
 plt.gca().set_xticks([])
 
 plt.legend()
-plt.savefig("../game_behaviour/total_distance.pdf")
+os.makedirs("../game_behaviour" + "_" + args[0] + "_vs_" + args[1], exist_ok=True)
+plt.savefig("../game_behaviour" + "_" + args[0] + "_vs_" + args[1] + "/total_distance.pdf")

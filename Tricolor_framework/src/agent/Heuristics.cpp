@@ -32,17 +32,16 @@ int max_compact_power(BoardOpti& board, int player){
             nr_of_pieces -= board.get_pieces(opponent, tile);
             max_power -= min(3, board.get_pieces(opponent, tile)) * first_3_power[colors_opti[tile]] + max(0, board.get_pieces(opponent, tile) - 3) * remaining_power[colors_opti[tile]];
             // add 1 because of an owned stack by the opponent
-            //utility++;
         }
     }
     utility = nr_of_pieces * 100000 + max_power;
     return utility;
 }
 
-// as many friendly pieces as possible and as little opponent pieces as possible
+// As many friendly pieces as possible and as little opponent pieces as possible
 // max power, with as little stacks as possible
 
-int MAX_POWER = 18 * 18 * 3 + 1; // if a player has 18 pieces on red
+int MAX_POWER = 61 * 18 * 18 * 3 + 1; // if a player has 18 pieces on red
 
 int max_power_less_stacks(BoardOpti& board, int player){
     int opponent = (player + 1) % 2;
@@ -62,7 +61,6 @@ int max_power_less_stacks(BoardOpti& board, int player){
             nr_of_pieces -= board.get_pieces(opponent, tile);
             max_power -= board.get_pieces(opponent, tile) * board.get_pieces(opponent, tile) * colors_opti[tile];
             // add 1 because of an owned stack by the opponent
-            //utility++;
         }
     }
     utility = nr_of_pieces * MAX_POWER + max_power;

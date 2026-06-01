@@ -1,116 +1,158 @@
-// Launch Tricolor game simulations between 2 random players and exract useful data
+// Launch Tricolor game simulations between 2 agents and extract useful metrics
 
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <chrono>
 #include <math.h>
 #include <iomanip>
 #include "game/Game.h"
 #include "agent/AgentRandom.h"
 #include "agent/AgentAlphaBeta.h"
+#include "agent/AgentMCTS.h"
 #include "agent/Heuristics.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
+// default number of games simulated
 int GAMES_PLAYED = 1000000;
 
-int main()
+// create an agent based on input
+unique_ptr<Agent> create_agent(const string& name) {
+    if (name == "random")
+        return std::make_unique<AgentRandom>();
+    else if (name == "alphabeta")
+        return std::make_unique<AgentAlphaBeta>(max_power_less_stacks);
+    else if (name == "mcts")
+        return std::make_unique<AgentMCTS>(1000);
+    else {
+        cerr << "Unknown agent type: " << name << endl;
+        exit(1);
+    }
+}
+
+/*
+- the first argument must be the name of the first Agent and Player 1 (White)
+- the second argument must be the name of the second Agent and Player 2 (Black)
+- the third argument must be the number of games played between the agents
+agents: "random", "alphabeta", "mcts"
+*/
+int main(int argc, char* argv[])
 {
+    if(argc < 4){
+        cout << "Usage: ./game_behaviour_metrics <player1> <player2> GAMES_PLAYED\n";
+        return 1;
+    }
+
+    GAMES_PLAYED = stoi(argv[3]);
+
+    string agent1 = argv[1];
+    string agent2 = argv[2];
+    string filepath = "csv_files/game_behaviour_" + agent1 + "_vs_" + agent2;
+    fs::create_directories(filepath);
+
+    // declaring all the metrics variables and output files
+
     int wins[3] = {0, 0, 0};
 
-    ofstream fout_total_turns("csv_files/game_behaviour/total_turns.csv");
+    ofstream fout_total_turns(filepath + "/total_turns.csv");
     fout_total_turns<<"total_turns\n";
 
     int total_turns = 0;
     int game_turns[GAMES_PLAYED];
 
-    ofstream fout_total_repeated_states("csv_files/game_behaviour/total_repeated_states.csv");
+    ofstream fout_total_repeated_states(filepath + "/total_repeated_states.csv");
     fout_total_repeated_states<<"total_repeated_states\n";
 
     int total_repeated_states = 0;
 
-    ofstream fout_total_more_than_one_move("csv_files/game_behaviour/total_more_than_one_move.csv");
+    ofstream fout_total_more_than_one_move(filepath + "/total_more_than_one_move.csv");
     fout_total_more_than_one_move<<"total_more_than_one_move\n";
 
     int total_moves = 0;
     int total_more_than_one_move = 0;
 
-    ofstream fout_winrates("csv_files/game_behaviour/winrates.csv");
+    ofstream fout_winrates(filepath + "/winrates.csv");
     fout_winrates<<"p1,p2,draw\n";
 
-    ofstream fout_total_narrowness("csv_files/game_behaviour/total_narrowness.csv");
+    ofstream fout_total_narrowness(filepath + "/total_narrowness.csv");
     fout_total_narrowness<<"total_narrowness\n";
 
     int total_narrowness = 0;
 
-    ofstream fout_decisiveness("csv_files/game_behaviour/decisiveness.csv");
+    ofstream fout_decisiveness(filepath + "/decisiveness.csv");
     fout_decisiveness<<"decisiveness\n";
 
     double earliest_turn_lead_change_game_percentage = 0;
 
-    ofstream fout_total_lead_change_moves("csv_files/game_behaviour/total_lead_change_moves.csv");
+    ofstream fout_total_lead_change_moves(filepath + "/total_lead_change_moves.csv");
     fout_total_lead_change_moves<<"total_lead_change_moves\n";
 
     int total_lead_change_moves = 0;
 
-    ofstream fout_total_lead_change_actions("csv_files/game_behaviour/total_lead_change_actions.csv");
+    ofstream fout_total_lead_change_actions(filepath + "/total_lead_change_actions.csv");
     fout_total_lead_change_actions<<"total_lead_change_actions\n";
 
     double total_lead_change_actions = 0;
 
-    ofstream fout_total_drama("csv_files/game_behaviour/total_drama.csv");
+    ofstream fout_total_drama(filepath + "/total_drama.csv");
     fout_total_drama<<"total_drama\n";
 
     double total_drama = 0;
 
-    // game evaluations
-    // 3 random games have already been generated (white win, black win, draw)
-    /*
-    ofstream fout_game_evaluation_1("csv_files/game_behaviour/game_evaluation_1.csv");
+    // game evaluations examples
+    
+    ofstream fout_game_evaluation_1(filepath + "/game_evaluation_1.csv");
     fout_game_evaluation_1<<"game_evaluation_1\n";
 
-    ofstream fout_game_evaluation_2("csv_files/game_behaviour/game_evaluation_2.csv");
+    ofstream fout_game_evaluation_2(filepath + "/game_evaluation_2.csv");
     fout_game_evaluation_2<<"game_evaluation_2\n";
 
-    ofstream fout_game_evaluation_3("csv_files/game_behaviour/game_evaluation_3.csv");
+    ofstream fout_game_evaluation_3(filepath + "/game_evaluation_3.csv");
     fout_game_evaluation_3<<"game_evaluation_3\n";
-    */
 
     //
 
-    ofstream fout_total_occupied_tiles("csv_files/game_behaviour/total_occupied_tiles.csv");
+    ofstream fout_total_occupied_tiles(filepath + "/total_occupied_tiles.csv");
     fout_total_occupied_tiles<<"total_occupied_tiles\n";
 
     int total_occupied_tiles = 0;
 
-    ofstream fout_total_branches("csv_files/game_behaviour/total_branches.csv");
+    ofstream fout_total_branches(filepath + "/total_branches.csv");
     fout_total_branches<<"total_branches\n";
 
     int total_branches = 0;
 
-    ofstream fout_total_decision_factors("csv_files/game_behaviour/total_decision_factors.csv");
+    ofstream fout_total_decision_factors(filepath + "/total_decision_factors.csv");
     fout_total_decision_factors<<"total_decision_factors\n";
 
     int total_decision_factors = 0;
 
-    ofstream fout_total_distance("csv_files/game_behaviour/total_distance.csv");
+    ofstream fout_total_distance(filepath + "/total_distance.csv");
     fout_total_distance<<"total_distance\n";
 
     double total_distance = 0;
 
-    ofstream fout_total_number_of_pieces("csv_files/game_behaviour/total_number_of_pieces.csv");
+    ofstream fout_total_number_of_pieces(filepath + "/total_number_of_pieces.csv");
     fout_total_number_of_pieces<<"total_number_of_pieces\n";
 
     int total_number_of_pieces = 0;
 
+    // loop with all the simulated games
+
     for (int i = 0; i < GAMES_PLAYED; i++) {
 
+        // create the agents
         array<unique_ptr<Agent>, 2> players;
-        players[0] = make_unique<AgentRandom>();
-        players[1] = make_unique<AgentRandom>();
+        players[0] = create_agent(argv[1]);
+        players[1] = create_agent(argv[2]);
 
-        GameWithBehaviourMetrics game(move(players), 50);
+        // create the game
+        GameWithBehaviourMetrics game(move(players), 100);
         game.start();
+
+        // update the metrics after each game
 
         wins[game.winner]++;
 
@@ -165,9 +207,7 @@ int main()
         total_drama += game.total_drama / game.total_moves;
 
         fout_total_drama << (double) game.total_drama / game.total_moves << "\n";
-
-        // game evaluations (already generated)
-        /*
+        
         if(i == 0){
             for(double val : game.positions_evalutaions){
                 fout_game_evaluation_1 << val << "\n";
@@ -184,7 +224,7 @@ int main()
                 fout_game_evaluation_3 << val << "\n";
             }
         }
-        */
+    
         //
 
         int current_occupied_tiles = 0;
@@ -227,39 +267,7 @@ int main()
 
     fout_winrates << wins[0] << ',' << wins[1] << ',' << wins[2];
 
-    // avg number of turns
-    double avg_turns = (double) total_turns / GAMES_PLAYED;
-    // std dev for turns
-    double std_dev_avg_turns = 0;
-    // compute variance
-    for(int i = 0; i < GAMES_PLAYED; i++){
-        std_dev_avg_turns += ((double) game_turns[i] - avg_turns) * ((double) game_turns[i] - avg_turns);
-    }
-    std_dev_avg_turns /= GAMES_PLAYED;
-    // std dev
-    std_dev_avg_turns = sqrt(std_dev_avg_turns);
-
-    cout << fixed << setprecision(3);
-
-    cout << "In " << GAMES_PLAYED << " games played, there are on average:\n\n";
-    cout << (double) total_turns / GAMES_PLAYED << " turns per game with std dev of " << std_dev_avg_turns << ";\n";
-    cout << (double) total_repeated_states / GAMES_PLAYED << " repeated states per game;\n";
-    cout << (double) total_more_than_one_move * 100 / total_moves << "% moves where there was more than 1 possible move;\n\n";
-
-    cout << "Narrowness " << total_narrowness / GAMES_PLAYED << ";\n";
-    cout << "Game % when the move was decisive (lead didn't change since then) " << earliest_turn_lead_change_game_percentage * 100 / GAMES_PLAYED << "%;\n";
-    cout << "Lead change moves " << total_lead_change_moves / GAMES_PLAYED << ";\n";
-    cout << "Lead change turns during a game " << total_lead_change_actions * 100 / GAMES_PLAYED << "%;\n";
-    cout << "Drama " << total_drama / GAMES_PLAYED << ";\n\n";
-
-    cout << (double) total_occupied_tiles * 100 / (GAMES_PLAYED * 61) << "% of occupied tiles at least once per game;\n";
-    cout << "Player 1 (White) won " << (double) wins[0] * 100 / GAMES_PLAYED << "% of the games;\n";
-    cout << "Player 2 (Black) won " << (double) wins[1] * 100 / GAMES_PLAYED << "% of the games;\n";
-    cout << "The rest of " << (double) wins[2] * 100 / GAMES_PLAYED << "% of the games are draws;\n";
-    cout << "Branching factor " << total_branches / GAMES_PLAYED << "\n";
-    cout << "Decision factor " << total_decision_factors / GAMES_PLAYED << "\n";
-    cout << "Distance traveled by pieces " << total_distance / GAMES_PLAYED << "\n";
-    cout << "Number of pieces on the board " << total_number_of_pieces / GAMES_PLAYED << "\n";
+    // close all opened files
 
     fout_decisiveness.close();
     fout_total_branches.close();
@@ -275,5 +283,6 @@ int main()
     fout_total_repeated_states.close();
     fout_total_turns.close();
     fout_winrates.close();
+    
     return 0;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Agent.h"
 
+// Random Agent class
 class AgentRandom : public Agent{
 public:
 AgentRandom();

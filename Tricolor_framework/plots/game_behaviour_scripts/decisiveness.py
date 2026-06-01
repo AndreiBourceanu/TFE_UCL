@@ -1,14 +1,25 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import sys
+import os
 
-df = pd.read_csv("../../csv_files/game_behaviour/decisiveness.csv")
+args = sys.argv[1:]
+
+path1 = "../../csv_files/game_behaviour_" + args[0] + "_vs_" + args[1] + "/decisiveness.csv"
+df = pd.read_csv(path1)
+
+if args[0] != args[1]:
+    path2 = "../../csv_files/game_behaviour_" + args[1] + "_vs_" + args[0] + "/decisiveness.csv"
+    df2 = pd.read_csv(path2)
+    
+    df = pd.concat([df, df2], ignore_index=True)
 
 x = df["decisiveness"]
 
 plt.violinplot(x)
 
-plt.title("Decisiveness of a game")
+plt.title("Decisiveness of a game" + "\n" + args[0] + " vs " + args[1])
 plt.ylabel("Percentage (%)")
 mean = np.mean(x)
 std = np.std(x)
@@ -17,4 +28,5 @@ plt.text(1.03, mean, f"Mean: {mean:.2f}\nSD: {std:.2f}", va='center')
 plt.gca().set_xticks([])
 
 plt.legend()
-plt.savefig("../game_behaviour/decisiveness.pdf")
+os.makedirs("../game_behaviour" + "_" + args[0] + "_vs_" + args[1], exist_ok=True)
+plt.savefig("../game_behaviour" + "_" + args[0] + "_vs_" + args[1] + "/decisiveness.pdf")

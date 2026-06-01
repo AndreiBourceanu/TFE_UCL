@@ -10,6 +10,8 @@ AgentMCTS::AgentMCTS(int sim, double exploration)
 }
 
 ActionOpti AgentMCTS::choose_action(BoardOpti& board, int player) {
+
+    // 1 second of time to think
     auto start = std::chrono::high_resolution_clock::now();
     auto deadline = start + std::chrono::milliseconds(1000);
 
@@ -21,20 +23,20 @@ ActionOpti AgentMCTS::choose_action(BoardOpti& board, int player) {
     while (std::chrono::high_resolution_clock::now() < deadline) {
         Node* node = &root;
 
-        // 1. Selection
+        // Selection
         while (node->untried_actions.empty() && !node->children.empty()) {
             node = select(node);
         }
 
-        // 2. Expansion
+        // Expansion
         if (!node->untried_actions.empty()) {
             node = expand(node);
         }
 
-        // 3. Simulation
+        // Simulation
         double result = simulate(node, player);
 
-        // 4. Backpropagation
+        // Backpropagation
         backpropagate(node, result);
 
         sim_count++;
@@ -49,13 +51,13 @@ ActionOpti AgentMCTS::choose_action(BoardOpti& board, int player) {
     if (best_child != root.children.end()) {
         return (*best_child)->action_from_parent;
     } else {
-        // fallback if no children
+        // Fallback if no children
         auto actions = board.get_actions(player);
         return actions[0];
     }
 }
 
-// UCT formula
+// Selection function
 AgentMCTS::Node* AgentMCTS::select(Node* node) {
     Node* best = nullptr;
     double best_uct = -1e9;
@@ -66,9 +68,9 @@ AgentMCTS::Node* AgentMCTS::select(Node* node) {
             return child.get();
         }
 
+        // UCT formula
         double exploitation = child->value / child->visits;
-        double exploration = exploration_constant *
-            std::sqrt(std::log(node->visits) / child->visits);
+        double exploration = exploration_constant * std::sqrt(std::log(node->visits) / child->visits);
 
         double uct = exploitation + exploration;
 
@@ -80,15 +82,20 @@ AgentMCTS::Node* AgentMCTS::select(Node* node) {
     return best;
 }
 
+// Expand function
 AgentMCTS::Node* AgentMCTS::expand(Node* node) {
+    // Choose randomly between all the untried actions
     std::uniform_int_distribution<size_t> dist(0, node->untried_actions.size() - 1);
     size_t index = dist(rng);
     ActionOpti action = node->untried_actions[index];
 
+    // Create the new node in the exploration tree representing the new position after executing the
+    // previously choosen action
     BoardOpti next_state = node->state.result_state_after_action(node->player_to_move, action);
     auto new_node = std::make_unique<Node>(next_state, (node->player_to_move + 1) % 2, node, action); // store action
     new_node->untried_actions = next_state.get_actions(new_node->player_to_move);
 
+    // Modifing the current node with data for the newly created node
     Node* ptr = new_node.get();
     node->children.push_back(std::move(new_node));
     node->untried_actions.erase(node->untried_actions.begin() + index);
@@ -96,11 +103,12 @@ AgentMCTS::Node* AgentMCTS::expand(Node* node) {
     return ptr;
 }
 
-// Simple random playout
+// Random playout
 double AgentMCTS::simulate(Node* node, int player) {
     BoardOpti state = node->state;
     int current_player = node->player_to_move;
 
+    // Simulate a game
     while (true) {
         auto actions = state.get_actions(current_player);
         if (actions.empty()) {
@@ -108,6 +116,7 @@ double AgentMCTS::simulate(Node* node, int player) {
             return current_player == player ? 0.0 : 1.0;
         }
 
+        // Randomly choose an action, execute it and change the player to move
         std::uniform_int_distribution<size_t> dist(0, actions.size() - 1);
         ActionOpti action = actions[dist(rng)];
         state = state.result_state_after_action(current_player, action);
@@ -117,6 +126,7 @@ double AgentMCTS::simulate(Node* node, int player) {
 
 // Backpropagate result
 void AgentMCTS::backpropagate(Node* node, double result) {
+    // Go up in the tree until getting to the root
     while (node != nullptr) {
         node->visits++;
         node->value += result;

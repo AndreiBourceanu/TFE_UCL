@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import sys
+import os
 
-df = pd.read_csv("../../csv_files/game_behaviour/game_evaluation_1.csv")
+args = sys.argv[1:]
+
+df = pd.read_csv("../../csv_files/game_behaviour_" + args[0] + "_vs_" + args[1] + "/game_evaluation_1.csv")
 
 y = df["game_evaluation_1"]
 x = np.arange(len(y))
@@ -27,7 +31,8 @@ plt.xlim(x.min(), x.max())
 
 plt.xlabel("Turn")
 plt.ylabel("Evaluation")
-plt.title("Game 1 Evaluation - White wins")
+plt.title("Game 1 Evaluation" + "\n" + args[0] + " vs " + args[1])
 
 plt.tight_layout()
-plt.savefig("../game_behaviour/game_evaluation_1.pdf")
+os.makedirs("../game_behaviour" + "_" + args[0] + "_vs_" + args[1], exist_ok=True)
+plt.savefig("../game_behaviour" + "_" + args[0] + "_vs_" + args[1] + "/game_evaluation_1.pdf")

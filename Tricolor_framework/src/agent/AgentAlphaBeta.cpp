@@ -22,13 +22,16 @@ int AgentAlphaBeta::alpha_beta(BoardOpti& board, int depth, int alpha, int beta,
     vector<ActionOpti> actions = board.get_actions(player);
 
     if (actions.size() == 0) {
-        // current player cannot move, then he loses
+        // If the urrent player cannot move, then he loses
         if (player == initital_player)
-            return INT32_MIN - (depth - INITIAL_DEPTH);  // we lose
+            // We lose
+            return INT32_MIN - (depth - INITIAL_DEPTH);
         else
-            return INT32_MAX - (INITIAL_DEPTH - depth);  // we win
+            // We win
+            return INT32_MAX - (INITIAL_DEPTH - depth);
     }
 
+    // When the depth limit is reached, return the heuristic evaluation of the position
     if(depth == 0){
         return heuristic(board, initital_player);
     }
@@ -46,12 +49,14 @@ int AgentAlphaBeta::alpha_beta(BoardOpti& board, int depth, int alpha, int beta,
     if (is_max) {
         sort(scored_actions.begin(), scored_actions.end(),
             [](const auto& a, const auto& b) {
-                return a.first > b.first; // descending
+                // Descending order
+                return a.first > b.first;
             });
     } else {
         sort(scored_actions.begin(), scored_actions.end(),
             [](const auto& a, const auto& b) {
-                return a.first < b.first; // ascending
+                // Ascending order
+                return a.first < b.first;
             });
     }
 
@@ -62,6 +67,7 @@ int AgentAlphaBeta::alpha_beta(BoardOpti& board, int depth, int alpha, int beta,
             value = max(value, alpha_beta(result_board, depth - 1, alpha, beta, initital_player, false, (player+1)%2, deadline));
             alpha = max(alpha, value);
 
+            // Beta cutoff
             if(alpha >= beta) break;
         }
         return value;
@@ -73,6 +79,7 @@ int AgentAlphaBeta::alpha_beta(BoardOpti& board, int depth, int alpha, int beta,
             value = min(value, alpha_beta(result_board, depth - 1, alpha, beta, initital_player, true, (player+1)%2, deadline));
             beta = min(beta, value);
 
+            // Alpha cutoff
             if(beta <= alpha) break;
         }
         return value;
@@ -80,6 +87,8 @@ int AgentAlphaBeta::alpha_beta(BoardOpti& board, int depth, int alpha, int beta,
 }
 
 ActionOpti AgentAlphaBeta::choose_action(BoardOpti& board, int player){
+
+    // 1 second of time to think
     auto start_turn = chrono::high_resolution_clock::now();
     auto deadline = start_turn + chrono::milliseconds(1000);
 
@@ -92,14 +101,17 @@ ActionOpti AgentAlphaBeta::choose_action(BoardOpti& board, int player){
     for (ActionOpti action : actions) {
         BoardOpti result_board = board.result_state_after_action(player, action);
         int score;
+        // If the opponent lost (they has 0 possible actions), the score is max
         if(result_board.get_actions((player+1)%2).size() == 0){
             score = INT32_MAX;
         }
+        // Else, use the heuristic to score
         else{
             score = heuristic(result_board, player);
         }
         scored_actions.emplace_back(score, action);
     }
+    // Sort the actions by the scores to improve Alpha-Beta pruning
     sort(scored_actions.begin(), scored_actions.end(),
             [](const auto& a, const auto& b) {
                 return a.first > b.first;
@@ -110,6 +122,7 @@ ActionOpti AgentAlphaBeta::choose_action(BoardOpti& board, int player){
     std::random_device rd;
     std::mt19937 rng(rd());
 
+    // Iterative deepening
     for(depth = 1; ; depth++) {
 
         INITIAL_DEPTH = depth;
@@ -118,7 +131,6 @@ ActionOpti AgentAlphaBeta::choose_action(BoardOpti& board, int player){
             break;
 
         int best_utility = INT32_MIN;
-        //ActionOpti depth_best_action = actions[0];
 
         bool ran_out_of_time = false;
 
@@ -132,23 +144,26 @@ ActionOpti AgentAlphaBeta::choose_action(BoardOpti& board, int player){
                 break;
             }
 
+            // Get the result board after the action
             BoardOpti result_board = board.result_state_after_action(player, action);
 
+            // Compute its utility using the Alpha-Beta pruning algorithm
             int utility = alpha_beta(result_board, depth - 1, INT32_MIN, INT32_MAX, player, false, (player+1)%2, deadline);
 
+            // Check if the action is the best one so far
             if(utility > best_utility){
                 best_utility = utility;
-                //depth_best_action = action;
                 best_actions.clear();
                 best_actions.push_back(action);
             }
+            // In case the action is as good as the current best one, keep them all
             else if(utility == best_utility){
                 best_actions.push_back(action);
             }
         }
 
+        // If ran out of time, select a random action between all the best actions
         if(!ran_out_of_time){
-            //best_action = depth_best_action;
             std::uniform_int_distribution<size_t> dist(0, best_actions.size() - 1);
             best_action = best_actions[dist((rng))];
         }

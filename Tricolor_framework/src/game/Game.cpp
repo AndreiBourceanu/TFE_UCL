@@ -143,7 +143,7 @@ void GameOpti::start(){
         }
 
         ActionOpti action = players[player_turn]->choose_action(board, player_turn);
-        if(action.is_imprisonment_or_capture){
+        if(action.is_capture){
             last_turn_capture = turn;
         }
         board.execute_action(player_turn, action);
@@ -176,7 +176,7 @@ void GameOpti::make_move(ActionOpti human_action){
     else{
         action = human_action;
     }
-    if(action.is_imprisonment_or_capture){
+    if(action.is_capture){
         last_turn_capture = turn;
     }
     board.execute_action(player_turn, action);
@@ -208,7 +208,7 @@ void GameOpti::make_move(){
     }
 
     ActionOpti action = players[player_turn]->choose_action(board, player_turn);
-    if(action.is_imprisonment_or_capture){
+    if(action.is_capture){
         last_turn_capture = turn;
     }
     board.execute_action(player_turn, action);
@@ -243,6 +243,7 @@ GameWithBehaviourMetrics::GameWithBehaviourMetrics(array<unique_ptr<Agent>, 2> p
     }
 }
 
+// Get the distance traveled by a stack after a move
 int get_move_distance(int tile_from, int tile_to){
     for(int i = 0; i < 6; i++){
         int current_tile = tile_from;
@@ -299,8 +300,10 @@ void GameWithBehaviourMetrics::start(){
             turn--;
 
             // decisiveness
+            // match the values for the winner (0 = white and 1 = black)
+            if(current_leader == -1) current_leader = 1;
+            else if(current_leader == 1) current_leader = 0;
             if(winner != current_leader){
-                current_leader = winner;
                 earliest_turn_lead_change = turn;
             }
 
@@ -364,8 +367,8 @@ void GameWithBehaviourMetrics::start(){
         // get the distance of the move
         total_distance += get_move_distance(action.from, action.to);
 
-        // check is it's an imprisonment or capture
-        if(action.is_imprisonment_or_capture){
+        // check if it's a capture
+        if(action.is_capture){
             last_turn_capture = turn;
         }
         // execute the action

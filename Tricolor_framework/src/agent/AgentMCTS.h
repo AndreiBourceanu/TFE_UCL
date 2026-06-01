@@ -6,13 +6,17 @@
 #include <memory>
 #include <random>
 
+// MCTS Agent class
 class AgentMCTS : public Agent {
 public:
+    // Takes as input the number of simulations (but not currently used for the work) and the exploration constant `c`
+    // with value sqrt(2)
     AgentMCTS(int simulations, double exploration = 1.41);
 
     ActionOpti choose_action(BoardOpti& board, int player) override;
 
 private:
+    // Node struct useful when building the exploration tree
     struct Node {
         BoardOpti state;
         int player_to_move;
@@ -32,6 +36,7 @@ private:
     double exploration_constant;
     std::mt19937 rng;
 
+    // The four steps in MCTS
     Node* select(Node* node);
     Node* expand(Node* node);
     double simulate(Node* node, int player);

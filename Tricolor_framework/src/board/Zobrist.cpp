@@ -7,6 +7,7 @@ using namespace std;
 uint64_t zobrist_table[NUM_TILES][MAX_TILE_VALUE];
 uint64_t zobrist_player;
 
+// Generate a random number for each entry
 void init_zobrist() {
     mt19937_64 rng(123456);
 
@@ -19,6 +20,7 @@ void init_zobrist() {
     zobrist_player = rng();
 }
 
+// COmpute the hash based on the entries of the zobrist table
 uint64_t compute_hash(BoardOpti& board) {
     uint64_t h = 0;
 
@@ -27,6 +29,7 @@ uint64_t compute_hash(BoardOpti& board) {
         h ^= zobrist_table[i][idx];
     }
 
+    // xor with the zobrist of the player
     if(board.player_turn)
         h ^= zobrist_player;
 

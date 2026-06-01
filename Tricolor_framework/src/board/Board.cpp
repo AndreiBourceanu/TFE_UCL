@@ -1,3 +1,6 @@
+// This file contains the implementation of the Board (both unoptimised and optimised versions)
+// All the necessary function apllied to the board and actions during a game are implemented here
+
 #include "Board.h"
 #include "Zobrist.h"
 #include <iostream>
@@ -331,6 +334,7 @@ const vector<Position> tile_to_position = [] {
 BoardOpti::BoardOpti(){
     // initialize board with standard game board
     // black tiles
+    
     for(uint16_t tile = 0; tile < 18; tile++){
         tiles[tile] = 0b10000100000;
         //tiles[tile] = 0;
@@ -344,8 +348,14 @@ BoardOpti::BoardOpti(){
         tiles[tile] = 0b1;
         //tiles[tile] = 0;
     }
-    //tiles[0] = 0b10000100000;
-    //tiles[43] = 0b10;
+    
+   /*
+   for(uint16_t tile = 0; tile < 61; tile++){
+        tiles[tile] = 0;
+    }
+    tiles[60] = 0b10;
+    tiles[0] = 0b10000100000;
+    */
     // first to move is white
     player_turn = 0;
     // initialize zobrist values for hashing states
@@ -400,11 +410,11 @@ void BoardOpti::set_owner(int tile, int player){
     tiles[tile] = (player << 10) | (get_black_pieces(tile) << 5) | get_white_pieces(tile);
 }
 
-ActionOpti::ActionOpti(int from, int to, int pieces_moved, bool is_imprisonment_or_capture){
+ActionOpti::ActionOpti(int from, int to, int pieces_moved, bool is_capture){
     this->from = from;
     this->to = to;
     this->pieces_moved = pieces_moved;
-    this->is_imprisonment_or_capture = is_imprisonment_or_capture;
+    this->is_capture = is_capture;
 }
 
 ActionOpti::ActionOpti(){}
@@ -437,7 +447,10 @@ vector<ActionOpti> BoardOpti::get_actions(int player){
                                     has_to_at_least_imprison = true;
                                     actions.clear();
                                 }
-                                actions.push_back(ActionOpti(tile, current_hex_tile, nr_of_pieces_to_move, true));
+                                bool is_capture = false;
+                                // check is it's a capture
+                                if(power > 2 * opponent_power) is_capture = true;
+                                actions.push_back(ActionOpti(tile, current_hex_tile, nr_of_pieces_to_move, is_capture));
                             }
                             break;
                         }

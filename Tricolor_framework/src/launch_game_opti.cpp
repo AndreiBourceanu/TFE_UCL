@@ -15,6 +15,7 @@ using namespace std;
 
 unordered_map<int, sf::Color> my_color_to_sf_color;
 
+// Struct used to maintain the state of touched stacks and tiles by a human player
 struct pieces_touched {
 
     bool clicked_on_first_hex = false;
@@ -30,10 +31,13 @@ bool is_outside_board(Position position){
     return position.x == -1 && position.y == -1;
 }
 
+// Check if a human action is equival to an action
 bool action_and_human_decision_are_the_same(ActionOpti action, pieces_touched human_pieces_touched, Position clicked_hex_position) {
     return action.from == position_to_tile[human_pieces_touched.position_of_first_hex.x][human_pieces_touched.position_of_first_hex.y] && action.to == position_to_tile[clicked_hex_position.x][clicked_hex_position.y] && human_pieces_touched.times_clicked_of_first_hex == action.pieces_moved;
 }
 
+
+// Check if a point is inside a specific hex of the board
 bool pointInHex(const sf::ConvexShape& hex, sf::Vector2f point)
 {
     int count = hex.getPointCount();
@@ -54,6 +58,7 @@ bool pointInHex(const sf::ConvexShape& hex, sf::Vector2f point)
     return inside;
 }
 
+// Get the coordinates of a hex tile depending on the pixel clicked by a human
 Position get_hex_coordinates_by_pixel(sf::RenderWindow &window, sf::Vector2f &mouse_position, float radius){
 
     Position position{-1, -1};
@@ -92,6 +97,7 @@ Position get_hex_coordinates_by_pixel(sf::RenderWindow &window, sf::Vector2f &mo
     return position;
 }
 
+// Draw the hex tiles and the pieces of the current position
 void draw_hex_tiles(sf::RenderWindow &window, BoardOpti& board, float radius, sf::Sprite &whitePiece, sf::Sprite &blackPiece, pieces_touched &human_pieces_touched, GameOpti &game, vector<ActionOpti> &actions){
 
     sf::Vector2u center_hex = {window.getSize().y / 2, window.getSize().x / 2};
@@ -203,16 +209,23 @@ unique_ptr<Agent> create_agent(const string& name, const int heur) {
 int main(int argc, char* argv[]) {
 
     if (argc < 3) {
-        std::cout << "Usage: ./launch_game <player1> <player2>\n";
-        std::cout << "Example: ./launch_game human random\n";
+        cout << "Usage: ./launch_game <player1> <player2>\n";
+        cout << "Example: ./launch_game human random\n";
         return 1;
     }
     
     array<unique_ptr<Agent>, 2> players;
-    players[0] = create_agent(argv[1], stoi(argv[3]));
-    players[1] = create_agent(argv[2], stoi(argv[4]));
-    GameOpti game(move(players), 50);
+    if(argc == 3){
+        players[0] = create_agent(argv[1], 1);
+        players[1] = create_agent(argv[2], 1);    
+    }
+    else{
+        players[0] = create_agent(argv[1], stoi(argv[3]));
+        players[1] = create_agent(argv[2], stoi(argv[4]));
+    }
+    GameOpti game(move(players), 100);
 
+    // Create the game window
     sf::RenderWindow window(sf::VideoMode(860, 860), "Tricolor");
     window.setFramerateLimit(10);
 
@@ -243,7 +256,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    sf::Vector2i pieceSize(768, 1024); // size of a single piece
+    // size of a single piece
+    sf::Vector2i pieceSize(768, 1024);
 
     // White piece (left)
     sf::Sprite whitePiece(piecesTexture);
@@ -253,6 +267,7 @@ int main(int argc, char* argv[]) {
     sf::Sprite blackPiece(piecesTexture);
     blackPiece.setTextureRect(sf::IntRect(pieceSize.x + 25, 70, pieceSize.x - 25, pieceSize.y - 70));
 
+    // Resize the pieces
     float targetSize = 100.f;
     float scaleX = targetSize / pieceSize.x;
     float scaleY = targetSize / pieceSize.y;
@@ -261,7 +276,8 @@ int main(int argc, char* argv[]) {
 
     sf::Clock clock;
     sf::Time timeSinceLastMove = sf::Time::Zero;
-    float moveDelay = 1.f; // seconds per move
+    // seconds per move
+    float moveDelay = 1.f;
 
     bool printed_winner = false;
 
@@ -269,6 +285,7 @@ int main(int argc, char* argv[]) {
 
     vector<ActionOpti> actions = game.board.get_actions(game.player_turn);
 
+    // Game loop
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -355,6 +372,7 @@ int main(int argc, char* argv[]) {
             }
         }
 
+        // If the game ended, print the winner of the game in case
         if(game.game_is_over && !printed_winner){
             cout<<"Winner: ";
             if(game.winner == 0){
@@ -373,15 +391,19 @@ int main(int argc, char* argv[]) {
             printed_winner = true;
         }
 
+        // Clear the window at each frame
         window.clear(sf::Color::White);
-
+        
+        // and draw the current board
         draw_hex_tiles(window, game.board, hex_radius, whitePiece, blackPiece, human_pieces_touched, game, actions);
 
+        // as well as the winner
         sf::FloatRect bounds = text.getLocalBounds();
         text.setOrigin(bounds.left + bounds.width / 2.0f, 0);
         text.setPosition(window.getSize().x / 2.0f, window.getSize().y - characters_size - 50.f);
         window.draw(text);
 
+        // then disiplay everything
         window.display();
     }
 }

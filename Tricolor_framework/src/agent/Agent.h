@@ -1,12 +1,12 @@
 #pragma once
 #include "../board/Board.h"
 
+// General abstract Agent class that implements multiples `choose_action` functions
 class Agent{
 public:
 
 bool is_bot;
 
-//Agent() : is_bot(true) {}
 Agent(bool is_bot);
 
 virtual ~Agent() = default;

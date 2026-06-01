@@ -86,9 +86,9 @@ struct ActionOpti{
     int from;
     int to;
     int pieces_moved;
-    bool is_imprisonment_or_capture;
+    bool is_capture;
 
-    ActionOpti(int from, int to, int pieces_moved, bool is_imprisonment_or_capture);
+    ActionOpti(int from, int to, int pieces_moved, bool is_capture);
 
     ActionOpti();
 };

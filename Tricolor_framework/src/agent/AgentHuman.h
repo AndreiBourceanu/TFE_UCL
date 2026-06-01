@@ -1,6 +1,7 @@
 #pragma once
 #include "Agent.h"
 
+// Human Agent class
 class AgentHuman : public Agent{
 public:
 

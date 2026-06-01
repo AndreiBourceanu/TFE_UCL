@@ -1,4 +1,4 @@
-// Launch a Tricolor game between 2 players
+// Launch a Tricolor game between 2 players (unoptimised version and not currently used)
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -8,6 +8,7 @@
 #include "agent/AgentRandom.h"
 #include "agent/AgentHuman.h"
 #include "agent/AgentAlphaBeta.h"
+#include "agent/Heuristics.h"
 
 using namespace std;
 
@@ -184,7 +185,7 @@ unique_ptr<Agent> create_agent(const string& name) {
     else if (name == "random")
         return std::make_unique<AgentRandom>();
     else if (name == "alphabeta")
-        return std::make_unique<AgentAlphaBeta>();
+        return std::make_unique<AgentAlphaBeta>(max_compact_power);
     else {
         std::cerr << "Unknown agent type: " << name << std::endl;
         exit(1);
